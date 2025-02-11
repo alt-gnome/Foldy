@@ -1,0 +1,3 @@
+spec: .gear/foldy.spec
+tar: v@version@:.
+diff: v@version@:. . exclude=.gear/** name=@name@-@version@-alt.patch
