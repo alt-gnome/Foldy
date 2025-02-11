@@ -1,0 +1,12 @@
+[Desktop Entry]
+# Translators: app name should be translated
+Name=Foldy
+Comment=Folder manager for mobile devices
+# Translators: keep number of ';'
+Keywords=folder
+Exec=foldy
+Icon=org.altlinux.Foldy
+Terminal=false
+Type=Application
+Categories=Utility;GNOME;GTK;
+StartupNotify=true

@@ -1,0 +1,107 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyFolderDialog: Adw.Dialog {
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      title-widget: Adw.WindowTitle {
+        title: bind template.header-bar-title;
+      };
+    }
+
+    content: Adw.ToastOverlay toast_overlay {
+      ScrolledWindow scrolled_window {
+        hscrollbar-policy: never;
+        propagate-natural-height: true;
+
+        vadjustment: Adjustment adj {
+          lower: 0;
+          value: 0;
+          upper: 1000;
+        };
+
+        Adw.Clamp {
+          margin-bottom: 12;
+          margin-top: 12;
+          margin-start: 12;
+          margin-end: 12;
+
+          Box {
+            orientation: vertical;
+            spacing: 12;
+            vexpand: true;
+
+            ListBox list_box {
+              styles [
+                "boxed-list-separate",
+              ]
+
+              selection-mode: none;
+
+              Adw.EntryRow folder_name_entry {
+                title: _("Folder name");
+              }
+            }
+          }
+        }
+      }
+    };
+
+    [bottom]
+    CenterBox {
+      margin-bottom: 12;
+      margin-end: 12;
+      margin-start: 12;
+      margin-top: 12;
+      shrink-center-last: true;
+
+      start-widget: Adw.Bin bottom_start {
+        halign: start;
+        hexpand: false;
+      };
+
+      center-widget: Adw.Clamp {
+        margin-end: 12;
+        margin-start: 12;
+        maximum-size: 500;
+        hexpand: true;
+
+        ListBox {
+          styles [
+            "boxed-list-separate",
+          ]
+
+          selection-mode: none;
+
+          Adw.ButtonRow apply_button {
+            styles [
+              "suggested-action",
+            ]
+
+            title: bind template.apply-button-title;
+            activated => $on_apply_button_activate();
+          }
+        }
+      };
+
+      end-widget: Revealer go_top_button_revealer {
+        reveal-child: true;
+        transition-type: slide_right;
+
+        Button {
+          styles [
+            "circular",
+            "flat",
+          ]
+
+          halign: end;
+          hexpand: false;
+          valign: center;
+          icon-name: "go-top-symbolic";
+          clicked => $go_top_button_clicked();
+        }
+      };
+    }
+  }
+}

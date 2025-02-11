@@ -1,0 +1,15 @@
+app/add-apps-page.vala
+app/data/org.altlinux.Foldy.desktop.in
+app/data/org.altlinux.Foldy.metainfo.xml.in
+app/data/ui/add-apps-page.blp
+app/data/ui/app-info-dialog.blp
+app/data/ui/base-page.blp
+app/data/ui/categories-list.blp
+app/data/ui/folder-dialog.blp
+app/data/ui/folder-page.blp
+app/data/ui/folders-list-page.blp
+app/folder-dialog.vala
+app/folder-page.vala
+app/folders-list-page.vala
+app/main.vala
+app/window.vala

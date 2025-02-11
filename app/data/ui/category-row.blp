@@ -1,0 +1,15 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyCategoryRow: Adw.ActionRow {
+  styles [
+    "category-row",
+  ]
+
+  [suffix]
+  Gtk.CheckButton check_button {
+    styles [
+      "selection-mode",
+    ]
+  }
+}

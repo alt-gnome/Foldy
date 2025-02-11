@@ -1,0 +1,18 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyWindow: Adw.ApplicationWindow {
+  default-width: 600;
+  default-height: 300;
+  width-request: 360;
+  height-request: 294;
+
+  content: Adw.ToastOverlay toast_overlay {
+    Adw.NavigationView navigation_view {
+      $FoldyFoldersListPage folders_list_page {
+        tag: "main";
+        nav-view: navigation_view;
+      }
+    }
+  };
+}

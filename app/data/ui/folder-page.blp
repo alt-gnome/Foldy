@@ -1,0 +1,86 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyFolderPage: $FoldyBasePage {
+  can-select: true;
+
+  bottom-start-widget: Revealer delete_revealer {
+    reveal-child: true;
+    transition-type: crossfade;
+
+    Gtk.Button delete_button {
+      styles [
+        "flat",
+        "circular",
+        "destructive-action",
+      ]
+
+      halign: center;
+      valign: center;
+      icon-name: "user-trash-symbolic";
+      clicked => $delete_folder();
+    }
+  };
+
+  bottom-center-widget: Stack bottom_stack {
+    transition-type: crossfade;
+
+    StackPage {
+      name: "default";
+
+      child: ListBox {
+        styles [
+          "boxed-list",
+        ]
+
+        selection-mode: none;
+
+        Adw.ButtonRow add_apps_button {
+          styles [
+            "suggested-action",
+          ]
+
+          title: _("Add apps");
+          activated => $add_apps();
+        }
+      };
+    }
+
+    StackPage {
+      name: "selection-mode";
+
+      child: ListBox {
+        styles [
+          "boxed-list",
+        ]
+
+        selection-mode: none;
+
+        Adw.ButtonRow delete_selected_button {
+          styles [
+            "destructive-action",
+          ]
+
+          title: _("Remove selected");
+          activated => $delete_selected_apps();
+        }
+      };
+    }
+  };
+
+  bottom-end-widget: Revealer settings_revealer {
+    reveal-child: true;
+    transition-type: crossfade;
+
+    Button folder_settings_button {
+      styles [
+        "circular",
+        "flat",
+      ]
+
+      halign: center;
+      valign: center;
+      icon-name: "document-edit-symbolic";
+    }
+  };
+}

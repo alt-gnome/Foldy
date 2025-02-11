@@ -1,0 +1,24 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyAddAppsPage: $FoldyBasePage {
+  title: _("Applications without folder");
+
+  bottom-center-widget: ListBox {
+    styles [
+      "boxed-list",
+    ]
+
+    selection-mode: none;
+
+    Adw.ButtonRow add_button {
+      styles [
+        "suggested-action",
+      ]
+
+      sensitive: false;
+      title: _("Add selected applications");
+      activated => $add_selected_apps();
+    }
+  };
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/altlinux/Foldy/">
+    <file>style.css</file>
+    <file preprocess="xml-stripblanks">ui/add-apps-page.ui</file>
+    <file preprocess="xml-stripblanks">ui/app-info-dialog.ui</file>
+    <file preprocess="xml-stripblanks">ui/app-row.ui</file>
+    <file preprocess="xml-stripblanks">ui/base-page.ui</file>
+    <file preprocess="xml-stripblanks">ui/categories-list.ui</file>
+    <file preprocess="xml-stripblanks">ui/category-row.ui</file>
+    <file preprocess="xml-stripblanks">ui/folder-dialog.ui</file>
+    <file preprocess="xml-stripblanks">ui/folder-page.ui</file>
+    <file preprocess="xml-stripblanks">ui/folders-list-page.ui</file>
+    <file preprocess="xml-stripblanks">ui/search-row.ui</file>
+    <file preprocess="xml-stripblanks">ui/window.ui</file>
+  </gresource>
+  <gresource prefix="/org/altlinux/Foldy/icons/scalable/actions/">
+    <file alias="check-symbolic.svg">assets/icons/check-symbolic.svg</file>
+    <file alias="uncheck-symbolic.svg">assets/icons/uncheck-symbolic.svg</file>
+  </gresource>
+</gresources>

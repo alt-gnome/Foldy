@@ -1,0 +1,27 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyAppRow: Adw.ActionRow {
+  activatable: true;
+
+  [prefix]
+  Image icon_image {
+    icon-size: large;
+    halign: fill;
+    valign: fill;
+  }
+
+  [suffix]
+  Revealer action_image_revealer {
+    transition-type: crossfade;
+    reveal-child: bind template.selection-enabled;
+
+    Image action_image {
+      styles [
+        "dim-label",
+      ]
+
+      icon-name: "uncheck-symbolic";
+    }
+  }
+}

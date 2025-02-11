@@ -1,0 +1,36 @@
+option(
+  'is_devel',
+  type: 'boolean',
+  value: false,
+  description: 'Whether to build devel version',
+)
+option(
+  'with_application',
+  type: 'boolean',
+  value: true,
+  description: 'Whether to build GUI application',
+)
+option(
+  'with_service',
+  type: 'boolean',
+  value: true,
+  description: 'Whether to build service',
+)
+option(
+  'with_library',
+  type: 'boolean',
+  value: true,
+  description: 'Whether to build library',
+)
+option(
+  'lib_documentation',
+  type: 'boolean',
+  value: false,
+  description: 'Whether to build library documentation',
+)
+option(
+  'lib_introspection',
+  type: 'boolean',
+  value: true,
+  description: 'Whether to build library introspection files',
+)

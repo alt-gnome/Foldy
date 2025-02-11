@@ -1,0 +1,17 @@
+.selected-add {
+    background-color: alpha(var(--accent-bg-color), 0.6);
+    color: var(--accent-fg-color);
+}
+
+.selected-remove {
+    background-color: alpha(var(--destructive-bg-color), 0.6);
+    color: var(--destructive-fg-color);
+}
+
+.search-row {
+    padding: 0;
+}
+
+.search-row-entry {
+    border-radius: 0;
+}

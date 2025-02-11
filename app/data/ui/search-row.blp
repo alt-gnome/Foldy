@@ -1,0 +1,15 @@
+using Gtk 4.0;
+
+template $FoldySearchRow: ListBoxRow {
+  styles [
+    "search-row",
+  ]
+
+  height-request: 42;
+
+  SearchEntry search_entry {
+    styles [
+      "search-row-entry",
+    ]
+  }
+}

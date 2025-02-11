@@ -1,0 +1,130 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyBasePage: Adw.NavigationPage {
+  title: "none";
+
+  Adw.ToolbarView toolbar_view {
+    top-bar-style: raised;
+    bottom-bar-style: flat;
+
+    [top]
+    Box {
+      orientation: vertical;
+
+      Adw.HeaderBar {
+        [start]
+        ToggleButton search_button {
+          icon-name: "system-search-symbolic";
+        }
+
+        [end]
+        Button {
+          styles [
+            "flat",
+          ]
+
+          visible: bind template.can-select inverted;
+          icon-name: "help-about-symbolic";
+          action-name: "win.about";
+        }
+
+        [end]
+        ToggleButton selection_button {
+          styles [
+            "flat",
+          ]
+
+          icon-name: "selection-mode-symbolic";
+          visible: bind template.can-select;
+          active: bind template.selection-enabled bidirectional;
+        }
+      }
+
+      Gtk.Revealer search_revealer {
+        reveal-child: bind search_button.active;
+
+        Adw.Clamp {
+          maximum-size: 500;
+          margin-top: 4;
+          margin-bottom: 4;
+          margin-start: 12;
+          margin-end: 12;
+
+          SearchEntry search_entry {
+            hexpand: true;
+            search-delay: 500;
+          }
+        }
+      }
+    }
+
+    content: Stack list_stack {
+      StackPage {
+        name: "has";
+
+        child: ScrolledWindow {
+          propagate-natural-height: true;
+          hscrollbar-policy: never;
+          valign: end;
+
+          Adw.Clamp {
+            margin-bottom: 12;
+            margin-end: 12;
+            margin-start: 12;
+            margin-top: 12;
+            maximum-size: 500;
+
+            ListBox list_box {
+              styles [
+                "boxed-list-separate",
+              ]
+
+              valign: start;
+              selection-mode: none;
+              row-activated => $row_activated();
+            }
+          }
+        };
+      }
+
+      StackPage {
+        name: "has-not";
+
+        child: Adw.StatusPage {
+          vexpand: true;
+          icon-name: "system-search-symbolic";
+          title: _("There is nothing to show");
+        };
+      }
+    };
+
+    [bottom]
+    CenterBox {
+      margin-bottom: 12;
+      margin-end: 12;
+      margin-start: 12;
+      margin-top: 12;
+      shrink-center-last: true;
+
+      start-widget: Adw.Bin bottom_start {
+        halign: start;
+        hexpand: false;
+      };
+
+      center-widget: Adw.Clamp {
+        margin-end: 12;
+        margin-start: 12;
+        maximum-size: 500;
+        hexpand: true;
+
+        Adw.Bin bottom_center {}
+      };
+
+      end-widget: Adw.Bin bottom_end {
+        halign: end;
+        hexpand: false;
+      };
+    }
+  }
+}

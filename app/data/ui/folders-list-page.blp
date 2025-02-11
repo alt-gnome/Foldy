@@ -1,0 +1,23 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyFoldersListPage: $FoldyBasePage {
+  title: _("All folders");
+
+  bottom-center-widget: ListBox {
+    styles [
+      "boxed-list",
+    ]
+
+    selection-mode: none;
+
+    Adw.ButtonRow create_new_button {
+      styles [
+        "suggested-action",
+      ]
+
+      title: _("Create new folder");
+      activated => $create_new_button_clicked();
+    }
+  };
+}

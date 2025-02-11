@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Foldy Service
+Exec=@SERVICE_ID@
+# Translators: Do not translate or transliterate this text (this is an icon file name)!
+Icon=@APP_ID@
+DBusActivatable=true
+StartupNotify=true
+
+NoDisplay=true
+
+X-GNOME-Autostart-Delay=90
+X-GNOME-UsesNotifications=true
