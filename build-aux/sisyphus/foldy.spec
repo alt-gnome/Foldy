@@ -22,7 +22,8 @@ Patch: %name-%version-alt.patch
 Requires: lib%name-%api_version = %EVR
 Requires: %name-service = %EVR
 
-BuildRequires(pre): rpm-macros-meson rpm-build-vala rpm-build-gir rpm-build-xdg
+BuildRequires(pre): rpm-macros-meson
+BuildRequires: rpm-build-vala rpm-build-gir rpm-build-xdg
 BuildRequires: meson
 BuildRequires: vala
 BuildRequires: pkgconfig(libadwaita-1) >= 1.6
@@ -32,7 +33,7 @@ BuildRequires: vapi(gee-0.8)
 BuildRequires: gir(Gee) = 0.8
 BuildRequires: blueprint-compiler
 BuildRequires: gobject-introspection-devel
-%{?_enable_check:BuildRequires: /usr/bin/appstreamcli /usr/bin/desktop-file-validate}
+%{?_enable_check:BuildRequires: appstream desktop-file-utils}
 
 %description
 %summary.
