@@ -33,7 +33,7 @@ BuildRequires: vapi(gee-0.8)
 BuildRequires: gir(Gee) = 0.8
 BuildRequires: blueprint-compiler
 BuildRequires: gobject-introspection-devel
-%{?_enable_check:BuildRequires: /usr/bin/appstreamcli /usr/bin/desktop-file-validate}
+%{?_enable_check:BuildRequires: appstream desktop-file-utils}
 
 %description
 %summary.
