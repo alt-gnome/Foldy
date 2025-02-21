@@ -1,5 +1,5 @@
 {
-    "C_Cpp.default.compileCommands": "/home/rirusha/Projects/Foldy/_build/compile_commands.json",
+    "C_Cpp.default.compileCommands": "/var/home/rirusha/Projects/Foldy/_build/compile_commands.json",
     "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
     "files.watcherExclude": {
         "**/.git/objects/**": true,
