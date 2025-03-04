@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <name>Foldy</name>
+  <name>Folder manager</name>
   <id>org.altlinux.Foldy</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -30,6 +30,12 @@
   </summary>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
+    <release version="3.6" date="2025-03-04">
+      <description>
+        <p>Some bug fixed</p>
+        <p>Improved localization</p>
+      </description>
+    </release>
     <release version="3.0" date="2025-02-08">
       <description>
         <p>Added service</p>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-08 02:55+0300\n"
+"POT-Creation-Date: 2025-03-04 21:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.desktop.in:4
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:3 app/main.vala:23
-msgid "Foldy"
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:3
+msgid "Folder manager"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.desktop.in:5
@@ -35,10 +35,14 @@ msgid "folder"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:35
+msgid "Added service"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:40
 msgid "Added search in category list"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:47
 msgid "Vladimir Vaskov"
 msgstr ""
 
@@ -115,26 +119,30 @@ msgstr ""
 msgid "Categories can't be more than 2"
 msgstr ""
 
-#: app/folder-page.vala:107
+#: app/folder-page.vala:91
 #, c-format
 msgid "Are you want to delete folder '%s'?"
 msgstr ""
 
-#: app/folder-page.vala:111
+#: app/folder-page.vala:95
 msgid "Cancel"
 msgstr ""
 
-#: app/folder-page.vala:112
+#: app/folder-page.vala:96
 msgid "Delete"
 msgstr ""
 
-#: app/folder-page.vala:176
+#: app/folder-page.vala:160
 #, c-format
 msgid "Folder '%s'"
 msgstr ""
 
 #: app/folders-list-page.vala:41
 msgid "Can't open folder settings"
+msgstr ""
+
+#: app/main.vala:23
+msgid "Foldy"
 msgstr ""
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>

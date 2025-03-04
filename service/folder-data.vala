@@ -87,7 +87,7 @@ public sealed class Foldy.FolderData : Object {
 
         if (should_fix_categories) {
             var new_apps = new Gee.ArrayList<string> ();
-            new_apps.add_all_array (apps);
+            new_apps.add_all_array (Folder.get_folder_apps (folder_id));
 
             foreach (string category in categories) {
                 foreach (string app_id in get_app_ids_by_category (category)) {
@@ -105,8 +105,6 @@ public sealed class Foldy.FolderData : Object {
         refreshed.connect ((folder_id) => {
             message ("Folder %s refreshed", folder_id);
         });
-
-        refresh_apps ();
     }
 
     void refresh_apps () {
