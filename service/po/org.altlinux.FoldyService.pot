@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.altlinux.FoldyService\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 21:14+0300\n"
+"POT-Creation-Date: 2025-03-20 12:11+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,4 +19,8 @@ msgstr ""
 
 #: service/data/org.altlinux.FoldyService.desktop.in.in:4
 msgid "Folder manager Service"
+msgstr ""
+
+#: service/main.vala:43
+msgid "Could not acquire name. Stopping...\n"
 msgstr ""
