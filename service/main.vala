@@ -32,6 +32,13 @@ void on_bus_aquired (DBusConnection conn) {
 MainLoop ml;
 
 int main (string[] argv) {
+    Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+    Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
+
+    if (!Foldy.locale_init ()) {
+        warning ("Locale not supported by C library.\n\tUsing the fallback `C' locale.");
+    }
+
     ml = new MainLoop ();
 
     Bus.own_name (

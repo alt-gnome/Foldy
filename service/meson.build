@@ -2,8 +2,17 @@ if get_option('with_service')
   subdir('po')
   subdir('data')
 
+  conf = configuration_data()
+    conf.set_quoted('G_LOG_DOMAIN', service_name)
+  conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+  conf.set_quoted('DATADIR', get_option('prefix') / get_option('datadir'))
+  conf.set_quoted('GNOMELOCALEDIR', get_option('prefix') / get_option('localedir'))
+
+  configure_file(output: 'config.h', configuration: conf)
+  config_h_dir = include_directories('.')
+
   service_vapi_sources = files(
-    
+    'config.vapi',
   )
 
   service_vala_sources = files(
@@ -31,10 +40,15 @@ if get_option('with_service')
     libfoldy_dep,
   ]
 
+  service_c_args = [
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+  ]
+
   executable(
     service_name,
     service_sources,
     dependencies: dependencies,
+    c_args: service_c_args,
     install: true,
   )
 endif

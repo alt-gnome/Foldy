@@ -16,5 +16,13 @@
  */
 
 namespace Foldy {
+    public bool locale_init () {
+        foreach (string lang in Intl.get_language_names ()) {
+            if (Intl.setlocale (LocaleCategory.ALL, lang) != null) {
+                return true;
+            }
+        }
 
+        return false;
+    }
 }
