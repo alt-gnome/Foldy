@@ -97,9 +97,11 @@ public sealed class Foldy.FolderData : Object {
                 }
             }
 
-            Folder.set_folder_apps (folder_id, new_apps.to_array ());
+            if (!new_apps.is_empty) {
+                Folder.set_folder_apps (folder_id, new_apps.to_array ());
 
-            refreshed (folder_id);
+                refreshed (folder_id);
+            }
         }
 
         refreshed.connect ((folder_id) => {
