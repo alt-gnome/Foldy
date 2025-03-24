@@ -19,8 +19,8 @@ Vcs: https://github.com/alt-gnome/Foldy.git
 Source: %name-%version.tar
 Patch: %name-%version-alt.patch
 
-Requires: lib%name-%api_version => %EVR
-Requires: %name-service => %EVR
+Requires: lib%name-%api_version = %EVR
+Requires: %name-service = %EVR
 
 BuildRequires(pre): rpm-macros-meson
 BuildRequires: rpm-build-vala rpm-build-gir rpm-build-xdg
@@ -42,7 +42,7 @@ BuildRequires: gobject-introspection-devel
 Summary: Service for categories fix in GNOME and phosh
 Group: Other
 
-Requires: lib%name-%api_version => %EVR
+Requires: lib%name-%api_version = %EVR
 
 %description service
 %summary.
@@ -58,7 +58,7 @@ Group: System/Libraries
 Summary: Foldy devel files
 Group: Development/C
 
-Requires: lib%name-%api_version => %EVR
+Requires: lib%name-%api_version = %EVR
 
 %description -n lib%name-%api_version-devel
 %summary.
@@ -68,7 +68,7 @@ Summary: Foldy devel files for vala
 Group: Development/Other
 
 BuildArch: noarch
-Requires: lib%name-%api_version-devel => %EVR
+Requires: lib%name-%api_version-devel = %EVR
 
 %description -n lib%name-%api_version-devel-vala
 %summary.
@@ -77,7 +77,7 @@ Requires: lib%name-%api_version-devel => %EVR
 Summary: Foldy typelib files
 Group: System/Libraries
 
-Requires: lib%name-%api_version => %EVR
+Requires: lib%name-%api_version = %EVR
 
 %description -n lib%name-%api_version-gir
 %summary.
@@ -87,7 +87,7 @@ Summary: Foldy devel gir files
 Group: Development/Other
 
 BuildArch: noarch
-Requires: lib%name-%api_version-gir => %EVR
+Requires: lib%name-%api_version-gir = %EVR
 
 %description -n lib%name-%api_version-gir-devel
 %summary.
