@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the foldy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: foldy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-04 21:10+0300\n"
+"PO-Revision-Date: 2025-03-04 21:48+0200\n"
+"Last-Translator: Oleksij Shmigelskij <nisel11good@gmail.com>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Translators: app name should be translated
+#: app/data/org.altlinux.Foldy.desktop.in:4
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:3
+msgid "Folder manager"
+msgstr "Менеджер папок"
+
+#: app/data/org.altlinux.Foldy.desktop.in:5
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:8
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:28
+msgid "Folder manager for mobile devices"
+msgstr "Менеджер папок для мобільних пристроїв"
+
+#. Translators: keep number of ';'
+#: app/data/org.altlinux.Foldy.desktop.in:7
+msgid "folder"
+msgstr "папка"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:35
+msgid "Added service"
+msgstr "Сервіс додано"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:40
+msgid "Added search in category list"
+msgstr "Додано пошук у списку категорій"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:47
+msgid "Vladimir Vaskov"
+msgstr "Володимир Васьков"
+
+#: app/data/ui/add-apps-page.blp:5
+msgid "Applications without folder"
+msgstr "Додатки без папки"
+
+#: app/data/ui/add-apps-page.blp:20
+msgid "Add selected applications"
+msgstr "Додати вибрані програми"
+
+#: app/data/ui/app-info-dialog.blp:11
+msgid "Application information"
+msgstr "Інформація про додаток"
+
+#. valign: end;
+#: app/data/ui/app-info-dialog.blp:78
+msgid "Launch"
+msgstr "Запустити"
+
+#: app/data/ui/base-page.blp:97
+msgid "There is nothing to show"
+msgstr "Нічого показувати"
+
+#: app/data/ui/categories-list.blp:5
+msgid "Folder categories"
+msgstr "Категорії папки"
+
+#: app/data/ui/folder-dialog.blp:43
+msgid "Folder name"
+msgstr "Ім'я папки"
+
+#: app/data/ui/folder-page.blp:43
+msgid "Add apps"
+msgstr "Додати додатки"
+
+#: app/data/ui/folder-page.blp:64
+msgid "Remove selected"
+msgstr "Видалити вибрані"
+
+#: app/data/ui/folders-list-page.blp:5
+msgid "All folders"
+msgstr "Усі папки"
+
+#: app/data/ui/folders-list-page.blp:19
+msgid "Create new folder"
+msgstr "Створити нову папку"
+
+#: app/folder-dialog.vala:55
+msgid "Folder creation"
+msgstr "Створення папки"
+
+#: app/folder-dialog.vala:56
+msgid "Create"
+msgstr "Створити"
+
+#: app/folder-dialog.vala:57
+msgid "Unnamed Folder"
+msgstr "Без імені"
+
+#: app/folder-dialog.vala:64
+msgid "Folder settings"
+msgstr "Налаштування папки"
+
+#: app/folder-dialog.vala:65
+msgid "Apply"
+msgstr "Прийняти"
+
+#: app/folder-dialog.vala:141
+msgid "Name can't be empty"
+msgstr "Ім'я не може бути порожнім"
+
+#: app/folder-dialog.vala:147
+msgid "Categories can't be more than 2"
+msgstr "Категорій не може бути більше 2"
+
+#: app/folder-page.vala:91
+#, c-format
+msgid "Are you want to delete folder '%s'?"
+msgstr "Ви хочете видалити папку '%s'?"
+
+#: app/folder-page.vala:95
+msgid "Cancel"
+msgstr "Скасування"
+
+#: app/folder-page.vala:96
+msgid "Delete"
+msgstr "Видалити"
+
+#: app/folder-page.vala:160
+#, c-format
+msgid "Folder '%s'"
+msgstr "Папка '%s'"
+
+#: app/folders-list-page.vala:41
+msgid "Can't open folder settings"
+msgstr "Не вдалося відкрити налаштування папки"
+
+#: app/main.vala:23
+msgid "Foldy"
+msgstr "Foldy"
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: app/window.vala:62
+msgid "translator-credits"
+msgstr "Oleksij Shmigelskij <nisel11good@gmail.com>"

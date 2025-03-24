@@ -1,2 +1,3 @@
 service/data/org.altlinux.FoldyService.desktop.in.in
 service/data/org.altlinux.FoldyService.service.in
+service/main.vala

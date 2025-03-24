@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: org.altlinux.FoldyService\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-04 21:14+0300\n"
-"PO-Revision-Date: 2025-03-04 21:15+0300\n"
+"PO-Revision-Date: 2025-03-20 12:12+0300\n"
 "Last-Translator: Vladimir Vaskov <rirusha@altlinux.org>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -23,3 +23,7 @@ msgstr ""
 #: service/data/org.altlinux.FoldyService.desktop.in.in:4
 msgid "Folder manager Service"
 msgstr "Сервис Менеджера папок"
+
+#: service/main.vala:43
+msgid "Could not acquire name. Stopping...\n"
+msgstr "Не получается присвоить имя. Остановка...\n"

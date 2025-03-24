@@ -2,6 +2,7 @@
 <component type="desktop">
   <name>Folder manager</name>
   <id>org.altlinux.Foldy</id>
+  <summary>Folder manager for mobile devices</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <description>
@@ -25,9 +26,6 @@
       <image>https://github.com/alt-gnome-team/Foldy/blob/main/app/data/images/2-image.png?raw=true</image>
     </screenshot>
   </screenshots>
-  <summary>
-    Folder manager for mobile devices
-  </summary>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
     <release version="3.6" date="2025-03-04">
