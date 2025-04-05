@@ -31,6 +31,12 @@
     <release version="3.6" date="2025-03-04">
       <description>
         <p>Some bug fixed</p>
+        <p>Some visual fixes</p>
+      </description>
+    </release>
+    <release version="3.6" date="2025-03-04">
+      <description>
+        <p>Some bug fixed</p>
         <p>Improved localization</p>
       </description>
     </release>
