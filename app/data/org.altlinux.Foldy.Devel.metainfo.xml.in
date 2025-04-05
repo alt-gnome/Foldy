@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <name>Folder manager</name>
-  <id>org.altlinux.Foldy</id>
-  <summary>Folder manager for mobile devices</summary>
+  <name>Folder manager (Devel)</name>
+  <id>org.altlinux.Foldy.Devel</id>
+  <summary>Folder manager for mobile devices. Development version</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <description>
@@ -20,10 +20,10 @@
   </content_rating>
   <screenshots>
     <screenshot type="default">
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v3.8/app/data/images/1-image.png</image>
+      <image>https://github.com/alt-gnome-team/Foldy/blob/main/app/data/images/1-image.png?raw=true</image>
     </screenshot>
     <screenshot>
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v3.8/app/data/images/2-image.png</image>
+      <image>https://github.com/alt-gnome-team/Foldy/blob/main/app/data/images/2-image.png?raw=true</image>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
@@ -45,9 +45,9 @@
       </description>
     </release>
   </releases>
-  <url type="homepage">https://altlinux.space/alt-gnome/Foldy</url>
-  <url type="bugtracker">https://altlinux.space/alt-gnome/Foldy/issues</url>
+  <url type="homepage">https://github.com/alt-gnome-team/Foldy</url>
+  <url type="bugtracker">https://github.com/alt-gnome-team/Foldy/issues</url>
   <developer id="org.altlinux">
-    <name>ALT Linux Team</name>
+    <name>Vladimir Vaskov</name>
   </developer>
 </component>

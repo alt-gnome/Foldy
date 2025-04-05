@@ -1,5 +1,5 @@
 {
-  "id": "org.altlinux.Foldy",
+  "id": "org.altlinux.Foldy.Devel",
   "runtime": "org.gnome.Platform",
   "runtime-version": "master",
   "sdk": "org.gnome.Sdk",
