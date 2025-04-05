@@ -13,8 +13,8 @@ Release: alt1
 Summary: Folder manager aimed to mobile devices
 License: GPL-3.0-or-later
 Group: Other
-Url: https://github.com/alt-gnome/Foldy
-Vcs: https://github.com/alt-gnome/Foldy.git
+Url: https://altlinux.space/alt-gnome/Foldy
+Vcs: https://altlinux.space/alt-gnome/Foldy.git
 
 Source: %name-%version.tar
 Patch: %name-%version-alt.patch
