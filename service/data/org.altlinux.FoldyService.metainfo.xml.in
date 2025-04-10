@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="service">
+  <name>Folder manager Service</name>
+  <id>org.altlinux.FoldyService</id>
+  <summary>Folder manager Service of Foldy</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <description>
+    <p>
+      Folder manager's Service 
+    </p>
+  </description>
+  <branding>
+    <color type="primary" scheme_preference="light">#A8A7C9</color>
+    <color type="primary" scheme_preference="dark">#282747</color>
+  </branding>
+  <content_rating type="oars-1.1"></content_rating>
+  <launchable type="service">org.altlinux.FoldyService.service</launchable>
+  <releases>
+    <release version="3.6" date="2025-03-04">
+      <description>
+        <p>Some bug fixed</p>
+        <p>Some visual fixes</p>
+      </description>
+    </release>
+  </releases>
+  <url type="homepage">https://altlinux.space/alt-gnome/Foldy</url>
+  <url type="bugtracker">https://altlinux.space/alt-gnome/Foldy/issues</url>
+  <developer id="org.altlinux">
+    <name>ALT Linux Team</name>
+  </developer>
+</component>

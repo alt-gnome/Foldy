@@ -113,14 +113,18 @@ export AS_VALIDATE_NONET="true"
 %_datadir/metainfo/%app_id.metainfo.xml
 %_datadir/glib-2.0/schemas/%app_id.gschema.xml
 %_desktopdir/%app_id.desktop
-%_iconsdir/hicolor/*/apps/*.svg
+%_iconsdir/hicolor/*/apps/org.altlinux.Foldy.svg
+%_iconsdir/hicolor/*/apps/org.altlinux.Foldy-symbolic.svg
 %doc README.md
 
 %files service
 %_bindir/%service_name
+%_datadir/metainfo/%service_name.metainfo.xml
 %_datadir/dbus-1/services/%service_name.service
 %_desktopdir/%service_name.desktop
 %_xdgconfigdir/autostart/%service_name.desktop
+%_iconsdir/hicolor/*/apps/org.altlinux.FoldyService.svg
+%_iconsdir/hicolor/*/apps/org.altlinux.FoldyService-symbolic.svg
 
 %files -n lib%name-%api_version
 %_libdir/lib%name-%api_version.so.*
