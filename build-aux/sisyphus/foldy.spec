@@ -103,6 +103,7 @@ Requires: lib%name-%api_version-gir = %EVR
 %install
 %meson_install
 %find_lang %name --with-gnome
+%find_lang %service_name --with-gnome
 
 %check
 export AS_VALIDATE_NONET="true"
@@ -117,7 +118,7 @@ export AS_VALIDATE_NONET="true"
 %_iconsdir/hicolor/*/apps/org.altlinux.Foldy-symbolic.svg
 %doc README.md
 
-%files service
+%files service -f %service_name.lang
 %_bindir/%service_name
 %_datadir/metainfo/%service_name.metainfo.xml
 %_datadir/dbus-1/services/%service_name.service
