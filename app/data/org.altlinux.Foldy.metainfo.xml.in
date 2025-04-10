@@ -32,6 +32,11 @@
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
+    <release version="3.10" date="2025-04-10">
+      <description>
+        <p>Fix metadata</p>
+      </description>
+    </release>
     <release version="3.6" date="2025-03-04">
       <description>
         <p>Some bug fixed</p>
