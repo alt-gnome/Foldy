@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-04 21:10+0300\n"
+"POT-Creation-Date: 2025-04-10 18:48+0300\n"
 "PO-Revision-Date: 2025-03-04 21:48+0200\n"
 "Last-Translator: Oleksij Shmigelskij <nisel11good@gmail.com>\n"
 "Language-Team: \n"
@@ -25,27 +25,72 @@ msgid "Folder manager"
 msgstr "Менеджер папок"
 
 #: app/data/org.altlinux.Foldy.desktop.in:5
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:8
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:28
+#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:9
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:5
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:9
 msgid "Folder manager for mobile devices"
 msgstr "Менеджер папок для мобільних пристроїв"
 
 #. Translators: keep number of ';'
 #: app/data/org.altlinux.Foldy.desktop.in:7
+#: app/data/org.altlinux.Foldy.Devel.desktop.in:7
 msgid "folder"
 msgstr "папка"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:35
+#. Translators: app name should be translated
+#: app/data/org.altlinux.Foldy.Devel.desktop.in:4
+#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:3
+#, fuzzy
+msgid "Folder manager (Devel)"
+msgstr "Менеджер папок"
+
+#: app/data/org.altlinux.Foldy.Devel.desktop.in:5
+#, fuzzy
+msgid "Folder manager for mobile devices (Development version)"
+msgstr "Менеджер папок для мобільних пристроїв"
+
+#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:5
+#, fuzzy
+msgid "Folder manager for mobile devices. Development version"
+msgstr "Менеджер папок для мобільних пристроїв"
+
+#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:37
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:47
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:53
+msgid "Some bug fixed"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:38
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
+msgid "Improved localization"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:43
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
 msgid "Added service"
 msgstr "Сервіс додано"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:40
+#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:48
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:64
 msgid "Added search in category list"
 msgstr "Додано пошук у списку категорій"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:47
+#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:55
 msgid "Vladimir Vaskov"
 msgstr "Володимир Васьков"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:37
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
+msgid "Fix metadata"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:48
+msgid "Some visual fixes"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:71
+msgid "ALT Linux Team"
+msgstr ""
 
 #: app/data/ui/add-apps-page.blp:5
 msgid "Applications without folder"
@@ -72,7 +117,7 @@ msgstr "Нічого показувати"
 msgid "Folder categories"
 msgstr "Категорії папки"
 
-#: app/data/ui/folder-dialog.blp:43
+#: app/data/ui/folder-dialog.blp:45
 msgid "Folder name"
 msgstr "Ім'я папки"
 
