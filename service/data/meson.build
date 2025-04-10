@@ -1,8 +1,25 @@
 desktop_file = configure_file(
   input: service_name + '.desktop.in.in',
   output: service_name + '.desktop.in',
-  configuration: { 'APP_ID': app_id, 'SERVICE_NAME': service_name }
+  configuration: { 'SERVICE_NAME': service_name }
 )
+
+appstream_file = i18n.merge_file(
+  input: service_name + '.metainfo.xml.in',
+  output: service_name + '.metainfo.xml',
+  po_dir: '../po',
+  install: true,
+  install_dir: get_option('datadir') / 'metainfo',
+)
+
+appstreamcli = find_program('appstreamcli', required: false)
+if appstreamcli.found()
+  test(
+    'Validate service appstream file',
+    appstreamcli,
+    args: ['validate', appstream_file],
+  )
+endif
 
 i18n.merge_file(
     type: 'desktop',
@@ -30,3 +47,5 @@ configure_file(
 gnome.post_install(
   update_desktop_database: true,
 )
+
+subdir('icons')

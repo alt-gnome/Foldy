@@ -1,5 +1,7 @@
 app/add-apps-page.vala
 app/data/org.altlinux.Foldy.desktop.in
+app/data/org.altlinux.Foldy.Devel.desktop.in
+app/data/org.altlinux.Foldy.Devel.metainfo.xml.in
 app/data/org.altlinux.Foldy.metainfo.xml.in
 app/data/ui/add-apps-page.blp
 app/data/ui/app-info-dialog.blp

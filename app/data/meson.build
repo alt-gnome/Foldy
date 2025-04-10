@@ -9,7 +9,7 @@ desktop_file = i18n.merge_file(
 
 desktop_utils = find_program('desktop-file-validate', required: false)
 if desktop_utils.found()
-  test('Validate desktop file', desktop_utils, args: [desktop_file])
+  test('Validate application desktop file', desktop_utils, args: [desktop_file])
 endif
 
 appstream_file = i18n.merge_file(
@@ -30,7 +30,7 @@ if appstreamcli.found()
 endif
 
 install_data(
-  app_id + '.gschema.xml',
+  app_id_orig + '.gschema.xml',
   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
 )
 
@@ -68,7 +68,7 @@ blueprints = custom_target(
   ],
 )
 
-resource_files = files(app_id + '.gresource.xml')
+resource_files = files(app_id_orig + '.gresource.xml')
 resources = gnome.compile_resources('foldy-resources', resource_files, dependencies: blueprints, c_name: 'foldy')
 
 subdir('icons')

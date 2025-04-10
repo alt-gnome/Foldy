@@ -6,6 +6,7 @@ touch ./service/po/unsort-POTFILES.in
 find ./service/ -iname "*.vala" -type f -exec grep -lrE '_\(|C_|ngettext' {} + | while read file; do echo "${file#./}" >> ./service/po/unsort-POTFILES.in; done
 find ./service/data/ -iname "*.desktop.in.in" | while read file; do echo "${file#./}" >> ./service/po/unsort-POTFILES.in; done
 find ./service/data/ -iname "*.service.in" | while read file; do echo "${file#./}" >> ./service/po/unsort-POTFILES.in; done
+find ./service/data/ -iname "*.metainfo.xml.in" | while read file; do echo "${file#./}" >> ./service/po/unsort-POTFILES.in; done
 
 cat ./service/po/unsort-POTFILES.in | sort | uniq > ./service/po/POTFILES.in
 

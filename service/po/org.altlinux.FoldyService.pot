@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.altlinux.FoldyService\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 12:11+0300\n"
+"POT-Creation-Date: 2025-04-10 18:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: service/data/org.altlinux.FoldyService.desktop.in.in:4
+#: service/data/org.altlinux.FoldyService.metainfo.xml.in:3
 msgid "Folder manager Service"
 msgstr ""
 
-#: service/main.vala:43
+#: service/data/org.altlinux.FoldyService.metainfo.xml.in:5
+#: service/data/org.altlinux.FoldyService.metainfo.xml.in:9
+msgid "Folder manager's Service"
+msgstr ""
+
+#: service/data/org.altlinux.FoldyService.metainfo.xml.in:22
+msgid "Fixed excluded apps"
+msgstr ""
+
+#: service/data/org.altlinux.FoldyService.metainfo.xml.in:27
+msgid "Fix metadata"
+msgstr ""
+
+#: service/data/org.altlinux.FoldyService.metainfo.xml.in:32
+msgid "Some bug fixed"
+msgstr ""
+
+#: service/data/org.altlinux.FoldyService.metainfo.xml.in:33
+msgid "Some visual fixes"
+msgstr ""
+
+#: service/data/org.altlinux.FoldyService.metainfo.xml.in:40
+msgid "ALT Linux Team"
+msgstr ""
+
+#: service/main.vala:50
 msgid "Could not acquire name. Stopping...\n"
 msgstr ""

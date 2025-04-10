@@ -4,6 +4,7 @@ if get_option('with_application')
 
   conf = configuration_data()
   conf.set_quoted('APP_ID', app_id)
+  conf.set_quoted('APP_ID_ORIG', app_id_orig)
   conf.set10('IS_DEVEL', get_option('is_devel'))
   conf.set_quoted('G_LOG_DOMAIN', app_id)
   conf.set_quoted('PACKAGE_NAME', meson.project_name())

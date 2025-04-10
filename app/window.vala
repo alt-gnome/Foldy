@@ -32,7 +32,7 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
     }
 
     construct {
-        var settings = new Settings (Config.APP_ID);
+        var settings = new Settings (Config.APP_ID_ORIG);
 
         add_action_entries (ACTION_ENTRIES, this);
 
@@ -61,7 +61,7 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
             // Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
             translator_credits = _("translator-credits"),
             license_type = Gtk.License.GPL_3_0,
-            copyright = "© 2024 ALT Linux Team",
+            copyright = "© 2024-2025 ALT Linux Team",
             release_notes_version = Config.VERSION
         };
 

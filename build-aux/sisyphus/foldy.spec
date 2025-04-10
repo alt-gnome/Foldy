@@ -13,8 +13,8 @@ Release: alt1
 Summary: Folder manager aimed to mobile devices
 License: GPL-3.0-or-later
 Group: Other
-Url: https://github.com/alt-gnome/Foldy
-Vcs: https://github.com/alt-gnome/Foldy.git
+Url: https://altlinux.space/alt-gnome/Foldy
+Vcs: https://altlinux.space/alt-gnome/Foldy.git
 
 Source: %name-%version.tar
 Patch: %name-%version-alt.patch
@@ -103,6 +103,7 @@ Requires: lib%name-%api_version-gir = %EVR
 %install
 %meson_install
 %find_lang %name --with-gnome
+%find_lang %service_name --with-gnome
 
 %check
 export AS_VALIDATE_NONET="true"
@@ -113,14 +114,18 @@ export AS_VALIDATE_NONET="true"
 %_datadir/metainfo/%app_id.metainfo.xml
 %_datadir/glib-2.0/schemas/%app_id.gschema.xml
 %_desktopdir/%app_id.desktop
-%_iconsdir/hicolor/*/apps/*.svg
+%_iconsdir/hicolor/*/apps/org.altlinux.Foldy.svg
+%_iconsdir/hicolor/*/apps/org.altlinux.Foldy-symbolic.svg
 %doc README.md
 
-%files service
+%files service -f %service_name.lang
 %_bindir/%service_name
+%_datadir/metainfo/%service_name.metainfo.xml
 %_datadir/dbus-1/services/%service_name.service
 %_desktopdir/%service_name.desktop
 %_xdgconfigdir/autostart/%service_name.desktop
+%_iconsdir/hicolor/*/apps/org.altlinux.FoldyService.svg
+%_iconsdir/hicolor/*/apps/org.altlinux.FoldyService-symbolic.svg
 
 %files -n lib%name-%api_version
 %_libdir/lib%name-%api_version.so.*

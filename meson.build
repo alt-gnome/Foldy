@@ -1,7 +1,7 @@
 project(
   'foldy',
   ['c', 'vala'],
-  version: '3.8',
+  version: '3.12',
   meson_version: '>= 1.0.0',
   license: 'GPL-3.0-or-later',
 )
@@ -24,7 +24,13 @@ add_project_arguments(
   language: ['vala'],
 )
 
-app_id = 'org.altlinux.Foldy'
+app_id_orig = 'org.altlinux.Foldy'
+app_id = app_id_orig
+
+if get_option('is_devel')
+  app_id = 'org.altlinux.Foldy.Devel'
+endif
+
 service_name = 'org.altlinux.FoldyService'
 
 subdir('lib')
