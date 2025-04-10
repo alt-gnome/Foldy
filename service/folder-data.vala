@@ -23,13 +23,25 @@ public sealed class Foldy.FolderData : Object {
 
     public string[] apps { get; set; }
 
-    public string[] excluded_apps { get; set; }
+    public string[] excluded_apps {
+        owned get {
+            return Folder.get_folder_excluded_apps (folder_id);
+        }
+    }
 
     public string[] categories { get; set; }
 
-    public string name { get; set; }
+    public string name {
+        owned get {
+            return Folder.get_folder_name (folder_id);
+        }
+    }
 
-    public bool translate { get; set; }
+    public bool translate {
+        get {
+            return Folder.get_folder_translate (folder_id);
+        }
+    }
 
     public bool should_fix_categories { private get; construct; default = false; }
 
@@ -57,32 +69,19 @@ public sealed class Foldy.FolderData : Object {
 
     construct {
         apps = Folder.get_folder_apps (folder_id);
-        excluded_apps = Folder.get_folder_excluded_apps (folder_id);
         categories = Folder.get_folder_categories (folder_id);
-        name = Folder.get_folder_name (folder_id);
-        translate = Folder.get_folder_translate (folder_id);
 
         settings = Folder.get_folder_settings (folder_id);
 
-        settings.changed["name"].connect (() => {
-            name = Folder.get_folder_name (folder_id);
-        });
-        settings.changed["translate"].connect (() => {
-            translate = Folder.get_folder_translate (folder_id);
-        });
-        settings.changed["excluded-apps"].connect (() => {
-            excluded_apps = Folder.get_folder_excluded_apps (folder_id);
-        });
-        settings.changed["apps"].connect (() => {
-            apps = Folder.get_folder_apps (folder_id);
-        });
-        settings.changed["categories"].connect (refresh_categories);
+        settings.changed.connect (settings_changed);
+        settings.changed.connect (settings_changed);
+        settings.changed.connect (settings_changed);
 
         mon = AppInfoMonitor.get ();
 
         mon.changed.connect (() => {
             AppInfo.get_all ();
-            refresh_apps ();
+            refresh_folder ();
         });
 
         if (should_fix_categories) {
@@ -109,91 +108,65 @@ public sealed class Foldy.FolderData : Object {
         });
     }
 
-    void refresh_apps () {
+    void settings_changed (string key) {
+        if (key != "apps" && key != "excluded-apps" && key != "categories") {
+            return;
+        }
+
+        settings.changed.disconnect (settings_changed);
+        refresh_folder ();
+        settings.changed.connect (settings_changed);
+    }
+
+    void refresh_folder () {
+        print ("\n");
         message ("Triggered apps refreshing");
 
-        var current_apps = new Gee.ArrayList<string>.wrap (apps);
+        var current_apps = new Gee.HashSet<string> ();
+        current_apps.add_all_array (apps);
 
-        var new_apps = new Gee.ArrayList<string> ();
-        foreach (var category in categories) {
-            new_apps.add_all_array (get_app_ids_by_category (category));
-        }
+        var current_categories = new Gee.HashSet<string> ();
+        current_categories.add_all_array (categories);
 
-        var added_apps = new Gee.ArrayList<string> ();
-        added_apps.add_all (new_apps);
-        added_apps.remove_all_array (apps);
+        var new_current_apps = new Gee.HashSet<string> ();
+        new_current_apps.add_all_array (Folder.get_folder_apps (folder_id));
 
-        var removed_apps = new Gee.ArrayList<string> ();
-        removed_apps.add_all_array (apps);
-        removed_apps.remove_all (new_apps);
+        var new_current_categories = new Gee.HashSet<string> ();
+        new_current_categories.add_all_array (Folder.get_folder_categories (folder_id));
 
-        foreach (var added_app in added_apps) {
-            if (!(added_app in excluded_apps)) {
-                current_apps.add (added_app);
-            }
-        }
+        var added_apps = new Gee.HashSet<string> ();
+        added_apps.add_all (new_current_apps);
+        added_apps.remove_all (current_apps);
 
-        foreach (var removed_app in removed_apps) {
-            if (!(removed_app in excluded_apps)) {
-                current_apps.remove (removed_app);
-            }
-        }
+        var removed_apps = new Gee.HashSet<string> ();
+        removed_apps.add_all (current_apps);
+        removed_apps.remove_all (new_current_apps);
+
+        var excluded_apps = new Gee.HashSet<string> ();
+        excluded_apps.add_all_array (this.excluded_apps);
 
         message ("Added apps: %s", string.joinv (", ", added_apps.to_array ()));
         message ("Removed apps: %s", string.joinv (", ", removed_apps.to_array ()));
 
-        Folder.set_folder_apps (folder_id, current_apps.to_array ());
-
-        refreshed (folder_id);
-    }
-
-    void refresh_categories () {
-        var new_categories = Folder.get_folder_categories (folder_id);
-
-        var removed_category = new Gee.ArrayList<string> ();
-        var added_category = new Gee.ArrayList<string> ();
-
-        foreach (string old_category in categories) {
-            if (!(old_category in new_categories)) {
-                removed_category.add (old_category);
-                debug ("Removed %s category", old_category);
-            }
-        }
-
-        foreach (string new_category in new_categories) {
-            if (!(new_category in categories)) {
-                added_category.add (new_category);
-                debug ("Added %s category", new_category);
-            }
-        }
-
-        var need_to_remove = new Gee.ArrayList<string> ();
-        foreach (string category in removed_category) {
-            var app_ids = get_app_ids_by_category (category);
-
-            foreach (var app_id in app_ids) {
-                if (app_id in apps) {
-                    need_to_remove.add (app_id);
-                }
-            }
-        }
-        Folder.remove_folder_apps (folder_id, need_to_remove.to_array ());
-
-        var need_to_add = new Gee.ArrayList<string> ();
-        foreach (string category in added_category) {
-            var app_ids = get_app_ids_by_category (category);
-
-            foreach (var app_id in app_ids) {
-                if (!(app_id in excluded_apps) && !(app_id in apps)) {
-                    need_to_add.add (app_id);
-                }
-            }
-        }
-        Folder.add_folder_apps (folder_id, need_to_add.to_array ());
-
-        categories = new_categories;
+        excluded_apps.remove_all (added_apps);
+        excluded_apps.add_all (removed_apps);
 
         sync ();
+
+        var new_apps = new Gee.HashSet<string> ();
+        new_apps.add_all (new_current_apps);
+        foreach (var category in current_categories) {
+            new_apps.remove_all_array (get_app_ids_by_category (category));
+        }
+        foreach (var category in new_current_categories) {
+            new_apps.add_all_array (get_app_ids_by_category (category));
+        }
+        new_apps.remove_all (excluded_apps);
+
+        Folder.set_folder_apps (folder_id, new_apps.to_array ());
+        Folder.set_folder_excluded_apps (folder_id, excluded_apps.to_array ());
+        categories = new_apps.to_array ();
+        apps = new_apps.to_array ();
 
         refreshed (folder_id);
     }
