@@ -23,13 +23,13 @@ public sealed class Foldy.FolderData : Object {
 
     public string[] apps { get; set; }
 
+    public string[] categories { get; set; }
+
     public string[] excluded_apps {
         owned get {
             return Folder.get_folder_excluded_apps (folder_id);
         }
     }
-
-    public string[] categories { get; set; }
 
     public string name {
         owned get {
@@ -165,7 +165,7 @@ public sealed class Foldy.FolderData : Object {
 
         Folder.set_folder_apps (folder_id, new_apps.to_array ());
         Folder.set_folder_excluded_apps (folder_id, excluded_apps.to_array ());
-        categories = new_apps.to_array ();
+        categories = new_current_categories.to_array ();
         apps = new_apps.to_array ();
 
         refreshed (folder_id);

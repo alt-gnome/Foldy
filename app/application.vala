@@ -29,6 +29,10 @@ public sealed class Foldy.Application : Adw.Application {
         );
     }
 
+    static construct {
+        typeof (FoldersListPage).ensure ();
+    }
+
     construct {
         add_action_entries (ACTION_ENTRIES, this);
         set_accels_for_action ("app.quit", { "<primary>q" });
