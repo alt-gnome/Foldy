@@ -66,6 +66,7 @@ if get_option('with_application')
 
   application_c_args = [
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    '-w',
   ]
 
   application_vala_args = [

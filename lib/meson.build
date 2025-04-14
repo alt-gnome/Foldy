@@ -31,6 +31,7 @@ if get_option('with_library')
 
   library_c_args = [
     '-DGETTEXT_PACKAGE="@0@"'.format(lib_name),
+    '-w',
   ]
 
   deps_pkgs = [

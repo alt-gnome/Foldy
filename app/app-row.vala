@@ -21,8 +21,6 @@ public abstract class Foldy.AppRow : Adw.ActionRow {
     [GtkChild]
     unowned Gtk.Image icon_image;
     [GtkChild]
-    unowned Gtk.Revealer action_image_revealer;
-    [GtkChild]
     unowned Gtk.Image action_image;
 
     public AppInfo app_info { get; construct; }

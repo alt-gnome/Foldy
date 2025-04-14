@@ -20,8 +20,6 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
 
     [GtkChild]
     unowned Adw.ToastOverlay toast_overlay;
-    [GtkChild]
-    unowned FoldersListPage folders_list_page;
 
     const ActionEntry[] ACTION_ENTRIES = {
         { "about", on_about_action },
