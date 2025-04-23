@@ -41,7 +41,7 @@ if get_option('with_service')
   ]
 
   service_c_args = [
-    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    '-DGETTEXT_PACKAGE="@0@"'.format(service_name),
     '-w',
   ]
 
