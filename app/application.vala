@@ -21,6 +21,13 @@ public sealed class Foldy.Application : Adw.Application {
         { "quit", quit },
     };
 
+    const OptionEntry[] OPTION_ENTRIES = {
+        { "version", 'v', 0, OptionArg.NONE, null, N_("Print version information and exit"), null },
+        { "save-folders", 's', 0, OptionArg.FILENAME, null, N_("Save folders to file"), "FILENAME" },
+        { "restore-folders", 'r', 0, OptionArg.FILENAME, null, N_("Restore folders from file"), "FILENAME" },
+        { null }
+    };
+
     public Application () {
         Object (
             application_id: Config.APP_ID,
@@ -34,9 +41,35 @@ public sealed class Foldy.Application : Adw.Application {
     }
 
     construct {
+        add_main_option_entries (OPTION_ENTRIES);
         add_action_entries (ACTION_ENTRIES, this);
         set_accels_for_action ("app.quit", { "<primary>q" });
     }
+
+    protected override int handle_local_options (VariantDict options) {
+        try {
+            if (options.contains ("version")) {
+                print ("%s\n", Config.VERSION);
+                return 0;
+
+            } else if (options.contains ("save-folders")) {
+                string filename = options.lookup_value ("save-folders", null).get_bytestring ();
+                save_folders (filename);
+                return 0;
+
+            } else if (options.contains ("restore-folders")) {
+                string filename = options.lookup_value ("restore-folders", null).get_bytestring ();
+                restore_folders (filename, true);
+                return 0;
+            }
+
+        } catch (Error e) {
+            error (e.message);
+        }
+
+        return -1;
+    }
+
 
     public static new Foldy.Application get_default () {
         return (Foldy.Application) GLib.Application.get_default ();

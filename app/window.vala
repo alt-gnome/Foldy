@@ -57,6 +57,9 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
             artists = {
                 "Arseniy Nechkin <krisgeniusnos@gmail.com>",
             },
+            developers = {
+                "Vladimir Vaskov <rirusha@altlinux.org>"
+            },
             version = Config.VERSION,
             // Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
             translator_credits = _("translator-credits"),
