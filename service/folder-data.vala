@@ -57,14 +57,6 @@ public sealed class Foldy.FolderData : Object {
         Object (folder_id: folder_id, should_fix_categories: true);
     }
 
-    internal void reset () {
-        settings.reset ("name");
-        settings.reset ("translate");
-        settings.reset ("categories");
-        settings.reset ("apps");
-        settings.reset ("excluded-apps");
-    }
-
     AppInfoMonitor mon;
 
     construct {

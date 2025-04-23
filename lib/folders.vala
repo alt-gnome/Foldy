@@ -68,19 +68,12 @@ namespace Foldy {
 
     public static string create_folder (
         string? folder_id,
-        string folder_name = "Unnamed Folder",
-        string[] apps = {},
-        string[] categories = {},
-        bool translate = false
+        string folder_name = "Unnamed Folder"
     ) {
         string fid = folder_id ?? Uuid.string_random ();
 
         add_folder (fid);
         Folder.set_folder_name (fid, folder_name);
-        Folder.set_folder_apps (fid, apps);
-        Folder.set_folder_categories (fid, categories);
-        Folder.set_folder_translate (fid, translate);
-
 
         return fid;
     }

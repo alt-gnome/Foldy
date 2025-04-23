@@ -112,7 +112,6 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
             );
             Foldy.sync ();
 
-            set_folder_name (lfolder_id, folder_name_entry.text);
             set_folder_categories (lfolder_id, categories_list.get_selected_categories ());
             Foldy.sync ();
 

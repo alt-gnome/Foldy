@@ -23,6 +23,8 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
 
     const ActionEntry[] ACTION_ENTRIES = {
         { "about", on_about_action },
+        { "save-folders", on_save_folders },
+        { "restore-folders", on_restore_folders },
     };
 
     public Window (Foldy.Application app) {
@@ -64,5 +66,37 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
         };
 
         about.present (this);
+    }
+
+    void on_save_folders () {
+        var dialog = new Gtk.FileDialog ();
+        dialog.title = _("Save folders file");
+        dialog.initial_name = "folders-" + Environment.get_user_name ();
+        dialog.modal = true;
+        dialog.save.begin (this, null, (obj, res) => {
+            try {
+                var file = ((Gtk.FileDialog) obj).save.end (res);
+                save_folders (file.peek_path ());
+
+            } catch (Error e) {
+                show_message (e.message);
+            }
+        });
+    }
+
+    void on_restore_folders () {
+        var dialog = new Gtk.FileDialog ();
+        dialog.title = _("Open folders file");
+        dialog.initial_name = "folders-" + Environment.get_user_name ();
+        dialog.modal = true;
+        dialog.open.begin (this, null, (obj, res) => {
+            try {
+                var file = ((Gtk.FileDialog) obj).open.end (res);
+                restore_folders (file.peek_path (), true);
+
+            } catch (Error e) {
+                show_message (e.message);
+            }
+        });
     }
 }

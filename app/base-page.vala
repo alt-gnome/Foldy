@@ -35,6 +35,8 @@ public abstract class Foldy.BasePage : Adw.NavigationPage {
     [GtkChild]
     unowned Gtk.Revealer search_revealer;
 
+    public bool show_menu { get; set; default = false; }
+
     public Adw.NavigationView nav_view { get; construct; }
 
     public Gtk.Widget bottom_start_widget {

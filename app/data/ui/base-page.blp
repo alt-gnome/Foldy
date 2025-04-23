@@ -19,14 +19,14 @@ template $FoldyBasePage: Adw.NavigationPage {
         }
 
         [end]
-        Button {
+        MenuButton {
           styles [
             "flat",
           ]
 
-          visible: bind template.can-select inverted;
-          icon-name: "help-about-symbolic";
-          action-name: "win.about";
+          visible: bind template.show-menu;
+          icon-name: "open-menu-symbolic";
+          menu-model: primary_menu;
         }
 
         [end]
@@ -126,5 +126,16 @@ template $FoldyBasePage: Adw.NavigationPage {
         hexpand: false;
       };
     }
+  }
+}
+
+menu primary_menu {
+  section {
+    item (_("Save folders to file…"), "win.save-folders")
+    item (_("Restore folders from file…"), "win.restore-folders")
+  }
+
+  section {
+    item (_("About Folder Manager"), "win.about")
   }
 }
