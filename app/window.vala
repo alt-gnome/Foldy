@@ -23,8 +23,8 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
 
     const ActionEntry[] ACTION_ENTRIES = {
         { "about", on_about_action },
-        { "save-folders", on_save_folders },
-        { "restore-folders", on_restore_folders },
+        { "export-folders", on_save_folders },
+        { "import-folders", on_restore_folders },
     };
 
     public Window (Foldy.Application app) {

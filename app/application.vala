@@ -23,8 +23,8 @@ public sealed class Foldy.Application : Adw.Application {
 
     const OptionEntry[] OPTION_ENTRIES = {
         { "version", 'v', 0, OptionArg.NONE, null, N_("Print version information and exit"), null },
-        { "save-folders", 's', 0, OptionArg.FILENAME, null, N_("Save folders to file"), "FILENAME" },
-        { "restore-folders", 'r', 0, OptionArg.FILENAME, null, N_("Restore folders from file"), "FILENAME" },
+        { "export-folders", 's', 0, OptionArg.FILENAME, null, N_("Save folders to file"), "FILENAME" },
+        { "import-folders", 'r', 0, OptionArg.FILENAME, null, N_("Restore folders from file"), "FILENAME" },
         { null }
     };
 
@@ -52,19 +52,20 @@ public sealed class Foldy.Application : Adw.Application {
                 print ("%s\n", Config.VERSION);
                 return 0;
 
-            } else if (options.contains ("save-folders")) {
-                string filename = options.lookup_value ("save-folders", null).get_bytestring ();
+            } else if (options.contains ("export-folders")) {
+                string filename = options.lookup_value ("export-folders", null).get_bytestring ();
                 save_folders (filename);
                 return 0;
 
-            } else if (options.contains ("restore-folders")) {
-                string filename = options.lookup_value ("restore-folders", null).get_bytestring ();
+            } else if (options.contains ("import-folders")) {
+                string filename = options.lookup_value ("import-folders", null).get_bytestring ();
                 restore_folders (filename, true);
                 return 0;
             }
 
         } catch (Error e) {
-            error (e.message);
+            print ("Error: %s\n", e.message);
+            return 1;
         }
 
         return -1;
