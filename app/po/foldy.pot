@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 13:24+0300\n"
+"POT-Creation-Date: 2025-04-28 14:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,6 +123,10 @@ msgstr ""
 msgid "Folder name"
 msgstr ""
 
+#: app/data/ui/folder-dialog.blp:130
+msgid "Close"
+msgstr ""
+
 #: app/data/ui/folder-page.blp:43
 msgid "Add apps"
 msgstr ""
@@ -171,31 +175,31 @@ msgstr ""
 msgid "Folders"
 msgstr ""
 
-#: app/folder-dialog.vala:57
+#: app/folder-dialog.vala:82
 msgid "Folder creation"
 msgstr ""
 
-#: app/folder-dialog.vala:58
+#: app/folder-dialog.vala:83
 msgid "Create"
 msgstr ""
 
-#: app/folder-dialog.vala:59
+#: app/folder-dialog.vala:84
 msgid "Unnamed Folder"
 msgstr ""
 
-#: app/folder-dialog.vala:66
+#: app/folder-dialog.vala:88
 msgid "Folder settings"
 msgstr ""
 
-#: app/folder-dialog.vala:67
+#: app/folder-dialog.vala:89
 msgid "Apply"
 msgstr ""
 
-#: app/folder-dialog.vala:126
+#: app/folder-dialog.vala:190
 msgid "Name can't be empty"
 msgstr ""
 
-#: app/folder-dialog.vala:132
+#: app/folder-dialog.vala:196
 msgid "Categories can't be more than 2"
 msgstr ""
 
@@ -203,16 +207,16 @@ msgstr ""
 msgid "Delete folder"
 msgstr ""
 
-#: app/folder-page.vala:61
+#: app/folder-page.vala:79
 #, c-format
 msgid "Are you want to delete folder '%s'?"
 msgstr ""
 
-#: app/folder-page.vala:65
+#: app/folder-page.vala:83
 msgid "Cancel"
 msgstr ""
 
-#: app/folder-page.vala:66
+#: app/folder-page.vala:84
 msgid "Delete"
 msgstr ""
 
