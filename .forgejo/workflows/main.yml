@@ -14,7 +14,7 @@ permissions:
 jobs:
   lint-vala:
     name: Lint vala files
-    runs-on: ubuntu-latest
+    runs-on: alt-latest
 
     container:
       image: valalang/lint
@@ -22,6 +22,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Update apt
+        run: apt-get -y update
+
+      - name: Install vala-lint
+        run: apt-get install -y vala-lint
 
       - name: Lint Vala
         run: io.elementary.vala-lint -d . -c vala-lint.conf
