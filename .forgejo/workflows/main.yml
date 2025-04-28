@@ -55,7 +55,7 @@ jobs:
         run: apt-get update
 
       - name: Install git and python
-        run: apt-get install -y git python3.12
+        run: apt-get install -y git python3
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -63,10 +63,10 @@ jobs:
           submodules: true
 
       - name: Run indentation checker
-        run: python3.12 ./vala-checkers/indentation_checker.py .
+        run: python3 ./vala-checkers/indentation_checker.py .
 
       - name: Run empty lines checker
-        run: python3.12 ./vala-checkers/empty_lines_checker.py .
+        run: python3 ./vala-checkers/empty_lines_checker.py .
 
   test-build:
     name: Test Build
