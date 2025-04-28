@@ -2,7 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 template $FoldyAppInfoDialog: Adw.Dialog {
-  content-width: 360;
+  content-width: 450;
+  content-height: 450;
 
   Adw.ToolbarView {
     [top]
@@ -24,7 +25,10 @@ template $FoldyAppInfoDialog: Adw.Dialog {
         Box {
           orientation: vertical;
           vexpand: true;
+          hexpand: true;
           spacing: 12;
+          valign: center;
+          halign: center;
 
           Image icon_image {
             pixel-size: 180;

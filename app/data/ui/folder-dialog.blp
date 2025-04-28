@@ -2,14 +2,37 @@ using Gtk 4.0;
 using Adw 1;
 
 template $FoldyFolderDialog: Adw.Dialog {
-  content-width: 360;
+  content-width: 450;
 
   Adw.ToolbarView {
     [top]
-    Adw.HeaderBar {
-      title-widget: Adw.WindowTitle {
-        title: bind template.header-bar-title;
-      };
+    Box {
+      orientation: vertical;
+
+      Adw.HeaderBar {
+        title-widget: Adw.WindowTitle {
+          title: bind template.header-bar-title;
+        };
+      }
+
+      Revealer search_revealer {
+        reveal-child: bind categories_list.expanded;
+
+        notify::reveal-child => $on_search_revealed();
+
+        Adw.Clamp {
+          maximum-size: 500;
+          margin-top: 4;
+          margin-bottom: 4;
+          margin-start: 12;
+          margin-end: 12;
+
+          SearchEntry search_entry {
+            hexpand: true;
+            search-delay: 500;
+          }
+        }
+      }
     }
 
     content: Adw.ToastOverlay toast_overlay {
@@ -44,6 +67,12 @@ template $FoldyFolderDialog: Adw.Dialog {
               Adw.EntryRow folder_name_entry {
                 title: _("Folder name");
               }
+
+              $FoldyCategoriesList categories_list {
+                vexpand: true;
+
+                folder-id: bind template.folder-id;
+              }
             }
           }
         }
@@ -51,20 +80,13 @@ template $FoldyFolderDialog: Adw.Dialog {
     };
 
     [bottom]
-    CenterBox {
+    Box {
       margin-bottom: 12;
       margin-end: 12;
       margin-start: 12;
       margin-top: 12;
-      shrink-center-last: true;
 
-      start-widget: Adw.Bin bottom_start {
-        halign: start;
-        hexpand: false;
-      };
-
-      center-widget: Adw.Clamp {
-        margin-end: 12;
+      Adw.Clamp {
         margin-start: 12;
         maximum-size: 500;
         hexpand: true;
@@ -85,25 +107,26 @@ template $FoldyFolderDialog: Adw.Dialog {
             activated => $on_apply_button_activate();
           }
         }
-      };
+      }
 
-      end-widget: Revealer go_top_button_revealer {
+      Revealer go_top_button_revealer {
         reveal-child: true;
         transition-type: slide_right;
-
+        
         Button {
           styles [
             "circular",
             "flat",
           ]
 
+          margin-start: 12;
           halign: end;
           hexpand: false;
           valign: center;
           icon-name: "go-top-symbolic";
           clicked => $go_top_button_clicked();
         }
-      };
+      }
     }
   }
 }

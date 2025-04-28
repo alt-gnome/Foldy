@@ -24,9 +24,7 @@ public sealed class Foldy.CategoriesList : Adw.ExpanderRow {
 
     CategoriesModel model;
 
-    public string folder_id { get; construct; }
-
-    SearchRow search_row;
+    public string? folder_id { get; set; default = null; }
 
     Gee.ArrayList<CategoryRow> rows = new Gee.ArrayList<CategoryRow> ((a, b) => {
         return a.category_name == b.category_name;
@@ -36,20 +34,15 @@ public sealed class Foldy.CategoriesList : Adw.ExpanderRow {
         Object ();
     }
 
-    public CategoriesList.with_folder_id (string folder_id) {
-        Object (folder_id: folder_id);
-    }
-
     construct {
-        model = new CategoriesModel (folder_id);
-        search_row = new SearchRow ();
+        notify["folder-id"].connect (() => {
+            model = new CategoriesModel (folder_id);
 
-        search_row.search_changed.connect (refilter);
+            model.changed.connect (update_data);
+            update_data ();
+        });
 
-        model.changed.connect (update_data);
         notify["expanded"].connect (update_subtitle);
-
-        update_data ();
     }
 
     void clear_expander_row () {
@@ -76,8 +69,6 @@ public sealed class Foldy.CategoriesList : Adw.ExpanderRow {
             folder_categories.add_all_array (Folder.get_folder_categories (folder_id));
         }
 
-        add_row (search_row);
-
         foreach (var category in model.data) {
             var row = new CategoryRow (category);
             rows.add (row);
@@ -91,9 +82,9 @@ public sealed class Foldy.CategoriesList : Adw.ExpanderRow {
         update_subtitle ();
     }
 
-    void refilter (string search_string) {
+    public void refilter (string search_string) {
         foreach (var row in rows) {
-            row.visible = search_string.down () in row.category_name.down ();
+            row.visible = search_string.match_string (row.category_name, true);
         }
     }
 

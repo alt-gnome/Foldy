@@ -21,19 +21,21 @@ using Foldy.Folder;
 public sealed class Foldy.FolderDialog : Adw.Dialog {
 
     [GtkChild]
-    protected unowned Adw.ToastOverlay toast_overlay;
+    unowned Adw.ToastOverlay toast_overlay;
     [GtkChild]
-    protected unowned Adw.EntryRow folder_name_entry;
+    unowned Adw.EntryRow folder_name_entry;
     [GtkChild]
-    protected unowned Gtk.ListBox list_box;
+    unowned Gtk.ListBox list_box;
     [GtkChild]
-    protected unowned Gtk.ScrolledWindow scrolled_window;
+    unowned Gtk.ScrolledWindow scrolled_window;
     [GtkChild]
-    protected unowned Gtk.Revealer go_top_button_revealer;
+    unowned Gtk.Revealer go_top_button_revealer;
     [GtkChild]
-    protected unowned Gtk.Adjustment adj;
-
-    protected CategoriesList categories_list;
+    unowned Gtk.Adjustment adj;
+    [GtkChild]
+    unowned CategoriesList categories_list;
+    [GtkChild]
+    unowned Gtk.SearchEntry search_entry;
 
     public string folder_id { get; construct; }
 
@@ -71,14 +73,6 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
         adj.value_changed.connect (update_button_revealer);
         update_button_revealer ();
 
-        if (folder_id != null) {
-            categories_list = new CategoriesList.with_folder_id (folder_id);
-        } else {
-            categories_list = new CategoriesList ();
-        }
-
-        list_box.append (categories_list);
-
         folder_name_entry.text = default_name;
 
         categories_list.notify["expanded"].connect (() => {
@@ -86,16 +80,13 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
             var target_height = categories_list.expanded ? MAX_HEIGHT : MIN_HEIGHT;
 
             var target = new Adw.PropertyAnimationTarget (this, "content-height");
-            var params = new Adw.SpringParams (1.00, 1.0, 300.0);
-            var animation = new Adw.SpringAnimation (
-                scrolled_window,
-                current_height,
-                target_height,
-                params,
-                target
-            );
+            var animation = new Adw.TimedAnimation (this, current_height, target_height, 150, target);
 
             animation.play ();
+        });
+
+        search_entry.search_changed.connect (() => {
+            categories_list.refilter (search_entry.text);
         });
     }
 
@@ -122,15 +113,10 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
 
     [GtkCallback]
     void go_top_button_clicked () {
+        scrolled_window.vadjustment.value = scrolled_window.vadjustment.value;
+
         var target = new Adw.PropertyAnimationTarget (scrolled_window.vadjustment, "value");
-        var params = new Adw.SpringParams (1.00, 1.0, 500.0);
-        var animation = new Adw.SpringAnimation (
-            scrolled_window,
-            scrolled_window.vadjustment.value,
-            0.0,
-            params,
-            target
-        );
+        var animation = new Adw.TimedAnimation (scrolled_window, scrolled_window.vadjustment.value, 0.0, 150, target);
 
         animation.play ();
     }
@@ -149,5 +135,11 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
         }
 
         return true;
+    }
+
+    [GtkCallback]
+    void on_search_revealed () {
+        search_entry.text = "";
+        search_entry.grab_focus ();
     }
 }
