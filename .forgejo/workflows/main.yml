@@ -1,7 +1,11 @@
-name: CI Pull Request
+name: Main
 
 on:
   pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
 
 permissions:
   contents: read
@@ -52,8 +56,15 @@ jobs:
       image: ubuntu:latest
 
     steps:
+      - name: Install git on container
+        run: |
+          apt-get update
+          apt-get install -y git
+          
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Update apt cache
         run: apt-get update
