@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <name>Folder manager</name>
+  <name>Folder Manager</name>
   <id>org.altlinux.Foldy</id>
   <summary>Folder manager for mobile devices</summary>
   <metadata_license>CC0-1.0</metadata_license>

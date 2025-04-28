@@ -29,9 +29,12 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
 
     const ActionEntry[] ACTION_ENTRIES = {
         { "about", on_about_action },
-        { "export-folders", on_save_folders },
-        { "import-folders", on_restore_folders },
+        { "export-folders", on_export_folders },
+        { "import-folders", on_import_folders },
     };
+
+    Xdp.Portal portal;
+    Xdp.Parent xparent;
 
     public Window (Foldy.Application app) {
         Object (application: app);
@@ -39,6 +42,8 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
 
     construct {
         var settings = new Settings (Config.APP_ID_ORIG);
+
+        portal = new Xdp.Portal ();
 
         add_action_entries (ACTION_ENTRIES, this);
 
@@ -49,6 +54,10 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
         if (Config.IS_DEVEL == true) {
             add_css_class ("devel");
         }
+
+        map.connect (() => {
+            xparent = Xdp.parent_new_gtk (this);
+        });
     }
 
     public void show_message (string message) {
@@ -57,7 +66,7 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
 
     void on_about_action () {
         var about = new Adw.AboutDialog () {
-            application_name = "Foldy",
+            application_name = _("Folder Manager"),
             application_icon = Config.APP_ID,
             developer_name = "ALT Linux Team",
             artists = {
@@ -77,36 +86,65 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
         about.present (this);
     }
 
-    void on_save_folders () {
-        var dialog = new Gtk.FileDialog ();
-        dialog.title = _("Save folders file");
-        dialog.initial_name = "folders-" + Environment.get_user_name ();
-        dialog.modal = true;
-        dialog.save.begin (this, null, (obj, res) => {
-            try {
-                var file = ((Gtk.FileDialog) obj).save.end (res);
-                save_folders (file.peek_path ());
+    void on_export_folders () {
+        portal.save_file.begin (
+            xparent,
+            _("Save folders file"),
+            "%s.folders".printf (Environment.get_user_name ()),
+            null,
+            null,
+            null,
+            null,
+            null,
+            Xdp.SaveFileFlags.NONE,
+            null,
+            (obj, res) => {
+                try {
+                    var file_var = portal.save_file.end (res);
 
-            } catch (Error e) {
-                show_message (e.message);
+                    Variant uris_variant = file_var.lookup_value ("uris", new VariantType ("as"));
+                    string[] uris = uris_variant.get_strv ();
+                    string? uri = uris.length > 0 ? uris[0] : null;
+
+                    if (uri == null) {
+                        return;
+                    }
+
+                    save_folders (File.new_for_uri (uri).get_path ());
+                } catch (Error e) {
+                    warning (e.message);
+                }
             }
-        });
+        );
     }
 
-    void on_restore_folders () {
-        var dialog = new Gtk.FileDialog ();
-        dialog.title = _("Open folders file");
-        dialog.initial_name = "folders-" + Environment.get_user_name ();
-        dialog.modal = true;
-        dialog.open.begin (this, null, (obj, res) => {
-            try {
-                var file = ((Gtk.FileDialog) obj).open.end (res);
-                restore_folders (file.peek_path (), true);
+    void on_import_folders () {
+        portal.open_file.begin (
+            xparent,
+            _("Open folders file"),
+            null,
+            null,
+            null,
+            Xdp.OpenFileFlags.NONE,
+            null,
+            (obj, res) => {
+                try {
+                    var file_var = portal.open_file.end (res);
 
-            } catch (Error e) {
-                show_message (e.message);
+                    Variant uris_variant = file_var.lookup_value ("uris", new VariantType ("as"));
+                    string[] uris = uris_variant.get_strv ();
+                    string? uri = uris.length > 0 ? uris[0] : null;
+
+                    if (uri == null) {
+                        return;
+                    }
+
+                    restore_folders (File.new_for_uri (uri).get_path (), true);
+                } catch (Error e) {
+                    warning (e.message);
+                }
             }
-        });
+        );
     }
 
     [GtkCallback]

@@ -65,7 +65,7 @@ namespace Foldy {
         return categiries.to_array ();
     }
 
-    public Gee.HashSet<string> get_using_categories () {
+    Gee.HashSet<string> get_using_categories () {
         var result = new Gee.HashSet<string> ();
 
         foreach (var folder_id in get_folders ()) {
@@ -75,7 +75,7 @@ namespace Foldy {
         return result;
     }
 
-    public Gee.ArrayList<string> get_categories_by_app_id (string app_id) {
+    Gee.ArrayList<string> get_categories_by_app_id (string app_id) {
         var categories = new Gee.ArrayList<string> ();
 
         var desktop = new DesktopAppInfo (app_id);
@@ -104,6 +104,10 @@ namespace Foldy {
         var app_ids = new Array<string> ();
 
         foreach (AppInfo app_info in AppInfo.get_all ()) {
+            if (!app_info.should_show ()) {
+                continue;
+            }
+
             string app_id = app_info.get_id ();
 
             if (category in get_categories_by_app_id (app_id)) {

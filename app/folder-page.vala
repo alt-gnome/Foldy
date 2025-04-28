@@ -114,7 +114,13 @@ public sealed class Foldy.FolderPage : BasePage {
 
     protected override void on_activate (uint position) {
         var app = (AppInfo) model.get_item (position);
-        app.selected = !app.selected;
+
+        if (selection_enabled) {
+            app.selected = !app.selected;
+        } else {
+            var dialog = new AppInfoDialog (app);
+            dialog.present (this);
+        }
 
         delete_selected_button.sensitive = get_selected_apps ().length > 0;
 
