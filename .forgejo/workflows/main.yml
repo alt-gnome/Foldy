@@ -14,7 +14,7 @@ permissions:
 jobs:
   lint-vala:
     name: Lint vala files
-    runs-on: alt-latest
+    runs-on: alt-sisyphus
 
     steps:
       - name: Checkout repository
