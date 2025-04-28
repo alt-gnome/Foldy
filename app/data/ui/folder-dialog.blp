@@ -17,7 +17,6 @@ template $FoldyFolderDialog: Adw.Dialog {
 
       Revealer search_revealer {
         reveal-child: bind categories_list.expanded;
-
         notify::reveal-child => $on_search_revealed();
 
         Adw.Clamp {
@@ -70,7 +69,6 @@ template $FoldyFolderDialog: Adw.Dialog {
 
               $FoldyCategoriesList categories_list {
                 vexpand: true;
-
                 folder-id: bind template.folder-id;
               }
             }
@@ -97,6 +95,7 @@ template $FoldyFolderDialog: Adw.Dialog {
 
           StackPage {
             name: "base";
+
             child: ListBox {
               styles [
                 "boxed-list-separate",
@@ -117,6 +116,7 @@ template $FoldyFolderDialog: Adw.Dialog {
 
           StackPage {
             name: "close";
+
             child: ListBox {
               styles [
                 "boxed-list-separate",
@@ -126,7 +126,6 @@ template $FoldyFolderDialog: Adw.Dialog {
 
               Adw.ButtonRow close_button {
                 activated => $on_close_button_activate();
-
                 title: _("Close");
               }
             };
@@ -137,7 +136,7 @@ template $FoldyFolderDialog: Adw.Dialog {
       Revealer go_top_button_revealer {
         reveal-child: true;
         transition-type: slide_right;
-        
+
         Button {
           styles [
             "circular",

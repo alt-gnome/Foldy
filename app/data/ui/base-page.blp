@@ -16,7 +16,6 @@ template $FoldyBasePage: Adw.NavigationPage {
         [start]
         ToggleButton search_button {
           icon-name: "system-search-symbolic";
-
           notify::active => $on_search_button_active();
         }
 
@@ -45,7 +44,6 @@ template $FoldyBasePage: Adw.NavigationPage {
           SearchEntry search_entry {
             hexpand: true;
             search-delay: 500;
-
             text: bind template.search-query bidirectional;
           }
         }
@@ -65,9 +63,7 @@ template $FoldyBasePage: Adw.NavigationPage {
 
             ListView list_view {
               activate => $on_activate();
-
               single-click-activate: true;
-
               model: bind template.model;
 
               factory: SignalListItemFactory {
@@ -101,7 +97,6 @@ template $FoldyBasePage: Adw.NavigationPage {
       start-widget: Adw.Bin bottom_start {
         halign: start;
         hexpand: false;
-
         child: bind template.bottom_start_widget;
       };
 
@@ -110,14 +105,12 @@ template $FoldyBasePage: Adw.NavigationPage {
         margin-start: 12;
         maximum-size: 500;
         hexpand: true;
-
         child: bind template.bottom_center_widget;
       };
 
       end-widget: Adw.Bin bottom_end {
         halign: end;
         hexpand: false;
-
         child: bind template.bottom_end_widget;
       };
     }

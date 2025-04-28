@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $FoldyBaseRow : Adw.Bin {
+template $FoldyBaseRow: Adw.Bin {
   accessibility {
     labelled-by: title;
     described-by: subtitle;
@@ -10,13 +10,17 @@ template $FoldyBaseRow : Adw.Bin {
   activatable: false;
 
   child: Box header {
-    styles ["header"]
+    styles [
+      "header",
+    ]
 
     valign: center;
     hexpand: false;
 
     Image image {
-      styles ["icon"]
+      styles [
+        "icon",
+      ]
 
       icon-size: large;
       valign: center;
@@ -27,14 +31,18 @@ template $FoldyBaseRow : Adw.Bin {
     }
 
     Box title_box {
-      styles ["title"]
+      styles [
+        "title",
+      ]
 
       orientation: vertical;
       valign: center;
       hexpand: true;
 
       Label title {
-        styles ["title"]
+        styles [
+          "title",
+        ]
 
         ellipsize: none;
         label: bind template.title;
@@ -46,7 +54,9 @@ template $FoldyBaseRow : Adw.Bin {
       }
 
       Label subtitle {
-        styles ["subtitle"]
+        styles [
+          "subtitle",
+        ]
 
         ellipsize: none;
         label: bind template.subtitle;
@@ -64,7 +74,10 @@ template $FoldyBaseRow : Adw.Bin {
       reveal-child: bind template.selection-enabled;
 
       Image selection_image {
-        styles ["icon", "dimmed"]
+        styles [
+          "icon",
+          "dimmed",
+        ]
 
         icon-name: "uncheck-symbolic";
         valign: center;

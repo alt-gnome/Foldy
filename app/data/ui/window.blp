@@ -24,9 +24,7 @@ template $FoldyWindow: Adw.ApplicationWindow {
 
       sidebar: $FoldyFoldersListPage folders_list_page {
         tag: "sidebar";
-
         wintype: bind template.wintype;
-
         folder-choosed => $on_folder_choosed();
       };
 

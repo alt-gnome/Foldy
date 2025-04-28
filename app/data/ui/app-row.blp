@@ -2,6 +2,5 @@ using Gtk 4.0;
 
 template $FoldyAppRow: $FoldyBaseRow {
   activatable: true;
-
   notify::app-info => $on_app_info_changed();
 }
