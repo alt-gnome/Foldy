@@ -47,7 +47,7 @@ int main (string[] argv) {
         on_bus_aquired,
         () => {},
         () => {
-            print (_("Could not acquire name. Stopping...\n"));
+            print (_("Could not acquire name. Stopping…\n"));
             ml.quit ();
         }
     );
