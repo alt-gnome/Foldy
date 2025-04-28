@@ -35,6 +35,7 @@ BuildRequires: pkgconfig(libportal)
 BuildRequires: pkgconfig(libportal-gtk4)
 BuildRequires: blueprint-compiler
 BuildRequires: gobject-introspection-devel
+BuildRequires: gettext-devel
 %{?_enable_check:BuildRequires: appstream desktop-file-utils}
 
 %description
