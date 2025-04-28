@@ -23,8 +23,6 @@ public sealed class Foldy.AppInfoDialog : Adw.Dialog {
     [GtkChild]
     unowned Gtk.Label name_label;
     [GtkChild]
-    unowned Gtk.Label id_label;
-    [GtkChild]
     unowned Gtk.Label description_label;
 
     public AppInfo app_info { get; construct; }
@@ -36,7 +34,6 @@ public sealed class Foldy.AppInfoDialog : Adw.Dialog {
     construct {
         icon_image.gicon = app_info.icon;
         name_label.label = app_info.display_name;
-        id_label.label = app_info.id;
         description_label.label = app_info.description;
     }
 }
