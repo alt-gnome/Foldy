@@ -33,6 +33,8 @@ public sealed class Foldy.FolderPage : BasePage {
 
     public string folder_id { get; construct; }
 
+    Settings settings;
+
     public FolderPage (string folder_id) {
         Object (folder_id: folder_id);
     }
@@ -45,6 +47,17 @@ public sealed class Foldy.FolderPage : BasePage {
             )
         );
 
+        if (settings != null) {
+            settings.changed.disconnect (refresh);
+            settings = null;
+        }
+
+        settings = new Settings.with_path (
+            "org.gnome.desktop.app-folders.folder",
+            "/org/gnome/desktop/app-folders/folders/%s/".printf (folder_id)
+        );
+        settings.changed.connect (refresh);
+
         notify["selection-enabled"].connect (() => {
             bottom_stack.visible_child_name = selection_enabled ? "selection-mode" : "default";
             delete_revealer.reveal_child = !selection_enabled;
@@ -54,6 +67,11 @@ public sealed class Foldy.FolderPage : BasePage {
         folder_settings_button.clicked.connect (() => {
             new FolderDialog.edit (folder_id, get_folder_name (folder_id)).present (this);
         });
+
+        refresh ();
+    }
+    void refresh () {
+        title = get_folder_name (folder_id);
     }
 
     [GtkCallback]
