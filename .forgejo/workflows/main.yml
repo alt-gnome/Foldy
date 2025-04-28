@@ -16,9 +16,6 @@ jobs:
     name: Lint vala files
     runs-on: alt-latest
 
-    container:
-      image: valalang/lint
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
