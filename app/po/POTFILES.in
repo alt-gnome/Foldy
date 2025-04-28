@@ -1,4 +1,5 @@
 app/add-apps-page.vala
+app/application.vala
 app/data/org.altlinux.Foldy.desktop.in
 app/data/org.altlinux.Foldy.Devel.desktop.in
 app/data/org.altlinux.Foldy.Devel.metainfo.xml.in

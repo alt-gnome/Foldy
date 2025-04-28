@@ -2,16 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foldy package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# David Sultaniiazov <x1z53@alt-gnome.ru>, 2025.
 # Vladimir Vaskov <rirusha@altlinux.org>, 2025.
+# David Sultaniiazov <x1z53@alt-gnome.org>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-10 18:48+0300\n"
-"PO-Revision-Date: 2025-04-10 18:44+0300\n"
-"Last-Translator: Vladimir Vaskov <rirusha@altlinux.org>\n"
+"POT-Creation-Date: 2025-04-28 14:41+0300\n"
+"PO-Revision-Date: 2025-04-28 14:44+0300\n"
+"Last-Translator: David Sultaniiazov <x1z53@alt-gnome.org>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Gtranslator 48.0\n"
+
+#: app/application.vala:25
+msgid "Print version information and exit"
+msgstr "Отобразить информацию о версии и выйти"
+
+#: app/application.vala:26
+msgid "Save folders to file"
+msgstr "Сохранить папки в файл"
+
+#: app/application.vala:27
+msgid "Restore folders from file"
+msgstr "Восстановить папки из файла"
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.desktop.in:4
@@ -54,44 +66,6 @@ msgstr "Менеджер папок для мобильных устройств
 msgid "Folder manager for mobile devices. Development version"
 msgstr "Менеджер папок для мобильных устройств. Версия разработчика"
 
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:37
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:47
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:53
-msgid "Some bug fixed"
-msgstr "Исправления багов"
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:38
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
-msgid "Improved localization"
-msgstr "Улучшена локализация"
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:43
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
-msgid "Added service"
-msgstr "Добавлен сервис"
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:48
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:64
-msgid "Added search in category list"
-msgstr "Добавлен поиск в списке категорий"
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:55
-msgid "Vladimir Vaskov"
-msgstr "Владимир Васьков"
-
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:37
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
-msgid "Fix metadata"
-msgstr "Исправлены метаданные"
-
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:48
-msgid "Some visual fixes"
-msgstr "Визуальные улучшения"
-
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:71
-msgid "ALT Linux Team"
-msgstr "ALT Linux Team"
-
 #: app/data/ui/add-apps-page.blp:5
 msgid "Applications without folder"
 msgstr "Приложения вне папок"
@@ -113,6 +87,18 @@ msgstr "Запустить"
 msgid "There is nothing to show"
 msgstr "Нечего показывать"
 
+#: app/data/ui/base-page.blp:134
+msgid "Save folders to file…"
+msgstr "Сохранить папки в файл…"
+
+#: app/data/ui/base-page.blp:135
+msgid "Restore folders from file…"
+msgstr "Восстановить папки из файла…"
+
+#: app/data/ui/base-page.blp:139
+msgid "About Folder Manager"
+msgstr "О Менеджере папок"
+
 #: app/data/ui/categories-list.blp:5
 msgid "Folder categories"
 msgstr "Категории папки"
@@ -133,7 +119,7 @@ msgstr "Удалить выбранные"
 msgid "All folders"
 msgstr "Все папки"
 
-#: app/data/ui/folders-list-page.blp:19
+#: app/data/ui/folders-list-page.blp:20
 msgid "Create new folder"
 msgstr "Создать новую папку"
 
@@ -157,11 +143,11 @@ msgstr "Настройки папки"
 msgid "Apply"
 msgstr "Принять"
 
-#: app/folder-dialog.vala:141
+#: app/folder-dialog.vala:140
 msgid "Name can't be empty"
 msgstr "Имя не может быть пустым"
 
-#: app/folder-dialog.vala:147
+#: app/folder-dialog.vala:146
 msgid "Categories can't be more than 2"
 msgstr "Категорий не может быть больше 2"
 
@@ -192,6 +178,38 @@ msgid "Foldy"
 msgstr "Папочка"
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: app/window.vala:62
+#: app/window.vala:65
 msgid "translator-credits"
 msgstr "David Sultaniiazov <x1z53@корсаков.рус>"
+
+#: app/window.vala:76
+msgid "Save folders file"
+msgstr "Сохранить файл папок"
+
+#: app/window.vala:92
+msgid "Open folders file"
+msgstr "Открыть файл папок"
+
+#~ msgid "Some bug fixed"
+#~ msgstr "Исправления багов"
+
+#~ msgid "Improved localization"
+#~ msgstr "Улучшена локализация"
+
+#~ msgid "Added service"
+#~ msgstr "Добавлен сервис"
+
+#~ msgid "Added search in category list"
+#~ msgstr "Добавлен поиск в списке категорий"
+
+#~ msgid "Vladimir Vaskov"
+#~ msgstr "Владимир Васьков"
+
+#~ msgid "Fix metadata"
+#~ msgstr "Исправлены метаданные"
+
+#~ msgid "Some visual fixes"
+#~ msgstr "Визуальные улучшения"
+
+#~ msgid "ALT Linux Team"
+#~ msgstr "ALT Linux Team"
