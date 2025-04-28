@@ -17,14 +17,14 @@ jobs:
     runs-on: alt-sisyphus
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Update apt cache
         run: apt-get -y update
 
       - name: Install vala-lint
         run: apt-get install -y vala-lint
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Lint Vala
         run: io.elementary.vala-lint -d . -c vala-lint.conf
@@ -34,15 +34,15 @@ jobs:
     runs-on: alt-sisyphus
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Update apt cache
         run: apt-get -y update
 
       - name: Install blueprint-compiler
         run: apt-get install -y blueprint-compiler
-        
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Lint Blueprint
         run: blueprint-compiler format -s 2 app/data/ui/*.blp
 
