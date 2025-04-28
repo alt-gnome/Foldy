@@ -52,7 +52,7 @@ jobs:
 
     steps:
       - name: Update apt cache
-        run: apt-get update
+        run: apt-get -y update
 
       - name: Install git and python
         run: apt-get install -y git python3
@@ -63,10 +63,10 @@ jobs:
           submodules: true
 
       - name: Run indentation checker
-        run: python3 ./vala-checkers/indentation_checker.py .
+        run: python3 vala-checkers/indentation_checker.py .
 
       - name: Run empty lines checker
-        run: python3 ./vala-checkers/empty_lines_checker.py .
+        run: python3 vala-checkers/empty_lines_checker.py .
 
   test-build:
     name: Test Build
@@ -76,18 +76,26 @@ jobs:
       - lint-blp
       - checkers
 
-    container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
-      options: --privileged
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Update apt cache
+        run: apt-get -y update
 
-    - name: Run tests and lint
-      uses: https://github.com/flatpak/flatpak-github-actions/flatpak-builder@v6
-      with:
-        bundle: foldy.flatpak
-        manifest-path: build-aux/flatpak/org.altlinux.Foldy.json
-        run-tests: true
-        cache-key: flatpak-builder-${{ github.sha }} 
+      - name: Install git and python
+        run: apt-get install -y git python3
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install dependencies
+        run: python3 build-tools/install_meson_deps.py
+
+      - name: Setup
+        run: meson setup _build --prefix=/usr -Dis_devel=true
+
+      - name: Build
+        run: meson compile -C _build
+
+      - name: Test
+        run: meson test -C _build
