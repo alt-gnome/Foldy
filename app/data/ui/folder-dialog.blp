@@ -91,20 +91,45 @@ template $FoldyFolderDialog: Adw.Dialog {
         maximum-size: 500;
         hexpand: true;
 
-        ListBox {
-          styles [
-            "boxed-list-separate",
-          ]
+        Stack button_stack {
+          transition-type: crossfade;
+          transition-duration: 150;
 
-          selection-mode: none;
+          StackPage {
+            name: "base";
+            child: ListBox {
+              styles [
+                "boxed-list-separate",
+              ]
 
-          Adw.ButtonRow apply_button {
-            styles [
-              "suggested-action",
-            ]
+              selection-mode: none;
 
-            title: bind template.apply-button-title;
-            activated => $on_apply_button_activate();
+              Adw.ButtonRow apply_button {
+                styles [
+                  "suggested-action",
+                ]
+
+                title: bind template.apply-button-title;
+                activated => $on_apply_button_activate();
+              }
+            };
+          }
+
+          StackPage {
+            name: "close";
+            child: ListBox {
+              styles [
+                "boxed-list-separate",
+              ]
+
+              selection-mode: none;
+
+              Adw.ButtonRow close_button {
+                activated => $on_close_button_activate();
+
+                title: _("Close");
+              }
+            };
           }
         }
       }

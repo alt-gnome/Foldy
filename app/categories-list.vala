@@ -30,6 +30,8 @@ public sealed class Foldy.CategoriesList : Adw.ExpanderRow {
         return a.category_name == b.category_name;
     });
 
+    public signal void selection_changed ();
+
     public CategoriesList () {
         Object ();
     }
@@ -73,6 +75,10 @@ public sealed class Foldy.CategoriesList : Adw.ExpanderRow {
             var row = new CategoryRow (category);
             rows.add (row);
             add_row (row);
+
+            row.notify["selected"].connect (() => {
+                selection_changed ();
+            });
 
             if (category in folder_categories) {
                 row.selected = true;

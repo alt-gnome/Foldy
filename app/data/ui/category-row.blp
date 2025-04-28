@@ -6,12 +6,15 @@ template $FoldyCategoryRow: Adw.ActionRow {
     "category-row",
   ]
 
+  title: bind template.category_name;
+
   [suffix]
   Gtk.CheckButton check_button {
     styles [
       "selection-mode",
     ]
 
+    active: bind template.selected bidirectional;
     valign: center;
   }
 }

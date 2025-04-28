@@ -46,6 +46,11 @@ public class Foldy.AppInfo : Object {
 
 namespace Foldy {
 
+    public enum FolderDialogType {
+        CREATE,
+        EDIT;
+    }
+
     public enum WindowType {
         NARROW,
         WIDE;

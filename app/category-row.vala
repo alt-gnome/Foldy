@@ -22,26 +22,9 @@ using Foldy.Folder;
 [GtkTemplate (ui = "/org/altlinux/Foldy/ui/category-row.ui")]
 public sealed class Foldy.CategoryRow : Adw.ActionRow {
 
-    [GtkChild]
-    unowned Gtk.CheckButton check_button;
+    public string category_name { get; set; }
 
-    public string category_name {
-        get {
-            return title;
-        }
-        construct set {
-            title = value;
-        }
-    }
-
-    public bool selected {
-        get {
-            return check_button.active;
-        }
-        set {
-            check_button.active = value;
-        }
-    }
+    public bool selected { get; set; }
 
     public CategoryRow (string category_name) {
         Object (category_name: category_name);
