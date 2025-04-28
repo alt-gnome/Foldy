@@ -16,73 +16,33 @@
  */
 
 [GtkTemplate (ui = "/org/altlinux/Foldy/ui/app-row.ui")]
-public abstract class Foldy.AppRow : Adw.ActionRow {
+public abstract class Foldy.AppRow : BaseRow {
 
-    [GtkChild]
-    unowned Gtk.Image icon_image;
-    [GtkChild]
-    unowned Gtk.Image action_image;
+    public AppInfo app_info { get; set; }
 
-    public AppInfo app_info { get; construct; }
-
-    bool _selection_enabled = false;
-    public bool selection_enabled {
-        get {
-            return _selection_enabled;
+    [GtkCallback]
+    void on_app_info_changed () {
+        if (app_info == null) {
+            return;
         }
-        set {
-            _selection_enabled = value;
 
-            if (!value) {
-                selected = false;
-            }
-        }
-    }
+        bind_property (
+            "selected",
+            app_info,
+            "selected",
+            BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL
+        );
 
-    public abstract string selected_style_class { get; }
+        title = app_info.display_name;
 
-    bool _selected = false;
-    public new bool selected {
-        get {
-            return _selected;
-        }
-        set {
-            _selected = value;
-
-            if (selected) {
-                add_css_class (selected_style_class);
-                action_image.icon_name = "check-symbolic";
-                action_image.remove_css_class ("dim-label");
-
+        if (app_info.icon != null) {
+            if (app_info.icon.to_string ().length > 0) {
+                gicon = app_info.icon;
             } else {
-                remove_css_class (selected_style_class);
-                action_image.icon_name = "uncheck-symbolic";
-                action_image.add_css_class ("dim-label");
+                icon_name = "image-missing-symbolic";
             }
+        } else {
+            icon_name = "image-missing-symbolic";
         }
-    }
-
-    construct {
-        title = app_info.get_display_name ();
-        subtitle = app_info.get_id ();
-
-        icon_image.set_from_gicon (app_info.get_icon ());
-
-        var lp = new Gtk.GestureLongPress ();
-        //  lp.delay_factor = 0.8;
-        lp.pressed.connect ((x, y) => {
-            if (!sensitive) {
-                return;
-            }
-
-            if (!selection_enabled) {
-                selection_enabled = true;
-                selected = true;
-
-            } else {
-                selected = !selected;
-            }
-        });
-        add_controller (lp);
     }
 }

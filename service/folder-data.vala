@@ -160,6 +160,8 @@ public sealed class Foldy.FolderData : Object {
         categories = new_current_categories.to_array ();
         apps = new_apps.to_array ();
 
+        sync ();
+
         refreshed (folder_id);
     }
 }

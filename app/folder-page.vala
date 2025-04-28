@@ -28,20 +28,23 @@ public sealed class Foldy.FolderPage : BasePage {
     unowned Gtk.Revealer settings_revealer;
     [GtkChild]
     unowned Gtk.Button folder_settings_button;
-
-    Gee.ArrayList<AppRow> app_rows = new Gee.ArrayList<AppRow> ();
-
-    ServiceProxy proxy;
+    [GtkChild]
+    unowned Adw.ButtonRow delete_selected_button;
 
     public string folder_id { get; construct; }
 
-    Settings settings;
-
-    public FolderPage (Adw.NavigationView nav_view, string folder_id) {
-        Object (nav_view: nav_view, folder_id: folder_id);
+    public FolderPage (string folder_id) {
+        Object (folder_id: folder_id);
     }
 
     construct {
+        model = new Gtk.NoSelection (
+            new Gtk.FilterListModel (
+                new AppsModel (folder_id),
+                get_search_filter ()
+            )
+        );
+
         notify["selection-enabled"].connect (() => {
             bottom_stack.visible_child_name = selection_enabled ? "selection-mode" : "default";
             delete_revealer.reveal_child = !selection_enabled;
@@ -51,39 +54,6 @@ public sealed class Foldy.FolderPage : BasePage {
         folder_settings_button.clicked.connect (() => {
             new FolderDialog.edit (folder_id, get_folder_name (folder_id)).present (this);
         });
-
-        settings = new Settings.with_path (
-            "org.gnome.desktop.app-folders.folder",
-            "/org/gnome/desktop/app-folders/folders/%s/".printf (folder_id)
-        );
-
-        settings.changed.connect (refresh);
-
-        nav_view.popped.connect ((page) => {
-            if (page == this) {
-                if (get_folder_apps (folder_id).length == 0) {
-                    remove_folder (folder_id);
-                }
-            }
-        });
-
-        try {
-            proxy = Bus.get_proxy_sync<ServiceProxy> (
-                BusType.SESSION,
-                "org.altlinux.FoldyService",
-                "/org/altlinux/FoldyService"
-            );
-
-            proxy.folder_refreshed.connect (on_folder_refreshed);
-        } catch (Error e) {
-            warning ("Can't get proxy of FoldyService: %s", e.message);
-        }
-    }
-
-    void on_folder_refreshed (string folder_id) {
-        if (folder_id == this.folder_id) {
-            refresh ();
-        }
     }
 
     [GtkCallback]
@@ -103,24 +73,11 @@ public sealed class Foldy.FolderPage : BasePage {
         dialog.response.connect ((resp) => {
             if (resp == "yes") {
                 remove_folder (folder_id);
-                nav_view.pop ();
+                close_requested ();
             }
         });
 
         dialog.present (this);
-    }
-
-    protected override void row_activated (Gtk.ListBoxRow row) {
-        var app_row = (AppRow) row;
-
-        if (app_row.selection_enabled) {
-            if (app_row.sensitive) {
-                app_row.selected = !app_row.selected;
-            }
-
-        } else {
-            new AppInfoDialog (app_row.app_info).present (this);
-        }
     }
 
     [GtkCallback]
@@ -130,67 +87,39 @@ public sealed class Foldy.FolderPage : BasePage {
     }
 
     [GtkCallback]
-    async void add_apps () {
-        var add_apps_page = new AddAppsPage (nav_view, folder_id);
-        add_apps_page.done.connect (() => {
-            nav_view.pop_to_page (this);
-
-            Idle.add (add_apps.callback);
-        });
-
-        nav_view.push (add_apps_page);
-        yield;
+    void add_apps () {
+        var add_apps_page = new AddAppsDialog (folder_id);
+        add_apps_page.present (this);
     }
 
-    string[] get_selected_apps () {
-        var row_ids = new Array<string> ();
+    protected override void on_setup (GLib.Object obj) {
+        var item = (Gtk.ListItem) obj;
+        item.child = new AppRowRemove ();
+        item.child.add_css_class ("card");
+    }
 
-        foreach (var row in app_rows) {
-            var app_row = (AppRow) row;
+    protected override void on_bind (GLib.Object obj) {
+        var item = (Gtk.ListItem) obj;
+        var row = (AppRowRemove) item.child;
 
-            if (app_row.selected) {
-                row_ids.append_val (app_row.app_info.get_id ());
-            }
+        row.app_info = (AppInfo) item.item;
+
+        bind_property (
+            "selection-enabled",
+            row,
+            "selection-enabled",
+            BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE
+        );
+    }
+
+    protected override void on_activate (uint position) {
+        var app = (AppInfo) model.get_item (position);
+        app.selected = !app.selected;
+
+        delete_selected_button.sensitive = get_selected_apps ().length > 0;
+
+        if (get_selected_apps ().length == 0) {
+            selection_enabled = false;
         }
-
-        return row_ids.data;
-    }
-
-    protected override void update_list () {
-        title = _("Folder '%s'").printf (get_folder_name (folder_id));
-
-        app_rows.clear ();
-        row_box.remove_all ();
-
-        var app_infos = AppInfo.get_all ();
-        var folder_apps = get_folder_apps (folder_id);
-
-        foreach (AppInfo app_info in app_infos) {
-            if (app_info.get_id () in folder_apps && app_info.should_show ()) {
-                var app_row = new AppRowRemove (app_info);
-
-                bind_property (
-                    "selection-enabled",
-                    app_row,
-                    "selection-enabled",
-                    BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE
-                );
-
-                app_row.notify ["selected"].connect (() => {
-                    if (get_selected_apps ().length == 0) {
-                        selection_enabled = false;
-                    }
-                });
-
-                app_rows.add (app_row);
-                row_box.append (app_row);
-            }
-        }
-    }
-
-    protected override bool filter (Gtk.ListBoxRow row, string search_text) {
-        var app_row = (AppRow) row;
-
-        return search_text.down () in app_row.app_info.get_id ().down ();
     }
 }

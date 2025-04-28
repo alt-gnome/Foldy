@@ -15,11 +15,5 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-public sealed class Foldy.AppRowRemove : AppRow {
-
-    public override string selected_style_class {
-        get {
-            return "selected-remove";
-        }
-    }
-}
+[GtkTemplate (ui = "/org/altlinux/Foldy/ui/start-page.ui")]
+public sealed class Foldy.StartPage : Adw.NavigationPage {}

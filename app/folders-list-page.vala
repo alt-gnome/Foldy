@@ -18,96 +18,78 @@
 using Foldy.Folder;
 
 [GtkTemplate (ui = "/org/altlinux/Foldy/ui/folders-list-page.ui")]
-public sealed class Foldy.FoldersListPage : BasePage {
+public sealed class Foldy.FoldersListPage : Adw.NavigationPage {
 
-    Settings settings;
+    [GtkChild]
+    unowned Gtk.ListBox list_box_menu;
+    [GtkChild]
+    unowned Gtk.Stack list_stack;
+    [GtkChild]
+    unowned Adw.ButtonRow create_new_button;
 
-    public FoldersListPage (Adw.NavigationView nav_view) {
-        Object (nav_view: nav_view);
-    }
+    Gtk.StringList model;
+
+    public WindowType wintype { get; set; default = WindowType.WIDE; }
+
+    public signal void folder_choosed (string folder_id);
 
     construct {
-        settings = new Settings ("org.gnome.desktop.app-folders");
+        model = ModelManager.get_default ().get_folders_model ();
 
-        settings.changed["folder-children"].connect (refresh);
+        update_model ();
     }
 
-    protected override void row_activated (Gtk.ListBoxRow row) {
-        var folder_row = (FolderRow) row;
+    void update_model () {
+        list_box_menu.bind_model (model, (obj) => {
+            return new FolderMenuRow.with_folder_id (((Gtk.StringObject) obj).string);
+        });
 
-        if (!(folder_row.folder_id in get_folders ())) {
-            refresh ();
+        model.items_changed.connect (refresh);
 
-            Foldy.Application.get_default ().show_message (_("Can't open folder settings"));
-
-            return;
-        }
-
-        open_folder.begin (folder_row.folder_id);
+        refresh ();
     }
 
     [GtkCallback]
-    async void create_new_button_clicked () {
+    void on_wintype_changed () {
+        if (wintype == WindowType.WIDE) {
+            create_new_button.remove_css_class ("suggested-action");
+        } else {
+            create_new_button.add_css_class ("suggested-action");
+        }
+
+        refresh ();
+    }
+
+    void refresh () {
+        if (model.n_items == 0) {
+            list_stack.visible_child_name = "has-not";
+        } else {
+            list_stack.visible_child_name = "has";
+        }
+    }
+
+    [GtkCallback]
+    void create_new_button_clicked () {
         var dialog = new FolderDialog.create ();
         dialog.applyed.connect ((folder_id) => {
-            open_folder.begin (folder_id);
+            for (int i = 0; i < model.n_items; i++) {
+                if ((list_box_menu.get_row_at_index (i) as FolderMenuRow)?.folder_id == folder_id) {
+                    list_box_menu.select_row (list_box_menu.get_row_at_index (i));
+                }
+            }
+            folder_choosed (folder_id);
         });
         dialog.present (this);
     }
 
-    async void open_folder (string new_folder_id) {
-        if (get_folder_apps (new_folder_id).length > 0 || get_folder_categories (new_folder_id).length > 0) {
-            var folder_page = new FolderPage (nav_view, new_folder_id);
-            nav_view.push (folder_page);
-            return;
-        }
-
-        var add_apps_page = new AddAppsPage (nav_view, new_folder_id);
-
-        ulong handler_id = nav_view.popped.connect ((page) => {
-            if (page == add_apps_page) {
-                add_apps_page.done ();
-            }
-        });
-
-        ulong handler_id2 = add_apps_page.done.connect (() => {
-            if (get_folder_apps (new_folder_id).length == 0 && get_folder_categories (new_folder_id).length == 0) {
-                remove_folder (new_folder_id);
-                Idle.add (open_folder.callback);
-
-            } else {
-                var folder_page = new FolderPage (nav_view, new_folder_id);
-                folder_page.shown.connect (() => {
-                    nav_view.replace ({
-                        this,
-                        folder_page
-                    });
-                    Idle.add (open_folder.callback);
-                });
-                nav_view.push (folder_page);
-            }
-        });
-
-        nav_view.push (add_apps_page);
-
-        yield;
-
-        nav_view.disconnect (handler_id);
-        add_apps_page.disconnect (handler_id2);
+    [GtkCallback]
+    Gtk.Align calculate_valign (WindowType wintype) {
+        return wintype == WindowType.WIDE ? Gtk.Align.FILL : Gtk.Align.END;
     }
 
-    protected override void update_list () {
-        row_box.remove_all ();
-
-        foreach (string folder_id in get_folders ()) {
-            row_box.append (new FolderRow (folder_id));
-        }
-    }
-
-    protected override bool filter (Gtk.ListBoxRow row, string search_text) {
-        var folder_row = (FolderRow) row;
-
-        return search_text.down () in folder_row.folder_id.down () ||
-               search_text.down () in get_folder_name (folder_row.folder_id).down ();
+    [GtkCallback]
+    void on_row_activated (Gtk.ListBoxRow row) {
+        list_box_menu.select_row (row);
+        folder_choosed (((FolderMenuRow) row).folder_id);
     }
 }

@@ -23,90 +23,68 @@ public sealed class Foldy.AddAppsPage : BasePage {
     [GtkChild]
     unowned Adw.ButtonRow add_button;
 
-    Gee.ArrayList<AppRow> app_rows = new Gee.ArrayList<AppRow> ();
-
     public string folder_id { get; construct; }
 
-    public signal void done ();
-
-    public AddAppsPage (Adw.NavigationView nav_view, string folder_id) {
-        Object (nav_view: nav_view, folder_id: folder_id);
+    public AddAppsPage (string folder_id) {
+        Object (folder_id: folder_id);
     }
 
     construct {
-        selection_enabled = true;
+        model = new Gtk.NoSelection (
+            new Gtk.FilterListModel (
+                new Gtk.SortListModel (
+                    new AppsModel (folder_id, true),
+                    get_sorter ()
+                ),
+                get_search_filter ()
+            )
+        );
+    }
+
+    Gtk.Sorter get_sorter () {
+        var sorter = new Gtk.StringSorter (new Gtk.PropertyExpression (
+            typeof (AppInfo),
+            null,
+            "display-name"
+        ));
+
+        return sorter;
+    }
+
+    protected override void on_setup (Object obj) {
+        var item = (Gtk.ListItem) obj;
+        item.child = new AppRowAdd ();
+        item.child.add_css_class ("card");
+    }
+
+    protected override void on_bind (Object obj) {
+        var item = (Gtk.ListItem) obj;
+        var row = (AppRowAdd) item.child;
+
+        row.app_info = (AppInfo) item.item;
+
+        bind_property (
+            "selection-enabled",
+            row,
+            "selection-enabled",
+            BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE
+        );
     }
 
     [GtkCallback]
     void add_selected_apps () {
         add_folder_apps (folder_id, get_selected_apps ());
-        selection_enabled = false;
-        done ();
+        close_requested ();
     }
 
-    string[] get_selected_apps () {
-        var row_ids = new Array<string> ();
-
-        foreach (var row in app_rows) {
-            var app_row = (AppRow) row;
-
-            if (app_row.selected) {
-                row_ids.append_val (app_row.app_info.get_id ());
-            }
+    protected override void on_activate (uint position) {
+        if (!selection_enabled) {
+            return;
         }
 
-        return row_ids.data;
-    }
+        var app = (AppInfo) model.get_item (position);
+        app.selected = !app.selected;
 
-    protected override void update_list () {
-        app_rows.clear ();
-        row_box.remove_all ();
-
-        var app_infos = get_unfolder_apps ();
-        var folder_apps = get_folder_apps (folder_id);
-
-        foreach (AppInfo app_info in app_infos) {
-            if (app_info.should_show ()) {
-                var app_row = new AppRowAdd (app_info);
-
-                bind_property (
-                    "selection-enabled",
-                    app_row,
-                    "selection-enabled",
-                    BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE
-                );
-
-                app_row.notify ["selected"].connect (() => {
-                    add_button.sensitive = get_selected_apps ().length != 0;
-                });
-
-                app_rows.add (app_row);
-                row_box.append (app_row);
-
-                if (app_info.get_id () in folder_apps) {
-                    app_row.selected = true;
-                    app_row.sensitive = false;
-                }
-            }
-        }
-    }
-
-    protected override void row_activated (Gtk.ListBoxRow row) {
-        var app_row = (AppRow) row;
-
-        if (app_row.selection_enabled) {
-            if (app_row.sensitive) {
-                app_row.selected = !app_row.selected;
-            }
-
-        } else {
-            new AppInfoDialog (app_row.app_info).present (this);
-        }
-    }
-
-    protected override bool filter (Gtk.ListBoxRow row, string search_text) {
-        var app_row = (AppRow) row;
-
-        return search_text.down () in app_row.app_info.get_id ().down ();
+        add_button.sensitive = get_selected_apps ().length > 0;
     }
 }

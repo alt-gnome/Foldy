@@ -26,8 +26,6 @@ public sealed class Foldy.AppInfoDialog : Adw.Dialog {
     unowned Gtk.Label id_label;
     [GtkChild]
     unowned Gtk.Label description_label;
-    [GtkChild]
-    unowned Gtk.Button launch_button;
 
     public AppInfo app_info { get; construct; }
 
@@ -36,20 +34,9 @@ public sealed class Foldy.AppInfoDialog : Adw.Dialog {
     }
 
     construct {
-        icon_image.gicon = app_info.get_icon ();
-        name_label.label = app_info.get_display_name ();
-        id_label.label = app_info.get_id ();
-        description_label.label = app_info.get_description ();
-
-        launch_button.clicked.connect (() => {
-            try {
-                app_info.launch (null, null);
-
-            } catch (Error e) {
-                warning (e.message);
-            }
-        });
-
-        launch_button.visible = !(Config.APP_ID in app_info.get_id ());
+        icon_image.gicon = app_info.icon;
+        name_label.label = app_info.display_name;
+        id_label.label = app_info.id;
+        description_label.label = app_info.description;
     }
 }

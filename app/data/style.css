@@ -1,17 +1,50 @@
 .selected-add {
-    background-color: alpha(var(--accent-bg-color), 0.6);
-    color: var(--accent-fg-color);
+  background-color: alpha(var(--accent-bg-color), 0.5);
+  color: var(--accent-fg-color);
 }
 
 .selected-remove {
-    background-color: alpha(var(--destructive-bg-color), 0.6);
-    color: var(--destructive-fg-color);
+  background-color: alpha(var(--destructive-bg-color), 0.5);
+  color: var(--destructive-fg-color);
 }
 
 .search-row {
-    padding: 0;
+  padding: 0;
 }
 
 .search-row-entry {
-    border-radius: 0;
+  border-radius: 0;
+}
+
+/* Ridgets */
+
+row {
+  transition: 200ms;
+}
+
+clamp > listview {
+  background: none;
+  padding: 12px;
+  border-spacing: 6px;
+}
+
+clamp > listview > row {
+  padding: 0px;
+  border-radius: 12px;
+}
+
+clamp > listview > row > row:selected {
+  background: none;
+}
+
+clamp > listview > row:selected:hover {
+  background: none;
+}
+
+clamp > listview > row:hover {
+  background: none;
+}
+
+clamp > listview > row:active {
+  background: none;
 }

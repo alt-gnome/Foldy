@@ -19,7 +19,13 @@
 public sealed class Foldy.Window : Adw.ApplicationWindow {
 
     [GtkChild]
+    unowned Adw.NavigationSplitView navigation_split_view;
+    [GtkChild]
     unowned Adw.ToastOverlay toast_overlay;
+    [GtkChild]
+    unowned FolderPages folder_pages;
+
+    public WindowType wintype { get; set; default = WindowType.WIDE; }
 
     const ActionEntry[] ACTION_ENTRIES = {
         { "about", on_about_action },
@@ -101,5 +107,11 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
                 show_message (e.message);
             }
         });
+    }
+
+    [GtkCallback]
+    void on_folder_choosed (string folder_id) {
+        navigation_split_view.show_content = true;
+        folder_pages.open_folder.begin (folder_id);
     }
 }

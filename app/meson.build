@@ -22,22 +22,28 @@ if get_option('with_application')
   )
 
   application_vala_sources = files(
+    'add-apps-dialog.vala',
     'add-apps-page.vala',
     'app-info-dialog.vala',
     'app-row-add.vala',
     'app-row-remove.vala',
     'app-row.vala',
     'application.vala',
+    'apps-model.vala',
     'base-page.vala',
+    'base-row.vala',
     'categories-list.vala',
     'categories-model.vala',
     'category-row.vala',
     'folder-dialog.vala',
+    'folder-menu-row.vala',
     'folder-page.vala',
-    'folder-row.vala',
+    'folder-pages.vala',
     'folders-list-page.vala',
     'main.vala',
     'search-row.vala',
+    'model-manager.vala',
+    'start-page.vala',
     'utils.vala',
     'window.vala',
   )
@@ -80,6 +86,7 @@ if get_option('with_application')
     include_directories: config_h_dir,
     dependencies: application_dependencies,
     c_args: application_c_args,
+    link_args: ['-lm'],
     vala_args: application_vala_args,
     install: true,
   )

@@ -16,17 +16,8 @@ template $FoldyBasePage: Adw.NavigationPage {
         [start]
         ToggleButton search_button {
           icon-name: "system-search-symbolic";
-        }
 
-        [end]
-        MenuButton {
-          styles [
-            "flat",
-          ]
-
-          visible: bind template.show-menu;
-          icon-name: "open-menu-symbolic";
-          menu-model: primary_menu;
+          notify::active => $on_search_button_active();
         }
 
         [end]
@@ -54,6 +45,8 @@ template $FoldyBasePage: Adw.NavigationPage {
           SearchEntry search_entry {
             hexpand: true;
             search-delay: 500;
+
+            text: bind template.search-query bidirectional;
           }
         }
       }
@@ -64,25 +57,23 @@ template $FoldyBasePage: Adw.NavigationPage {
         name: "has";
 
         child: ScrolledWindow {
-          propagate-natural-height: true;
+          propagate-natural-width: true;
           hscrollbar-policy: never;
-          valign: end;
 
-          Adw.Clamp {
-            margin-bottom: 12;
-            margin-end: 12;
-            margin-start: 12;
-            margin-top: 12;
+          Adw.ClampScrollable {
             maximum-size: 500;
 
-            ListBox list_box {
-              styles [
-                "boxed-list-separate",
-              ]
+            ListView list_view {
+              activate => $on_activate();
 
-              valign: start;
-              selection-mode: none;
-              row-activated => $row_activated();
+              single-click-activate: true;
+
+              model: bind template.model;
+
+              factory: SignalListItemFactory {
+                setup => $on_setup();
+                bind => $on_bind();
+              };
             }
           }
         };
@@ -110,6 +101,8 @@ template $FoldyBasePage: Adw.NavigationPage {
       start-widget: Adw.Bin bottom_start {
         halign: start;
         hexpand: false;
+
+        child: bind template.bottom_start_widget;
       };
 
       center-widget: Adw.Clamp {
@@ -118,24 +111,15 @@ template $FoldyBasePage: Adw.NavigationPage {
         maximum-size: 500;
         hexpand: true;
 
-        Adw.Bin bottom_center {}
+        child: bind template.bottom_center_widget;
       };
 
       end-widget: Adw.Bin bottom_end {
         halign: end;
         hexpand: false;
+
+        child: bind template.bottom_end_widget;
       };
     }
-  }
-}
-
-menu primary_menu {
-  section {
-    item (_("Export folders…"), "win.export-folders")
-    item (_("Import folders…"), "win.import-folders")
-  }
-
-  section {
-    item (_("About Folder Manager"), "win.about")
   }
 }

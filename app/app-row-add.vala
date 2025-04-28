@@ -22,8 +22,4 @@ public sealed class Foldy.AppRowAdd : AppRow {
             return "selected-add";
         }
     }
-
-    public AppRowAdd (AppInfo app_info) {
-        Object (app_info: app_info);
-    }
 }

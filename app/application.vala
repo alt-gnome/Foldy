@@ -38,6 +38,10 @@ public sealed class Foldy.Application : Adw.Application {
 
     static construct {
         typeof (FoldersListPage).ensure ();
+        typeof (FolderPages).ensure ();
+        typeof (FolderMenuRow).ensure ();
+        typeof (AppRowAdd).ensure ();
+        typeof (AppRowRemove).ensure ();
     }
 
     construct {
