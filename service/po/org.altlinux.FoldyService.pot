@@ -48,5 +48,5 @@ msgid "ALT Linux Team"
 msgstr ""
 
 #: service/main.vala:50
-msgid "Could not acquire name. Stopping...\n"
+msgid "Could not acquire name. Stopping…\n"
 msgstr ""
