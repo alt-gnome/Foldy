@@ -39,6 +39,8 @@ public sealed class Foldy.AddAppsPage : BasePage {
                 get_search_filter ()
             )
         );
+
+        title = _("Add apps to folder '%s'").printf (get_folder_real_name (folder_id));
     }
 
     Gtk.Sorter get_sorter () {
