@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 14:22+0300\n"
+"POT-Creation-Date: 2025-04-29 03:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Application information"
 msgstr ""
 
-#: app/data/ui/base-page.blp:88
+#: app/data/ui/base-page.blp:84
 msgid "There is nothing to show"
 msgstr ""
 
@@ -119,11 +119,11 @@ msgstr ""
 msgid "Folder categories"
 msgstr ""
 
-#: app/data/ui/folder-dialog.blp:68
+#: app/data/ui/folder-dialog.blp:67
 msgid "Folder name"
 msgstr ""
 
-#: app/data/ui/folder-dialog.blp:130
+#: app/data/ui/folder-dialog.blp:129
 msgid "Close"
 msgstr ""
 
@@ -135,27 +135,27 @@ msgstr ""
 msgid "Remove selected"
 msgstr ""
 
-#: app/data/ui/folders-list-page.blp:5 app/data/ui/folders-list-page.blp:16
+#: app/data/ui/folders-list-page.blp:5 app/data/ui/folders-list-page.blp:15
 msgid "All folders"
 msgstr ""
 
-#: app/data/ui/folders-list-page.blp:58
+#: app/data/ui/folders-list-page.blp:56
 msgid "There is no folders"
 msgstr ""
 
-#: app/data/ui/folders-list-page.blp:83
+#: app/data/ui/folders-list-page.blp:81
 msgid "Create new folder"
 msgstr ""
 
-#: app/data/ui/folders-list-page.blp:93
+#: app/data/ui/folders-list-page.blp:91
 msgid "Export folders…"
 msgstr ""
 
-#: app/data/ui/folders-list-page.blp:94
+#: app/data/ui/folders-list-page.blp:92
 msgid "Import folders…"
 msgstr ""
 
-#: app/data/ui/folders-list-page.blp:98
+#: app/data/ui/folders-list-page.blp:96
 msgid "About Folder Manager"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgstr ""
 msgid "Start with opening or creating a folder"
 msgstr ""
 
-#: app/data/ui/window.blp:34
+#: app/data/ui/window.blp:32
 msgid "Folders"
 msgstr ""
 
