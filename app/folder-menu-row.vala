@@ -113,7 +113,7 @@ public sealed class Foldy.FolderMenuRow : Adw.ActionRow {
     }
 
     void refresh () {
-        title = get_folder_name (folder_id);
+        title = get_folder_real_name (folder_id);
         subtitle = string.joinv (", ", get_folder_categories (folder_id));
     }
 

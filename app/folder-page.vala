@@ -71,13 +71,13 @@ public sealed class Foldy.FolderPage : BasePage {
         refresh ();
     }
     void refresh () {
-        title = get_folder_name (folder_id);
+        title = get_folder_real_name (folder_id);
     }
 
     [GtkCallback]
     void delete_folder () {
         var dialog = new Adw.AlertDialog (_("Are you want to delete folder '%s'?").printf (
-            get_folder_name (folder_id)
+            get_folder_real_name (folder_id)
         ), null);
 
         dialog.add_response ("no", _("Cancel"));

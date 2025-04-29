@@ -87,7 +87,7 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
             case FolderDialogType.EDIT:
                 header_bar_title = _("Folder settings");
                 apply_button_title = _("Apply");
-                start_name = get_folder_name (folder_id);
+                start_name = get_folder_real_name (folder_id);
 
                 folder_name_entry.changed.connect (update_button);
 

@@ -56,7 +56,7 @@ if get_option('with_application')
   ]
 
   libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
-  gio_dep = dependency('gio-2.0', version: '>= 2.76')
+  gio_dep = dependency('gio-unix-2.0', version: '>= 2.76')
   gee_dep = dependency('gee-0.8')
   libportal_dep = dependency('libportal')
   libportal_gtk_dep = dependency('libportal-gtk4')

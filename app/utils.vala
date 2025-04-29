@@ -61,6 +61,31 @@ namespace Foldy {
         public signal void folders_refreshed ();
         public signal void folder_refreshed (string folder_id);
     }
+
+    string get_folder_real_name (string folder_id) {
+        string name = Folder.get_folder_name (folder_id);
+
+        if (name.has_suffix (".directory")) {
+            File? dir_file = null;
+
+            foreach (var dir in Environment.get_system_data_dirs ()) {
+                var tdir_file = File.new_build_filename (dir, "desktop-directories", name);
+
+                if (tdir_file.query_exists ()) {
+                    dir_file = tdir_file;
+                    break;
+                }
+            }
+
+            if (dir_file != null) {
+                var d = new KeyFile ();
+                d.load_from_file (dir_file.peek_path (), KeyFileFlags.NONE);
+                name = d.get_locale_string ("Desktop Entry", "Name", null);
+            }
+        }
+
+        return name;
+    }
 }
 
 namespace Ridgets {
