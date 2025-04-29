@@ -2,16 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foldy package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# David Sultaniiazov <x1z53@alt-gnome.ru>, 2025.
 # Vladimir Vaskov <rirusha@altlinux.org>, 2025.
+# David Sultaniiazov <x1z53@alt-gnome.ru>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-10 18:48+0300\n"
-"PO-Revision-Date: 2025-04-10 18:44+0300\n"
-"Last-Translator: Vladimir Vaskov <rirusha@altlinux.org>\n"
+"POT-Creation-Date: 2025-04-29 23:32+0300\n"
+"PO-Revision-Date: 2025-04-29 23:33+0300\n"
+"Last-Translator: David Sultaniiazov <x1z53@alt-gnome.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Gtranslator 48.0\n"
+
+#: app/add-apps-page.vala:43
+#, c-format
+msgid "Add apps to folder '%s'"
+msgstr "Добавить приложения в папку '%s'"
+
+#: app/application.vala:25
+msgid "Print version information and exit"
+msgstr "Отобразить информацию о версии и выйти"
+
+#: app/application.vala:26
+msgid "Save folders to file"
+msgstr "Сохранить папки в файл"
+
+#: app/application.vala:27
+msgid "Restore folders from file"
+msgstr "Восстановить папки из файла"
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.desktop.in:4
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:3
-msgid "Folder manager"
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:3 app/window.vala:69
+msgid "Folder Manager"
 msgstr "Менеджер папок"
 
 #: app/data/org.altlinux.Foldy.desktop.in:5
@@ -43,7 +60,7 @@ msgstr "папка"
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:4
 #: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:3
-msgid "Folder manager (Devel)"
+msgid "Folder Manager (Devel)"
 msgstr "Менеджер папок (Разраб.)"
 
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:5
@@ -54,62 +71,15 @@ msgstr "Менеджер папок для мобильных устройств
 msgid "Folder manager for mobile devices. Development version"
 msgstr "Менеджер папок для мобильных устройств. Версия разработчика"
 
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:37
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:47
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:53
-msgid "Some bug fixed"
-msgstr "Исправления багов"
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:38
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
-msgid "Improved localization"
-msgstr "Улучшена локализация"
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:43
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
-msgid "Added service"
-msgstr "Добавлен сервис"
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:48
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:64
-msgid "Added search in category list"
-msgstr "Добавлен поиск в списке категорий"
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:55
-msgid "Vladimir Vaskov"
-msgstr "Владимир Васьков"
-
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:37
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
-msgid "Fix metadata"
-msgstr "Исправлены метаданные"
-
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:48
-msgid "Some visual fixes"
-msgstr "Визуальные улучшения"
-
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:71
-msgid "ALT Linux Team"
-msgstr "ALT Linux Team"
-
-#: app/data/ui/add-apps-page.blp:5
-msgid "Applications without folder"
-msgstr "Приложения вне папок"
-
-#: app/data/ui/add-apps-page.blp:20
+#: app/data/ui/add-apps-page.blp:18
 msgid "Add selected applications"
 msgstr "Добавить выбранные приложения"
 
-#: app/data/ui/app-info-dialog.blp:11
+#: app/data/ui/app-info-dialog.blp:12
 msgid "Application information"
 msgstr "Информация о приложении"
 
-#. valign: end;
-#: app/data/ui/app-info-dialog.blp:78
-msgid "Launch"
-msgstr "Запустить"
-
-#: app/data/ui/base-page.blp:97
+#: app/data/ui/base-page.blp:84
 msgid "There is nothing to show"
 msgstr "Нечего показывать"
 
@@ -117,9 +87,13 @@ msgstr "Нечего показывать"
 msgid "Folder categories"
 msgstr "Категории папки"
 
-#: app/data/ui/folder-dialog.blp:45
+#: app/data/ui/folder-dialog.blp:67
 msgid "Folder name"
 msgstr "Имя папки"
+
+#: app/data/ui/folder-dialog.blp:129
+msgid "Close"
+msgstr "Закрыть"
 
 #: app/data/ui/folder-page.blp:43
 msgid "Add apps"
@@ -129,69 +103,104 @@ msgstr "Добавить приложения"
 msgid "Remove selected"
 msgstr "Удалить выбранные"
 
-#: app/data/ui/folders-list-page.blp:5
+#: app/data/ui/folders-list-page.blp:5 app/data/ui/folders-list-page.blp:15
 msgid "All folders"
 msgstr "Все папки"
 
-#: app/data/ui/folders-list-page.blp:19
+#: app/data/ui/folders-list-page.blp:56
+msgid "There is no folders"
+msgstr "Нет папок"
+
+#: app/data/ui/folders-list-page.blp:81
 msgid "Create new folder"
 msgstr "Создать новую папку"
 
-#: app/folder-dialog.vala:55
+#: app/data/ui/folders-list-page.blp:91
+msgid "Export folders…"
+msgstr "Экпортировать папки…"
+
+#: app/data/ui/folders-list-page.blp:92
+msgid "Import folders…"
+msgstr "Импортировать папки…"
+
+#: app/data/ui/folders-list-page.blp:96
+msgid "About Folder Manager"
+msgstr "О Менеджере папок"
+
+#: app/data/ui/start-page.blp:5
+msgid "Start Page"
+msgstr "Стартовая страница"
+
+#: app/data/ui/start-page.blp:14
+msgid "Hello!"
+msgstr "Привет!"
+
+#: app/data/ui/start-page.blp:15
+msgid "Start with opening or creating a folder"
+msgstr "Начните с открытия или создания папки"
+
+#: app/data/ui/window.blp:32
+msgid "Folders"
+msgstr "Папки"
+
+#: app/folder-dialog.vala:82
 msgid "Folder creation"
 msgstr "Создание папки"
 
-#: app/folder-dialog.vala:56
+#: app/folder-dialog.vala:83
 msgid "Create"
 msgstr "Создать"
 
-#: app/folder-dialog.vala:57
+#: app/folder-dialog.vala:84
 msgid "Unnamed Folder"
 msgstr "Без имени"
 
-#: app/folder-dialog.vala:64
+#: app/folder-dialog.vala:88
 msgid "Folder settings"
 msgstr "Настройки папки"
 
-#: app/folder-dialog.vala:65
+#: app/folder-dialog.vala:89
 msgid "Apply"
 msgstr "Принять"
 
-#: app/folder-dialog.vala:141
+#: app/folder-dialog.vala:197
 msgid "Name can't be empty"
 msgstr "Имя не может быть пустым"
 
-#: app/folder-dialog.vala:147
+#: app/folder-dialog.vala:203
 msgid "Categories can't be more than 2"
 msgstr "Категорий не может быть больше 2"
 
-#: app/folder-page.vala:91
+#: app/folder-menu-row.vala:49
+msgid "Delete folder"
+msgstr "Удалить папку"
+
+#: app/folder-page.vala:79
 #, c-format
 msgid "Are you want to delete folder '%s'?"
 msgstr "Вы хотите удалить папку '%s'?"
 
-#: app/folder-page.vala:95
+#: app/folder-page.vala:83
 msgid "Cancel"
 msgstr "Отмена"
 
-#: app/folder-page.vala:96
+#: app/folder-page.vala:84
 msgid "Delete"
 msgstr "Удалить"
-
-#: app/folder-page.vala:160
-#, c-format
-msgid "Folder '%s'"
-msgstr "Папка '%s'"
-
-#: app/folders-list-page.vala:41
-msgid "Can't open folder settings"
-msgstr "Не удалось открыть настройки папки"
 
 #: app/main.vala:23
 msgid "Foldy"
 msgstr "Папочка"
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: app/window.vala:62
+#: app/window.vala:80
 msgid "translator-credits"
-msgstr "David Sultaniiazov <x1z53@корсаков.рус>"
+msgstr "David Sultaniiazov <x1z53@alt-gnome.ru>"
+
+#: app/window.vala:92
+msgid "Save folders file"
+msgstr "Сохранить файл папок"
+
+#: app/window.vala:124
+msgid "Open folders file"
+msgstr "Открыть файл папок"
