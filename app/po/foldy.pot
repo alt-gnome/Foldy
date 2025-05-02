@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-29 23:32+0300\n"
+"POT-Creation-Date: 2025-05-02 18:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,12 +36,11 @@ msgstr ""
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.desktop.in:4
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:3 app/window.vala:69
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:3 app/window.vala:71
 msgid "Folder Manager"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.desktop.in:5
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:9
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:5
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:9
 msgid "Folder manager for mobile devices"
@@ -55,7 +54,6 @@ msgstr ""
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:4
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:3
 msgid "Folder Manager (Devel)"
 msgstr ""
 
@@ -63,8 +61,49 @@ msgstr ""
 msgid "Folder manager for mobile devices (Development version)"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:5
-msgid "Folder manager for mobile devices. Development version"
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
+msgid "Improved layout for desktop"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:43
+msgid "A lot of optimization for mobile devices"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:44
+msgid "Bug fixes and more"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:49
+msgid "Fixed excluded apps"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
+msgid "Fix metadata"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:65
+msgid "Some bug fixed"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:60
+msgid "Some visual fixes"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:66
+msgid "Improved localization"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:71
+msgid "Added service"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:76
+msgid "Added search in category list"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:84
+msgid "ALT Linux Team"
 msgstr ""
 
 #: app/data/ui/add-apps-page.blp:18
@@ -97,6 +136,10 @@ msgstr ""
 
 #: app/data/ui/folder-page.blp:64
 msgid "Remove selected"
+msgstr ""
+
+#: app/data/ui/folder-rename-dialog.blp:30
+msgid "New name"
 msgstr ""
 
 #: app/data/ui/folders-list-page.blp:5 app/data/ui/folders-list-page.blp:15
@@ -139,36 +182,40 @@ msgstr ""
 msgid "Folders"
 msgstr ""
 
-#: app/folder-dialog.vala:82
+#: app/folder-dialog.vala:80
 msgid "Folder creation"
 msgstr ""
 
-#: app/folder-dialog.vala:83
+#: app/folder-dialog.vala:81
 msgid "Create"
 msgstr ""
 
-#: app/folder-dialog.vala:84
+#: app/folder-dialog.vala:82
 msgid "Unnamed Folder"
 msgstr ""
 
-#: app/folder-dialog.vala:88
+#: app/folder-dialog.vala:86
 msgid "Folder settings"
 msgstr ""
 
-#: app/folder-dialog.vala:89
+#: app/folder-dialog.vala:87
 msgid "Apply"
 msgstr ""
 
-#: app/folder-dialog.vala:197
+#: app/folder-dialog.vala:203
 msgid "Name can't be empty"
 msgstr ""
 
-#: app/folder-dialog.vala:203
+#: app/folder-dialog.vala:209
 msgid "Categories can't be more than 2"
 msgstr ""
 
 #: app/folder-menu-row.vala:49
-msgid "Delete folder"
+msgid "Rename"
+msgstr ""
+
+#: app/folder-menu-row.vala:50 app/folder-page.vala:84
+msgid "Delete"
 msgstr ""
 
 #: app/folder-page.vala:79
@@ -180,8 +227,13 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: app/folder-page.vala:84
-msgid "Delete"
+#: app/folder-rename-dialog.vala:44
+#, c-format
+msgid "Renaming folder '%s'"
+msgstr ""
+
+#: app/folder-rename-dialog.vala:64
+msgid "Name cannot be empty"
 msgstr ""
 
 #: app/main.vala:23
@@ -189,14 +241,14 @@ msgid "Foldy"
 msgstr ""
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: app/window.vala:80
+#: app/window.vala:82
 msgid "translator-credits"
 msgstr ""
 
-#: app/window.vala:92
+#: app/window.vala:94
 msgid "Save folders file"
 msgstr ""
 
-#: app/window.vala:124
+#: app/window.vala:126
 msgid "Open folders file"
 msgstr ""

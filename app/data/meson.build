@@ -13,8 +13,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: app_id + '.metainfo.xml.in',
-  output: app_id + '.metainfo.xml',
+  input: app_id_orig + '.metainfo.xml.in',
+  output: app_id_orig + '.metainfo.xml',
   po_dir: '../po',
   install: true,
   install_dir: get_option('datadir') / 'metainfo',
