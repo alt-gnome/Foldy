@@ -30,6 +30,8 @@ public sealed class Foldy.FolderPages : Adw.Bin {
 
     public WindowType wintype { get; set; default = WindowType.WIDE; }
 
+    public signal void nothing_to_show ();
+
     construct {
         folders_model = ModelManager.get_default ().get_folders_model ();
         folders_model.items_changed.connect (() => {
@@ -135,6 +137,14 @@ public sealed class Foldy.FolderPages : Adw.Bin {
                 remove_folder (folder_id);
                 reset ();
             }
+        }
+
+        if (
+            navigation_view.navigation_stack.get_n_items () == 0
+            || (navigation_view.navigation_stack.get_n_items () == 1
+                && navigation_view.navigation_stack.get_item (0) is StartPage)
+        ) {
+            nothing_to_show ();
         }
     }
 }

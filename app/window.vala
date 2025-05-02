@@ -23,6 +23,8 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
     [GtkChild]
     unowned Adw.ToastOverlay toast_overlay;
     [GtkChild]
+    unowned FoldersListPage folders_list_page;
+    [GtkChild]
     unowned FolderPages folder_pages;
 
     public WindowType wintype { get; set; default = WindowType.WIDE; }
@@ -151,5 +153,10 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
     void on_folder_choosed (string folder_id) {
         navigation_split_view.show_content = true;
         folder_pages.open_folder.begin (folder_id);
+    }
+
+    [GtkCallback]
+    void on_nothing_to_show () {
+        folders_list_page.unselect_all ();
     }
 }

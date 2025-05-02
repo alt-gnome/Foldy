@@ -47,6 +47,8 @@ public sealed class Foldy.FoldersListPage : Adw.NavigationPage {
         model.items_changed.connect (refresh);
 
         refresh ();
+
+        list_box_menu.selection_mode = Gtk.SelectionMode.NONE;
     }
 
     [GtkCallback]
@@ -66,6 +68,10 @@ public sealed class Foldy.FoldersListPage : Adw.NavigationPage {
         } else {
             list_stack.visible_child_name = "has";
         }
+    }
+
+    public void unselect_all () {
+        list_box_menu.selection_mode = Gtk.SelectionMode.NONE;
     }
 
     [GtkCallback]
@@ -89,6 +95,7 @@ public sealed class Foldy.FoldersListPage : Adw.NavigationPage {
 
     [GtkCallback]
     void on_row_activated (Gtk.ListBoxRow row) {
+        list_box_menu.selection_mode = Gtk.SelectionMode.SINGLE;
         list_box_menu.select_row (row);
         folder_choosed (((FolderMenuRow) row).folder_id);
     }
