@@ -39,6 +39,7 @@ if get_option('with_application')
     'folder-menu-row.vala',
     'folder-page.vala',
     'folder-pages.vala',
+    'folder-rename-dialog.vala',
     'folders-list-page.vala',
     'main.vala',
     'search-row.vala',

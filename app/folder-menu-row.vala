@@ -46,7 +46,8 @@ public sealed class Foldy.FolderMenuRow : Adw.ActionRow {
         notify["folder-id"].connect (on_folder_id_changed);
 
         var menu = new Menu ();
-        menu.append (_("Delete folder"), "row.delete-folder");
+        menu.append (_("Rename"), "row.rename");
+        menu.append (_("Delete"), "row.delete");
 
         popover = new Gtk.PopoverMenu.from_model (menu) {
             has_arrow = false,
@@ -63,7 +64,14 @@ public sealed class Foldy.FolderMenuRow : Adw.ActionRow {
             remove_css_class ("has-open-popup");
         });
 
-        install_action ("row.delete-folder", null, (widget, action_name) => {
+        install_action ("row.rename", null, (widget, action_name) => {
+            var row = (FolderMenuRow) widget;
+
+            var dialog = new RenameDialog (row.folder_id);
+            dialog.present (row);
+        });
+
+        install_action ("row.delete", null, (widget, action_name) => {
             var row = (FolderMenuRow) widget;
             remove_folder (row.folder_id);
         });
