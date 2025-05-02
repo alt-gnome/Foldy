@@ -29,10 +29,20 @@
   <content_rating type="oars-1.1"></content_rating>
   <screenshots>
     <screenshot type="default">
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v3.8/app/data/images/1-image.png</image>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/1-start-page</image>
+      <caption>Start page</caption>
     </screenshot>
     <screenshot>
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v3.8/app/data/images/2-image.png</image>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/2-folder.png</image>
+      <caption>Opened folder</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/3-narrow-window.png</image>
+      <caption>Mobile window</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/4-edit-folder.png</image>
+      <caption>Edit folder dialog</caption>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>

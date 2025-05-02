@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 18:25+0300\n"
+"POT-Creation-Date: 2025-05-02 18:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,48 +61,64 @@ msgstr ""
 msgid "Folder manager for mobile devices (Development version)"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:33
+msgid "Start page"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:37
+msgid "Opened folder"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:41
+msgid "Mobile window"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:45
+msgid "Edit folder dialog"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:52
 msgid "Improved layout for desktop"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:43
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:53
 msgid "A lot of optimization for mobile devices"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:44
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
 msgid "Bug fixes and more"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:49
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
 msgid "Fixed excluded apps"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:64
 msgid "Fix metadata"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:65
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:69
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:75
 msgid "Some bug fixed"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:60
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:70
 msgid "Some visual fixes"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:66
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:76
 msgid "Improved localization"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:71
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:81
 msgid "Added service"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:76
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:86
 msgid "Added search in category list"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:84
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:94
 msgid "ALT Linux Team"
 msgstr ""
 
@@ -138,7 +154,7 @@ msgstr ""
 msgid "Remove selected"
 msgstr ""
 
-#: app/data/ui/folder-rename-dialog.blp:30
+#: app/data/ui/folder-rename-dialog.blp:32
 msgid "New name"
 msgstr ""
 
