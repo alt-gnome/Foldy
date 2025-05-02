@@ -122,6 +122,14 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
         search_entry.search_changed.connect (() => {
             categories_list.refilter (search_entry.text);
         });
+
+        folder_name_entry.entry_activated.connect (() => {
+            if (button_stack.visible_child_name == "close") {
+                on_close_button_activate ();
+            } else {
+                on_apply_button_activate ();
+            }
+        });
     }
 
     void update_button_revealer () {
