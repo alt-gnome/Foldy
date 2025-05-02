@@ -24,8 +24,6 @@ public abstract class Foldy.BasePage : Adw.NavigationPage {
     unowned Gtk.SearchEntry search_entry;
     [GtkChild]
     unowned Gtk.Stack list_stack;
-    [GtkChild]
-    unowned Gtk.Revealer search_revealer;
 
     public Gtk.NoSelection model { get; set; }
 

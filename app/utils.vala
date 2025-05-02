@@ -79,8 +79,14 @@ namespace Foldy {
 
             if (dir_file != null) {
                 var d = new KeyFile ();
-                d.load_from_file (dir_file.peek_path (), KeyFileFlags.NONE);
-                name = d.get_locale_string ("Desktop Entry", "Name", null);
+
+                try {
+                    d.load_from_file (dir_file.peek_path (), KeyFileFlags.NONE);
+                    name = d.get_locale_string ("Desktop Entry", "Name", null);
+
+                } catch (Error e) {
+                    warning (e.message);
+                }
             }
         }
 

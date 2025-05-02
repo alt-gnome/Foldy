@@ -25,8 +25,6 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
     [GtkChild]
     unowned Adw.EntryRow folder_name_entry;
     [GtkChild]
-    unowned Gtk.ListBox list_box;
-    [GtkChild]
     unowned Gtk.ScrolledWindow scrolled_window;
     [GtkChild]
     unowned Gtk.Revealer go_top_button_revealer;
