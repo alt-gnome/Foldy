@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $FoldyRenameDialog : Adw.Dialog {
+template $FoldyRenameDialog: Adw.Dialog {
   content-width: 360;
 
   Adw.ToolbarView {
@@ -19,7 +19,9 @@ template $FoldyRenameDialog : Adw.Dialog {
         maximum-size: 500;
 
         ListBox {
-          styles ["boxed-list"]
+          styles [
+            "boxed-list",
+          ]
 
           selection-mode: none;
           vexpand: false;
@@ -28,7 +30,6 @@ template $FoldyRenameDialog : Adw.Dialog {
           Adw.EntryRow entry_row {
             show-apply-button: true;
             title: _("New name");
-
             changed => $on_changed();
             entry-activated => $on_apply();
             apply => $on_apply();
