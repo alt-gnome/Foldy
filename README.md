@@ -34,5 +34,18 @@ python3 build-tools/install_meson_deps.py
 #### Install:
 ```
 meson setup _build
+sudo meson install -C _build
+```
+
+#### Install local:
+> [!TIP]
+> You need set `LD_LIBRARY_PATH=~/.local/lib64` so that there are no problems finding the library.
+```
+meson setup _build --prefix=~/.local
 meson install -C _build
+```
+
+#### Uninstall:
+```
+sudo ninja uninstall -C _build
 ```
