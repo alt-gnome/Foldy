@@ -4,6 +4,9 @@ project(
   version: '3.12',
   meson_version: '>= 1.0.0',
   license: 'GPL-3.0-or-later',
+  default_options: [
+    'prefix=/usr',
+  ]
 )
 
 i18n = import('i18n')
