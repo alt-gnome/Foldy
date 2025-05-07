@@ -89,7 +89,7 @@ jobs:
           submodules: true
 
       - name: Install dependencies
-        run: python3 build-tools/install_meson_deps.py
+        run: apt-get install $(python3 build-tools/get_meson_deps.py)
 
       - name: Setup
         run: meson setup _build --prefix=/usr -Dis_devel=true

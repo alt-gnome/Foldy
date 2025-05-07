@@ -26,9 +26,9 @@
 
 #### Install dependencies:
 > [!NOTE]
-> This script works only with ALT Linux.
+> This command works only with ALT Linux, but you can install dependencies manually.
 ```
-python3 build-tools/install_meson_deps.py
+sudo apt-get install $(python3 build-tools/get_meson_deps.py)
 ```
 
 #### Install:
