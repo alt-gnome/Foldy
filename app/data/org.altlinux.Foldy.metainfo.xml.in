@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <name>Folder Manager</name>
   <id>org.altlinux.Foldy</id>
+  <icon type="stock">org.altlinux.Foldy</icon>
+  <name>Folder Manager</name>
   <summary>Folder manager for mobile devices</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -96,4 +97,13 @@
   <kudos>
     <kudo>ModernToolkit</kudo>
   </kudos>
+  <icon type="stock">org.altlinux.Foldy</icon>
+  <categories>
+    <category>Utility</category>
+    <category>GNOME</category>
+    <category>GTK</category>
+  </categories>
+  <provides>
+    <binary>foldy</binary>
+  </provides>
 </component>
