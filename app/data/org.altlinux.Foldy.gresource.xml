@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="/org/altlinux/Foldy/">
     <file>style.css</file>
+    <file>org.altlinux.Foldy.metainfo.xml</file>
     <file preprocess="xml-stripblanks">ui/add-apps-page.ui</file>
     <file preprocess="xml-stripblanks">ui/app-info-dialog.ui</file>
     <file preprocess="xml-stripblanks">ui/app-row.ui</file>
