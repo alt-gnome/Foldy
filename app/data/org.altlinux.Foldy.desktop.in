@@ -3,10 +3,12 @@
 Name=Folder Manager
 Comment=Folder manager for mobile devices
 # Translators: keep number of ';'
-Keywords=folder
+Keywords=folder;folders;
 Exec=foldy
 Icon=org.altlinux.Foldy
 Terminal=false
 Type=Application
 Categories=Utility;GNOME;GTK;
 StartupNotify=true
+X-SingleMainWindow=true
+X-Purism-FormFactor=Workstation;Mobile;
