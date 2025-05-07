@@ -32,6 +32,8 @@ public sealed class Foldy.FolderPages : Adw.Bin {
 
     public signal void nothing_to_show ();
 
+    public signal void folder_opened (string folder_id);
+
     construct {
         folders_model = ModelManager.get_default ().get_folders_model ();
         folders_model.items_changed.connect (() => {
@@ -44,29 +46,33 @@ public sealed class Foldy.FolderPages : Adw.Bin {
             get_folder_categories (folder_id).length > 0) {
             var folder_page = new FolderPage (folder_id);
             show_only (folder_page);
-            return;
+
+        } else {
+            var dialog = new AddAppsDialog (folder_id);
+
+            ulong handler_id2 = dialog.closed.connect (() => {
+                if (get_folder_apps (folder_id).length == 0 && get_folder_categories (folder_id).length == 0) {
+                    remove_folder (folder_id);
+                    reset ();
+
+                } else {
+                    var folder_page = new FolderPage (folder_id);
+                    show_only (folder_page);
+                }
+
+                Idle.add (open_folder.callback);
+            });
+
+            dialog.present (this);
+
+            yield;
+
+            folder_opened (folder_id);
+
+            dialog.disconnect (handler_id2);
         }
 
-        var dialog = new AddAppsDialog (folder_id);
-
-        ulong handler_id2 = dialog.closed.connect (() => {
-            if (get_folder_apps (folder_id).length == 0 && get_folder_categories (folder_id).length == 0) {
-                remove_folder (folder_id);
-                reset ();
-
-            } else {
-                var folder_page = new FolderPage (folder_id);
-                show_only (folder_page);
-            }
-
-            Idle.add (open_folder.callback);
-        });
-
-        dialog.present (this);
-
-        yield;
-
-        dialog.disconnect (handler_id2);
+        folder_opened (folder_id);
     }
 
     void reset () {

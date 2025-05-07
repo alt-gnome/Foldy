@@ -157,4 +157,9 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
     void on_nothing_to_show () {
         folders_list_page.unselect_all ();
     }
+
+    [GtkCallback]
+    void on_folder_opened (string folder_id) {
+        folders_list_page.select (folder_id);
+    }
 }

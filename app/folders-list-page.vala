@@ -74,6 +74,17 @@ public sealed class Foldy.FoldersListPage : Adw.NavigationPage {
         list_box_menu.selection_mode = Gtk.SelectionMode.NONE;
     }
 
+    public void select (string folder_id) {
+        list_box_menu.selection_mode = Gtk.SelectionMode.SINGLE;
+
+        for (int i = 0; i < model.n_items; i++) {
+            if (((FolderMenuRow) list_box_menu.get_row_at_index (i)).folder_id == folder_id) {
+                list_box_menu.select_row (list_box_menu.get_row_at_index (i));
+                return;
+            }
+        }
+    }
+
     [GtkCallback]
     void create_new_button_clicked () {
         var dialog = new FolderDialog.create ();
