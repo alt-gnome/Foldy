@@ -48,6 +48,13 @@
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
+    <release version="4.1" date="2025-09-08">
+      <description>
+        <p>Hotfix</p>
+        <p>Some improvements in metainfo and desktop files</p>
+        <p>Fixed bug with unselected row on folder creation</p>
+      </description>
+    </release>
     <release version="4.0" date="2025-09-07">
       <description>
         <p>Improved layout for desktop</p>
