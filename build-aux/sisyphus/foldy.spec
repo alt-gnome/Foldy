@@ -31,8 +31,11 @@ BuildRequires: pkgconfig(gio-unix-2.0) >= %glib_min_version
 BuildRequires: pkgconfig(gee-0.8)
 BuildRequires: vapi(gee-0.8)
 BuildRequires: gir(Gee) = 0.8
+BuildRequires: pkgconfig(libportal)
+BuildRequires: pkgconfig(libportal-gtk4)
 BuildRequires: blueprint-compiler
 BuildRequires: gobject-introspection-devel
+BuildRequires: gettext-devel
 %{?_enable_check:BuildRequires: appstream desktop-file-utils}
 
 %description

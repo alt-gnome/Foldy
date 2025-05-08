@@ -65,7 +65,7 @@ namespace Foldy {
         return categiries.to_array ();
     }
 
-    public Gee.HashSet<string> get_using_categories () {
+    Gee.HashSet<string> get_using_categories () {
         var result = new Gee.HashSet<string> ();
 
         foreach (var folder_id in get_folders ()) {
@@ -75,7 +75,7 @@ namespace Foldy {
         return result;
     }
 
-    public Gee.ArrayList<string> get_categories_by_app_id (string app_id) {
+    Gee.ArrayList<string> get_categories_by_app_id (string app_id) {
         var categories = new Gee.ArrayList<string> ();
 
         var desktop = new DesktopAppInfo (app_id);
@@ -104,6 +104,10 @@ namespace Foldy {
         var app_ids = new Array<string> ();
 
         foreach (AppInfo app_info in AppInfo.get_all ()) {
+            if (!app_info.should_show ()) {
+                continue;
+            }
+
             string app_id = app_info.get_id ();
 
             if (category in get_categories_by_app_id (app_id)) {
@@ -161,5 +165,98 @@ namespace Foldy {
             }
         }
         Folder.add_folder_apps (folder_id, need_to_add.to_array ());
+    }
+
+    public void save_folders (string filepath) throws Error {
+        var file = File.new_for_path (filepath);
+
+        if (file.query_exists ()) {
+            file.delete ();
+        }
+
+        var keyfile = new KeyFile ();
+
+        foreach (var folder_id in get_folders ()) {
+            keyfile.set_string (folder_id, "name", Folder.get_folder_name (folder_id));
+            keyfile.set_string_list (folder_id, "apps", Folder.get_folder_apps (folder_id));
+            keyfile.set_string_list (folder_id, "categories", Folder.get_folder_categories (folder_id));
+            keyfile.set_string_list (folder_id, "excluded-apps", Folder.get_folder_excluded_apps (folder_id));
+            keyfile.set_boolean (folder_id, "translate", Folder.get_folder_translate (folder_id));
+        }
+
+        keyfile.save_to_file (file.peek_path ());
+    }
+
+    public void restore_folders (string filepath, bool owerwrite) throws Error {
+        var file = File.new_for_path (filepath);
+
+        var keyfile = new KeyFile ();
+        keyfile.load_from_file (file.peek_path (), KeyFileFlags.NONE);
+
+        var current_folders = get_folders ();
+
+        foreach (var folder_id in keyfile.get_groups ()) {
+            if (folder_id in current_folders && !owerwrite) {
+                continue;
+            }
+
+            create_folder (folder_id, keyfile.get_string (folder_id, "name"));
+            Foldy.sync ();
+
+            set_folder_categories (folder_id, keyfile.get_string_list (folder_id, "categories"));
+            Foldy.sync ();
+
+            set_folder_apps (folder_id, keyfile.get_string_list (folder_id, "apps"));
+            Foldy.sync ();
+
+            set_folder_excluded_apps (folder_id, keyfile.get_string_list (folder_id, "excluded-apps"));
+            Foldy.sync ();
+
+            set_folder_translate (folder_id, keyfile.get_boolean (folder_id, "translate"));
+        }
+    }
+
+    public async void restore_folders_async (string filepath, bool owerwrite) throws Error {
+        var file = File.new_for_path (filepath);
+
+        var keyfile = new KeyFile ();
+        keyfile.load_from_file (file.peek_path (), KeyFileFlags.NONE);
+
+        var current_folders = get_folders ();
+
+        foreach (var folder_id in keyfile.get_groups ()) {
+            if (folder_id in current_folders && !owerwrite) {
+                continue;
+            }
+
+            create_folder (folder_id, keyfile.get_string (folder_id, "name"));
+            Foldy.sync ();
+
+            Idle.add (restore_folders_async.callback);
+            yield;
+
+            set_folder_categories (folder_id, keyfile.get_string_list (folder_id, "categories"));
+            Foldy.sync ();
+
+            Idle.add (restore_folders_async.callback);
+            yield;
+
+            set_folder_apps (folder_id, keyfile.get_string_list (folder_id, "apps"));
+            Foldy.sync ();
+
+            Idle.add (restore_folders_async.callback);
+            yield;
+
+            set_folder_excluded_apps (folder_id, keyfile.get_string_list (folder_id, "excluded-apps"));
+            Foldy.sync ();
+
+            Idle.add (restore_folders_async.callback);
+            yield;
+
+            set_folder_translate (folder_id, keyfile.get_boolean (folder_id, "translate"));
+
+            Idle.add (restore_folders_async.callback);
+            yield;
+        }
     }
 }

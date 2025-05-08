@@ -23,131 +23,87 @@ public abstract class Foldy.BasePage : Adw.NavigationPage {
     [GtkChild]
     unowned Gtk.SearchEntry search_entry;
     [GtkChild]
-    unowned Gtk.ToggleButton selection_button;
-    [GtkChild]
     unowned Gtk.Stack list_stack;
-    [GtkChild]
-    unowned Gtk.ListBox list_box;
-    [GtkChild]
-    unowned Adw.Bin bottom_start;
-    [GtkChild]
-    unowned Adw.Bin bottom_center;
-    [GtkChild]
-    unowned Adw.Bin bottom_end;
-    [GtkChild]
-    unowned Gtk.Revealer search_revealer;
 
-    public Adw.NavigationView nav_view { get; construct; }
+    public Gtk.NoSelection model { get; set; }
 
-    public Gtk.Widget bottom_start_widget {
-        get {
-            return bottom_start.child;
-        }
-        set {
-            bottom_start.child = value;
-        }
-    }
+    public Gtk.Widget bottom_start_widget { get; set; }
 
-    public Gtk.Widget bottom_center_widget {
-        get {
-            return bottom_center.child;
-        }
-        set {
-            bottom_center.child = value;
-        }
-    }
+    public Gtk.Widget bottom_center_widget { get; set; }
 
-    public Gtk.Widget bottom_end_widget {
-        get {
-            return bottom_end.child;
-        }
-        set {
-            bottom_end.child = value;
-        }
-    }
-
-    public Gtk.ListBox row_box {
-        get {
-            return list_box;
-        }
-    }
+    public Gtk.Widget bottom_end_widget { get; set; }
 
     public bool can_select { get; set; default = false; }
 
     public bool selection_enabled { get; set; default = false; }
 
-    uint32 total_visible_rows = 0;
+    public string search_query { get; set; default = ""; }
+
+    public signal void close_requested ();
 
     construct {
-        AppInfoMonitor.get ().changed.connect (refresh);
-
-        assert (nav_view != null);
-
-        showing.connect (() => {
-            can_pop = false;
+        notify["model"].connect (() => {
+            model.items_changed.connect (update_has_state);
+            update_has_state ();
         });
 
-        shown.connect (() => {
-            can_pop = true;
-        });
-
-        hiding.connect (() => {
-            can_pop = false;
-        });
-
-        hidden.connect (() => {
-            can_pop = true;
-        });
-
-        search_revealer.notify["reveal-child"].connect (() => {
-            if (search_revealer.reveal_child) {
-                Foldy.Application.get_default ().active_window.focus_widget = search_entry;
-            }
-        });
-
-        search_entry.search_changed.connect (() => {
-            apply_filter ();
-        });
-
-        search_button.notify["active"].connect (() => {
-            if (!search_button.active) {
-                search_entry.text = "";
-            }
-        });
-
-        list_box.set_filter_func ((row) => {
-            if (filter (row, search_entry.text)) {
-                total_visible_rows += 1;
-                return true;
-            } else {
-                return false;
-            }
-        });
-
-        refresh ();
+        //  var lp = new Gtk.GestureLongPress ();
+        //  lp.pressed.connect ((x, y) => {
+        //      if (!selection_enabled) {
+        //          selection_enabled = true;
+        //      }
+        //  });
+        //  ((Gtk.Widget) this).add_controller (lp);
     }
 
-    public void refresh () {
-        update_list ();
-        apply_filter ();
+    void update_has_state () {
+        list_stack.visible_child_name = model.get_n_items () != 0 ? "has" : "has-not";
     }
 
-    protected abstract void update_list ();
+    protected string[] get_selected_apps () {
+        var arr = new Gee.HashSet<string> ();
+
+        for (int i = 0; i < model.get_n_items (); i++) {
+            var app = (AppInfo) model.get_item (i);
+            if (app.selected) {
+                arr.add (app.id);
+            }
+        }
+
+        return arr.to_array ();
+    }
+
+    protected Gtk.Filter get_search_filter () {
+        var filter = new Gtk.StringFilter (new Gtk.PropertyExpression (
+            typeof (AppInfo),
+            null,
+            "display-name"
+        ));
+        filter.bind_property (
+            "search",
+            this,
+            "search-query",
+            GLib.BindingFlags.BIDIRECTIONAL
+        );
+
+        return filter;
+    }
 
     [GtkCallback]
-    protected abstract void row_activated (Gtk.ListBoxRow row);
+    protected abstract void on_setup (Object obj);
 
-    void apply_filter () {
-        total_visible_rows = 0;
+    [GtkCallback]
+    protected abstract void on_bind (Object obj);
 
-        list_box.invalidate_filter ();
+    [GtkCallback]
+    protected abstract void on_activate (uint position);
 
-        if (total_visible_rows == 0) {
-            list_stack.visible_child_name = "has-not";
-        } else {
-            list_stack.visible_child_name = "has";
+    [GtkCallback]
+    protected void on_search_button_active () {
+        search_query = "";
+
+        if (search_button.active) {
+            search_entry.grab_focus ();
         }
     }
-
-    protected abstract bool filter (Gtk.ListBoxRow row, string search_text);
 }

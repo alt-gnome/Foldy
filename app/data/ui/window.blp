@@ -7,12 +7,37 @@ template $FoldyWindow: Adw.ApplicationWindow {
   width-request: 360;
   height-request: 294;
 
+  Adw.Breakpoint {
+    condition ("max-width: 660px")
+
+    setters {
+      navigation_split_view.collapsed: true;
+      navigation_split_view.show-content: false;
+      template.wintype: narrow;
+    }
+  }
+
   content: Adw.ToastOverlay toast_overlay {
-    Adw.NavigationView navigation_view {
-      $FoldyFoldersListPage folders_list_page {
-        tag: "main";
-        nav-view: navigation_view;
-      }
+    Adw.NavigationSplitView navigation_split_view {
+      min-sidebar-width: 300;
+      max-sidebar-width: 360;
+
+      sidebar: $FoldyFoldersListPage folders_list_page {
+        tag: "sidebar";
+        wintype: bind template.wintype;
+        folder-choosed => $on_folder_choosed();
+      };
+
+      content: Adw.NavigationPage {
+        title: _("Folders");
+        tag: "folders";
+
+        child: $FoldyFolderPages folder_pages {
+          wintype: bind template.wintype;
+          nothing-to-show => $on_nothing_to_show();
+          folder_opened => $on_folder_opened();
+        };
+      };
     }
   };
 }

@@ -1,0 +1,101 @@
+name: Main
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  lint-vala:
+    name: Lint vala files
+    runs-on: alt-sisyphus
+
+    steps:
+      - name: Update apt cache
+        run: apt-get -y update
+
+      - name: Install vala-lint
+        run: apt-get install -y vala-lint
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Lint Vala
+        run: io.elementary.vala-lint -d . -c vala-lint.conf
+
+  lint-blp:
+    name: Lint blueprint UI files
+    runs-on: alt-sisyphus
+
+    steps:
+      - name: Update apt cache
+        run: apt-get -y update
+
+      - name: Install blueprint-compiler
+        run: apt-get install -y blueprint-compiler
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Lint Blueprint
+        run: blueprint-compiler format -s 2 app/data/ui/*.blp
+
+  checkers:
+    name: Run checkers
+    runs-on: alt-sisyphus
+
+    steps:
+      - name: Update apt cache
+        run: apt-get -y update
+
+      - name: Install git and python
+        run: apt-get install -y git python3
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Run indentation checker
+        run: python3 vala-checkers/indentation_checker.py .
+
+      - name: Run empty lines checker
+        run: python3 vala-checkers/empty_lines_checker.py .
+
+  test-build:
+    name: Test Build
+    runs-on: alt-sisyphus
+    needs:
+      - lint-vala
+      - lint-blp
+      - checkers
+
+    steps:
+      - name: Update apt cache
+        run: apt-get -y update
+
+      - name: Install git and python
+        run: apt-get install -y git python3
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install dependencies
+        run: apt-get install -y $(python3 build-tools/get_meson_deps.py)
+
+      - name: Setup
+        run: meson setup _build --prefix=/usr -Dis_devel=true
+
+      - name: Build
+        run: meson compile -C _build
+
+      - name: Test
+        run: meson test -C _build

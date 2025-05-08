@@ -2,7 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 template $FoldyAppInfoDialog: Adw.Dialog {
-  content-width: 360;
+  content-width: 450;
+  content-height: 450;
 
   Adw.ToolbarView {
     [top]
@@ -24,10 +25,13 @@ template $FoldyAppInfoDialog: Adw.Dialog {
         Box {
           orientation: vertical;
           vexpand: true;
+          hexpand: true;
           spacing: 12;
+          valign: center;
+          halign: center;
 
           Image icon_image {
-            pixel-size: 180;
+            pixel-size: 128;
             margin-bottom: 6;
           }
 
@@ -44,17 +48,6 @@ template $FoldyAppInfoDialog: Adw.Dialog {
               justify: center;
               wrap: true;
             }
-
-            Label id_label {
-              styles [
-                "title-4",
-                "dim-label",
-              ]
-
-              halign: center;
-              justify: center;
-              wrap: true;
-            }
           }
 
           Label description_label {
@@ -62,20 +55,6 @@ template $FoldyAppInfoDialog: Adw.Dialog {
             justify: center;
             wrap: true;
             margin-top: 6;
-          }
-
-          Button launch_button {
-            styles [
-              "pill",
-              "suggested-action",
-            ]
-
-            margin-top: 24;
-            hexpand: false;
-            vexpand: true;
-            halign: center;
-            // valign: end;
-            label: _("Launch");
           }
         }
       }

@@ -21,29 +21,37 @@ using Foldy.Folder;
 public sealed class Foldy.FolderDialog : Adw.Dialog {
 
     [GtkChild]
-    protected unowned Adw.ToastOverlay toast_overlay;
+    unowned Adw.ToastOverlay toast_overlay;
     [GtkChild]
-    protected unowned Adw.EntryRow folder_name_entry;
+    unowned Adw.EntryRow folder_name_entry;
     [GtkChild]
-    protected unowned Gtk.ListBox list_box;
+    unowned Gtk.ScrolledWindow scrolled_window;
     [GtkChild]
-    protected unowned Gtk.ScrolledWindow scrolled_window;
+    unowned Gtk.Revealer go_top_button_revealer;
     [GtkChild]
-    protected unowned Gtk.Revealer go_top_button_revealer;
+    unowned Gtk.Adjustment adj;
     [GtkChild]
-    protected unowned Gtk.Adjustment adj;
-
-    protected CategoriesList categories_list;
+    unowned CategoriesList categories_list;
+    [GtkChild]
+    unowned Gtk.SearchEntry search_entry;
+    [GtkChild]
+    unowned Gtk.Stack button_stack;
 
     public string folder_id { get; construct; }
 
-    public string header_bar_title { get; construct; }
+    public string header_bar_title { get; private set; }
 
-    public string apply_button_title { get; construct; }
+    public string apply_button_title { get; private set; }
 
-    public string default_name { get; construct; }
+    public FolderDialogType type_ { get; construct; }
+
+    public string default_name { get; private set; }
 
     public signal void applyed (string folder_id);
+
+    public string[] start_categories;
+
+    public string start_name;
 
     const double MAX_HEIGHT = 620d;
     const double MIN_HEIGHT = 258d;
@@ -52,18 +60,14 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
 
     public FolderDialog.create () {
         Object (
-            header_bar_title: _("Folder creation"),
-            apply_button_title: _("Create"),
-            default_name: _("Unnamed Folder")
+            type_: FolderDialogType.CREATE
         );
     }
 
-    public FolderDialog.edit (string folder_id, string default_name) {
+    public FolderDialog.edit (string folder_id) {
         Object (
             folder_id: folder_id,
-            header_bar_title: _("Folder settings"),
-            apply_button_title: _("Apply"),
-            default_name: default_name
+            type_: FolderDialogType.EDIT
         );
     }
 
@@ -71,31 +75,60 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
         adj.value_changed.connect (update_button_revealer);
         update_button_revealer ();
 
-        if (folder_id != null) {
-            categories_list = new CategoriesList.with_folder_id (folder_id);
-        } else {
-            categories_list = new CategoriesList ();
+        switch (type_) {
+            case FolderDialogType.CREATE:
+                header_bar_title = _("Folder creation");
+                apply_button_title = _("Create");
+                start_name = _("Unnamed Folder");
+                break;
+
+            case FolderDialogType.EDIT:
+                header_bar_title = _("Folder settings");
+                apply_button_title = _("Apply");
+                start_name = get_folder_real_name (folder_id);
+
+                folder_name_entry.changed.connect (update_button);
+
+                var start_categories_arr = new Array<string> ();
+
+                var folder_categories = new Gee.HashSet<string> ();
+                folder_categories.add_all_array (Folder.get_folder_categories (folder_id));
+
+                foreach (var category in Foldy.get_installed_categories (folder_id)) {
+                    if (category in folder_categories) {
+                        start_categories_arr.append_val (category);
+                    }
+                }
+
+                start_categories = start_categories_arr.steal ();
+                categories_list.selection_changed.connect (update_button);
+
+                update_button ();
+                break;
         }
 
-        list_box.append (categories_list);
-
-        folder_name_entry.text = default_name;
+        folder_name_entry.text = start_name;
 
         categories_list.notify["expanded"].connect (() => {
             var current_height = content_height;
             var target_height = categories_list.expanded ? MAX_HEIGHT : MIN_HEIGHT;
 
             var target = new Adw.PropertyAnimationTarget (this, "content-height");
-            var params = new Adw.SpringParams (1.00, 1.0, 300.0);
-            var animation = new Adw.SpringAnimation (
-                scrolled_window,
-                current_height,
-                target_height,
-                params,
-                target
-            );
+            var animation = new Adw.TimedAnimation (this, current_height, target_height, 150, target);
 
             animation.play ();
+        });
+
+        search_entry.search_changed.connect (() => {
+            categories_list.refilter (search_entry.text);
+        });
+
+        folder_name_entry.entry_activated.connect (() => {
+            if (button_stack.visible_child_name == "close") {
+                on_close_button_activate ();
+            } else {
+                on_apply_button_activate ();
+            }
         });
     }
 
@@ -103,16 +136,45 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
         go_top_button_revealer.reveal_child = adj.value > 64;
     }
 
+    void update_button () {
+        bool same = true;
+
+        if (start_name != folder_name_entry.text) {
+            same = false;
+        }
+
+        var selected_categories = categories_list.get_selected_categories ();
+
+        foreach (var category in start_categories) {
+            if (!(category in selected_categories)) {
+                same = false;
+                break;
+            }
+        }
+
+        if (start_categories.length != selected_categories.length) {
+            same = false;
+        }
+
+        button_stack.visible_child_name = same ? "close" : "base";
+    }
+
     [GtkCallback]
     void on_apply_button_activate () {
         if (check_apply ()) {
-            var lfolder_id = folder_id != null ? folder_id : create_folder (
-                Uuid.string_random (),
-                folder_name_entry.text
-            );
+            string lfolder_id;
+
+            if (folder_id != null) {
+                lfolder_id = folder_id;
+                set_folder_name (folder_id, folder_name_entry.text);
+            } else {
+                lfolder_id = folder_id != null ? folder_id : create_folder (
+                    Uuid.string_random (),
+                    folder_name_entry.text
+                );
+            }
             Foldy.sync ();
 
-            set_folder_name (lfolder_id, folder_name_entry.text);
             set_folder_categories (lfolder_id, categories_list.get_selected_categories ());
             Foldy.sync ();
 
@@ -122,16 +184,16 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
     }
 
     [GtkCallback]
+    void on_close_button_activate () {
+        close ();
+    }
+
+    [GtkCallback]
     void go_top_button_clicked () {
+        scrolled_window.vadjustment.value = scrolled_window.vadjustment.value;
+
         var target = new Adw.PropertyAnimationTarget (scrolled_window.vadjustment, "value");
-        var params = new Adw.SpringParams (1.00, 1.0, 500.0);
-        var animation = new Adw.SpringAnimation (
-            scrolled_window,
-            scrolled_window.vadjustment.value,
-            0.0,
-            params,
-            target
-        );
+        var animation = new Adw.TimedAnimation (scrolled_window, scrolled_window.vadjustment.value, 0.0, 150, target);
 
         animation.play ();
     }
@@ -150,5 +212,11 @@ public sealed class Foldy.FolderDialog : Adw.Dialog {
         }
 
         return true;
+    }
+
+    [GtkCallback]
+    void on_search_revealed () {
+        search_entry.text = "";
+        search_entry.grab_focus ();
     }
 }

@@ -51,7 +51,6 @@ public sealed class Foldy.FoldersWatcher : Object {
         foreach (var folder_data in folder_datas) {
             if (!(folder_data.folder_id in folders)) {
                 folder_datas.remove (folder_data);
-                folder_data.reset ();
             }
         }
 

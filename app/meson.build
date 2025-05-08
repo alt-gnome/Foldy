@@ -22,22 +22,29 @@ if get_option('with_application')
   )
 
   application_vala_sources = files(
+    'add-apps-dialog.vala',
     'add-apps-page.vala',
     'app-info-dialog.vala',
     'app-row-add.vala',
     'app-row-remove.vala',
     'app-row.vala',
     'application.vala',
+    'apps-model.vala',
     'base-page.vala',
+    'base-row.vala',
     'categories-list.vala',
     'categories-model.vala',
     'category-row.vala',
     'folder-dialog.vala',
+    'folder-menu-row.vala',
     'folder-page.vala',
-    'folder-row.vala',
+    'folder-pages.vala',
+    'folder-rename-dialog.vala',
     'folders-list-page.vala',
     'main.vala',
     'search-row.vala',
+    'model-manager.vala',
+    'start-page.vala',
     'utils.vala',
     'window.vala',
   )
@@ -50,8 +57,10 @@ if get_option('with_application')
   ]
 
   libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
-  gio_dep = dependency('gio-2.0', version: '>= 2.76')
+  gio_dep = dependency('gio-unix-2.0', version: '>= 2.76')
   gee_dep = dependency('gee-0.8')
+  libportal_dep = dependency('libportal')
+  libportal_gtk_dep = dependency('libportal-gtk4')
   libfoldy_dep = dependency(versioned_lib_name, required: false)
   if not libfoldy_dep.found()
     libfoldy_dep = lib_dep
@@ -61,11 +70,14 @@ if get_option('with_application')
     libadwaita_dep,
     gio_dep,
     gee_dep,
+    libportal_dep,
+    libportal_gtk_dep,
     libfoldy_dep,
   ]
 
   application_c_args = [
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    '-w',
   ]
 
   application_vala_args = [
@@ -79,6 +91,7 @@ if get_option('with_application')
     include_directories: config_h_dir,
     dependencies: application_dependencies,
     c_args: application_c_args,
+    link_args: ['-lm'],
     vala_args: application_vala_args,
     install: true,
   )

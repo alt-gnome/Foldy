@@ -1,9 +1,12 @@
 project(
   'foldy',
   ['c', 'vala'],
-  version: '3.12',
+  version: '4.1',
   meson_version: '>= 1.0.0',
   license: 'GPL-3.0-or-later',
+  default_options: [
+    'prefix=/usr',
+  ]
 )
 
 i18n = import('i18n')

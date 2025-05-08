@@ -23,13 +23,13 @@ public sealed class Foldy.FolderData : Object {
 
     public string[] apps { get; set; }
 
+    public string[] categories { get; set; }
+
     public string[] excluded_apps {
         owned get {
             return Folder.get_folder_excluded_apps (folder_id);
         }
     }
-
-    public string[] categories { get; set; }
 
     public string name {
         owned get {
@@ -55,14 +55,6 @@ public sealed class Foldy.FolderData : Object {
 
     public FolderData.with_categories_fix (string folder_id) {
         Object (folder_id: folder_id, should_fix_categories: true);
-    }
-
-    internal void reset () {
-        settings.reset ("name");
-        settings.reset ("translate");
-        settings.reset ("categories");
-        settings.reset ("apps");
-        settings.reset ("excluded-apps");
     }
 
     AppInfoMonitor mon;
@@ -165,8 +157,10 @@ public sealed class Foldy.FolderData : Object {
 
         Folder.set_folder_apps (folder_id, new_apps.to_array ());
         Folder.set_folder_excluded_apps (folder_id, excluded_apps.to_array ());
-        categories = new_apps.to_array ();
+        categories = new_current_categories.to_array ();
         apps = new_apps.to_array ();
+
+        sync ();
 
         refreshed (folder_id);
     }

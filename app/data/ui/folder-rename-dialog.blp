@@ -1,0 +1,41 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyRenameDialog: Adw.Dialog {
+  content-width: 360;
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      title-widget: Adw.WindowTitle window_title {};
+    }
+
+    content: Adw.ToastOverlay toast_overlay {
+      Adw.Clamp {
+        margin-bottom: 24;
+        margin-top: 12;
+        margin-start: 12;
+        margin-end: 12;
+        maximum-size: 500;
+
+        ListBox {
+          styles [
+            "boxed-list",
+          ]
+
+          selection-mode: none;
+          vexpand: false;
+          valign: start;
+
+          Adw.EntryRow entry_row {
+            show-apply-button: true;
+            title: _("New name");
+            changed => $on_changed();
+            entry-activated => $on_apply();
+            apply => $on_apply();
+          }
+        }
+      }
+    };
+  }
+}

@@ -1,23 +1,98 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $FoldyFoldersListPage: $FoldyBasePage {
+template $FoldyFoldersListPage: Adw.NavigationPage {
   title: _("All folders");
+  notify::wintype => $on_wintype_changed();
 
-  bottom-center-widget: ListBox {
-    styles [
-      "boxed-list",
-    ]
+  Adw.ToolbarView toolbar_view {
+    top-bar-style: flat;
+    bottom-bar-style: flat;
 
-    selection-mode: none;
+    [top]
+    Adw.HeaderBar {
+      title-widget: Adw.WindowTitle {
+        title: _("All folders");
+      };
 
-    Adw.ButtonRow create_new_button {
-      styles [
-        "suggested-action",
-      ]
+      [end]
+      MenuButton {
+        styles [
+          "flat",
+        ]
 
-      title: _("Create new folder");
-      activated => $create_new_button_clicked();
+        icon-name: "open-menu-symbolic";
+        menu-model: primary_menu;
+      }
     }
-  };
+
+    content: Stack list_stack {
+      StackPage {
+        name: "has";
+
+        child: ScrolledWindow {
+          hscrollbar-policy: never;
+          propagate-natural-width: true;
+          vexpand: true;
+
+          ListBox list_box_menu {
+            styles [
+              "navigation-sidebar",
+            ]
+
+            selection-mode: single;
+            valign: bind $calculate_valign(template.wintype) as <Align>;
+            row-activated => $on_row_activated();
+          }
+        };
+      }
+
+      StackPage {
+        name: "has-not";
+
+        child: Adw.StatusPage {
+          vexpand: true;
+          icon-name: "system-search-symbolic";
+          title: _("There is no folders");
+        };
+      }
+    };
+
+    [bottom]
+    Adw.Clamp {
+      margin-start: 12;
+      margin-end: 12;
+      margin-bottom: 12;
+      margin-top: 6;
+      maximum-size: 360;
+
+      ListBox {
+        styles [
+          "boxed-list",
+        ]
+
+        selection-mode: none;
+
+        Adw.ButtonRow create_new_button {
+          styles [
+            "suggested-action",
+          ]
+
+          title: _("Create new folder");
+          activated => $create_new_button_clicked();
+        }
+      }
+    }
+  }
+}
+
+menu primary_menu {
+  section {
+    item (_("Export folders…"), "win.export-folders")
+    item (_("Import folders…"), "win.import-folders")
+  }
+
+  section {
+    item (_("About Folder Manager"), "win.about")
+  }
 }

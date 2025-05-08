@@ -1,0 +1,92 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FoldyBaseRow: Adw.Bin {
+  accessibility {
+    labelled-by: title;
+    described-by: subtitle;
+  }
+
+  activatable: false;
+
+  child: Box header {
+    styles [
+      "header",
+    ]
+
+    valign: center;
+    hexpand: false;
+
+    Image image {
+      styles [
+        "icon",
+      ]
+
+      icon-size: large;
+      valign: center;
+      accessible-role: presentation;
+      gicon: bind template.gicon bidirectional;
+      icon-name: bind template.icon-name bidirectional;
+      visible: bind $has_icon(image.gicon, image.icon-name) as <bool>;
+    }
+
+    Box title_box {
+      styles [
+        "title",
+      ]
+
+      orientation: vertical;
+      valign: center;
+      hexpand: true;
+
+      Label title {
+        styles [
+          "title",
+        ]
+
+        ellipsize: none;
+        label: bind template.title;
+        lines: 0;
+        wrap: true;
+        wrap-mode: word_char;
+        xalign: 0;
+        visible: bind $string_is_not_empty(title.label) as <bool>;
+      }
+
+      Label subtitle {
+        styles [
+          "subtitle",
+        ]
+
+        ellipsize: none;
+        label: bind template.subtitle;
+        lines: 0;
+        wrap: true;
+        wrap-mode: word_char;
+        xalign: 0;
+        visible: bind $string_is_not_empty(subtitle.label) as <bool>;
+      }
+    }
+
+    Revealer {
+      margin-end: 4;
+      transition-type: crossfade;
+      reveal-child: bind template.selection-enabled;
+
+      Image selection_image {
+        styles [
+          "icon",
+          "dimmed",
+        ]
+
+        icon-name: "uncheck-symbolic";
+        valign: center;
+        halign: end;
+      }
+    }
+  };
+
+  GestureClick {
+    pressed => $on_pressed();
+  }
+}

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <name>Folder manager</name>
   <id>org.altlinux.Foldy</id>
+  <icon type="stock">org.altlinux.Foldy</icon>
+  <name>Folder Manager</name>
   <summary>Folder manager for mobile devices</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -10,6 +11,13 @@
       Folder manager for mobile devices
     </p>
   </description>
+  <translation type="gettext">foldy</translation>
+  <custom>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
   <recommends>
     <control>keyboard</control>
     <control>pointing</control>
@@ -19,19 +27,41 @@
     <color type="primary" scheme_preference="light">#A8A7C9</color>
     <color type="primary" scheme_preference="dark">#282747</color>
   </branding>
-  <content_rating type="oars-1.1">
-    <!-- Can be generated here https://hughsie.github.io/oars/generate.html -->
-  </content_rating>
+  <content_rating type="oars-1.1"></content_rating>
   <screenshots>
     <screenshot type="default">
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v3.8/app/data/images/1-image.png</image>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/1-start-page.png</image>
+      <caption>Start page</caption>
     </screenshot>
     <screenshot>
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v3.8/app/data/images/2-image.png</image>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/2-folder.png</image>
+      <caption>Opened folder</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/3-narrow-window.png</image>
+      <caption>Mobile window</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/4-edit-folder.png</image>
+      <caption>Edit folder dialog</caption>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
+    <release version="4.1" date="2025-09-08">
+      <description>
+        <p>Hotfix</p>
+        <p>Some improvements in metainfo and desktop files</p>
+        <p>Fixed bug with unselected row on folder creation</p>
+      </description>
+    </release>
+    <release version="4.0" date="2025-09-07">
+      <description>
+        <p>Improved layout for desktop</p>
+        <p>A lot of optimization for mobile devices</p>
+        <p>Bug fixes and more</p>
+      </description>
+    </release>
     <release version="3.11" date="2025-04-10">
       <description>
         <p>Fixed excluded apps</p>
@@ -67,7 +97,20 @@
   </releases>
   <url type="homepage">https://altlinux.space/alt-gnome/Foldy</url>
   <url type="bugtracker">https://altlinux.space/alt-gnome/Foldy/issues</url>
+  <url type="vcs-browser">https://altlinux.space/alt-gnome/Foldy.git</url>
   <developer id="org.altlinux">
     <name>ALT Linux Team</name>
   </developer>
+  <kudos>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
+  <icon type="stock">org.altlinux.Foldy</icon>
+  <categories>
+    <category>Utility</category>
+    <category>GNOME</category>
+    <category>GTK</category>
+  </categories>
+  <provides>
+    <binary>foldy</binary>
+  </provides>
 </component>

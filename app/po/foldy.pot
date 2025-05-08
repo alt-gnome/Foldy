@@ -8,23 +8,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-10 18:48+0300\n"
+"POT-Creation-Date: 2025-05-03 13:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: app/add-apps-page.vala:43
+#, c-format
+msgid "Add apps to folder '%s'"
+msgstr ""
+
+#: app/application.vala:25
+msgid "Print version information and exit"
+msgstr ""
+
+#: app/application.vala:26
+msgid "Save folders to file"
+msgstr ""
+
+#: app/application.vala:27
+msgid "Restore folders from file"
+msgstr ""
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.desktop.in:4
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:3
-msgid "Folder manager"
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:3 app/window.vala:71
+msgid "Folder Manager"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.desktop.in:5
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:9
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:5
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:9
 msgid "Folder manager for mobile devices"
@@ -38,74 +54,83 @@ msgstr ""
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:4
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:3
-msgid "Folder manager (Devel)"
+msgid "Folder Manager (Devel)"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:5
 msgid "Folder manager for mobile devices (Development version)"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:5
-msgid "Folder manager for mobile devices. Development version"
-msgstr ""
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:37
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:47
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:53
-msgid "Some bug fixed"
-msgstr ""
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:38
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
-msgid "Improved localization"
-msgstr ""
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:43
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
-msgid "Added service"
-msgstr ""
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:48
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:64
-msgid "Added search in category list"
-msgstr ""
-
-#: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:55
-msgid "Vladimir Vaskov"
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:33
+msgid "Start page"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:37
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
+msgid "Opened folder"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:41
+msgid "Mobile window"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:45
+msgid "Edit folder dialog"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:52
+msgid "Improved layout for desktop"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:53
+msgid "A lot of optimization for mobile devices"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
+msgid "Bug fixes and more"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
+msgid "Fixed excluded apps"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:64
 msgid "Fix metadata"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:48
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:69
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:75
+msgid "Some bug fixed"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:70
 msgid "Some visual fixes"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:71
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:76
+msgid "Improved localization"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:81
+msgid "Added service"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:86
+msgid "Added search in category list"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:94
 msgid "ALT Linux Team"
 msgstr ""
 
-#: app/data/ui/add-apps-page.blp:5
-msgid "Applications without folder"
-msgstr ""
-
-#: app/data/ui/add-apps-page.blp:20
+#: app/data/ui/add-apps-page.blp:18
 msgid "Add selected applications"
 msgstr ""
 
-#: app/data/ui/app-info-dialog.blp:11
+#: app/data/ui/app-info-dialog.blp:12
 msgid "Application information"
 msgstr ""
 
-#. valign: end;
-#: app/data/ui/app-info-dialog.blp:78
-msgid "Launch"
-msgstr ""
-
-#: app/data/ui/base-page.blp:97
+#: app/data/ui/base-page.blp:84
 msgid "There is nothing to show"
 msgstr ""
 
@@ -113,8 +138,12 @@ msgstr ""
 msgid "Folder categories"
 msgstr ""
 
-#: app/data/ui/folder-dialog.blp:45
+#: app/data/ui/folder-dialog.blp:67
 msgid "Folder name"
+msgstr ""
+
+#: app/data/ui/folder-dialog.blp:129
+msgid "Close"
 msgstr ""
 
 #: app/data/ui/folder-page.blp:43
@@ -125,62 +154,102 @@ msgstr ""
 msgid "Remove selected"
 msgstr ""
 
-#: app/data/ui/folders-list-page.blp:5
+#: app/data/ui/folder-rename-dialog.blp:32
+msgid "New name"
+msgstr ""
+
+#: app/data/ui/folders-list-page.blp:5 app/data/ui/folders-list-page.blp:15
 msgid "All folders"
 msgstr ""
 
-#: app/data/ui/folders-list-page.blp:19
+#: app/data/ui/folders-list-page.blp:56
+msgid "There is no folders"
+msgstr ""
+
+#: app/data/ui/folders-list-page.blp:81
 msgid "Create new folder"
 msgstr ""
 
-#: app/folder-dialog.vala:55
+#: app/data/ui/folders-list-page.blp:91
+msgid "Export folders…"
+msgstr ""
+
+#: app/data/ui/folders-list-page.blp:92
+msgid "Import folders…"
+msgstr ""
+
+#: app/data/ui/folders-list-page.blp:96
+msgid "About Folder Manager"
+msgstr ""
+
+#: app/data/ui/start-page.blp:5
+msgid "Start Page"
+msgstr ""
+
+#: app/data/ui/start-page.blp:14
+msgid "Hello!"
+msgstr ""
+
+#: app/data/ui/start-page.blp:15
+msgid "Start with opening or creating a folder"
+msgstr ""
+
+#: app/data/ui/window.blp:32
+msgid "Folders"
+msgstr ""
+
+#: app/folder-dialog.vala:80
 msgid "Folder creation"
 msgstr ""
 
-#: app/folder-dialog.vala:56
+#: app/folder-dialog.vala:81
 msgid "Create"
 msgstr ""
 
-#: app/folder-dialog.vala:57
+#: app/folder-dialog.vala:82
 msgid "Unnamed Folder"
 msgstr ""
 
-#: app/folder-dialog.vala:64
+#: app/folder-dialog.vala:86
 msgid "Folder settings"
 msgstr ""
 
-#: app/folder-dialog.vala:65
+#: app/folder-dialog.vala:87
 msgid "Apply"
 msgstr ""
 
-#: app/folder-dialog.vala:141
+#: app/folder-dialog.vala:203
 msgid "Name can't be empty"
 msgstr ""
 
-#: app/folder-dialog.vala:147
+#: app/folder-dialog.vala:209
 msgid "Categories can't be more than 2"
 msgstr ""
 
-#: app/folder-page.vala:91
+#: app/folder-menu-row.vala:49
+msgid "Rename"
+msgstr ""
+
+#: app/folder-menu-row.vala:50 app/folder-page.vala:84
+msgid "Delete"
+msgstr ""
+
+#: app/folder-page.vala:79
 #, c-format
 msgid "Are you want to delete folder '%s'?"
 msgstr ""
 
-#: app/folder-page.vala:95
+#: app/folder-page.vala:83
 msgid "Cancel"
 msgstr ""
 
-#: app/folder-page.vala:96
-msgid "Delete"
-msgstr ""
-
-#: app/folder-page.vala:160
+#: app/folder-rename-dialog.vala:44
 #, c-format
-msgid "Folder '%s'"
+msgid "Renaming folder '%s'"
 msgstr ""
 
-#: app/folders-list-page.vala:41
-msgid "Can't open folder settings"
+#: app/folder-rename-dialog.vala:64
+msgid "Name cannot be empty"
 msgstr ""
 
 #: app/main.vala:23
@@ -188,6 +257,14 @@ msgid "Foldy"
 msgstr ""
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: app/window.vala:62
+#: app/window.vala:82
 msgid "translator-credits"
+msgstr ""
+
+#: app/window.vala:94
+msgid "Save folders file"
+msgstr ""
+
+#: app/window.vala:126
+msgid "Open folders file"
 msgstr ""

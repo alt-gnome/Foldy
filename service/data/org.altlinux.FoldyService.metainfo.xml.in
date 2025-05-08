@@ -14,6 +14,7 @@
     <color type="primary" scheme_preference="light">#A8A7C9</color>
     <color type="primary" scheme_preference="dark">#282747</color>
   </branding>
+  <translation type="gettext">org.altlinux.FoldyService</translation>
   <content_rating type="oars-1.1"></content_rating>
   <launchable type="service">org.altlinux.FoldyService.service</launchable>
   <releases>
