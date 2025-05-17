@@ -22,8 +22,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Lint Blueprint
-        uses: alt-gnome/lint-gtk-blueprint@main
+      - name: Lint files
+        uses: alt-gnome/lint-vala@main
 
   lint-blp:
     name: Lint blueprint UI files
@@ -35,8 +35,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Lint Blueprint
-        uses: alt-gnome/lint-vala@main
+      - name: Lint files
+        uses: alt-gnome/lint-gtk-blueprint@main
 
   checkers:
     name: Run checkers
