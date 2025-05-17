@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Lint Blueprint
-        uses: alt-gnome/lint-gtk-blueprint
+        uses: alt-gnome/lint-gtk-blueprint@main
 
   checkers:
     name: Run checkers
