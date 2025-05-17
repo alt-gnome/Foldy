@@ -32,19 +32,15 @@ jobs:
   lint-blp:
     name: Lint blueprint UI files
     runs-on: alt-sisyphus
+    container:
+      image: altlinux.space/alt-gnome/gtk-blueprint-compiler-image:latest
 
     steps:
-      - name: Update apt cache
-        run: apt-get -y update
-
-      - name: Install blueprint-compiler
-        run: apt-get install -y blueprint-compiler
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Lint Blueprint
-        run: blueprint-compiler format -s 2 app/data/ui/*.blp
+        uses: alt-gnome/lint-gtk-blueprint
 
   checkers:
     name: Run checkers
