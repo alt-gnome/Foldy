@@ -15,19 +15,15 @@ jobs:
   lint-vala:
     name: Lint vala files
     runs-on: alt-sisyphus
+    container:
+      image: altlinux.space/alt-gnome/vala-linter-image:latest
 
     steps:
-      - name: Update apt cache
-        run: apt-get -y update
-
-      - name: Install vala-lint
-        run: apt-get install -y vala-lint
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Lint Vala
-        run: io.elementary.vala-lint -d . -c vala-lint.conf
+      - name: Lint Blueprint
+        uses: alt-gnome/lint-gtk-blueprint@main
 
   lint-blp:
     name: Lint blueprint UI files
@@ -40,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Lint Blueprint
-        uses: alt-gnome/lint-gtk-blueprint@main
+        uses: alt-gnome/lint-vala@main
 
   checkers:
     name: Run checkers
