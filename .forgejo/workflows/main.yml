@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Lint files
-        uses: alt-gnome/lint-vala@main
+        uses: alt-gnome/linters-actions/vala@main
 
   lint-blp:
     name: Lint blueprint UI files
@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Lint files
-        uses: alt-gnome/lint-gtk-blueprint@main
+        uses: alt-gnome/linters-actions/blueprint @main
 
   checkers:
     name: Run checkers
