@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
+<component type="desktop-application">
   <id>org.altlinux.Foldy</id>
   <icon type="stock">org.altlinux.Foldy</icon>
   <name>Folder Manager</name>
@@ -48,14 +48,14 @@
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
-    <release version="4.1" date="2025-09-08">
+    <release version="4.1" date="2025-05-08">
       <description>
         <p>Hotfix</p>
         <p>Some improvements in metainfo and desktop files</p>
         <p>Fixed bug with unselected row on folder creation</p>
       </description>
     </release>
-    <release version="4.0" date="2025-09-07">
+    <release version="4.0" date="2025-05-07">
       <description>
         <p>Improved layout for desktop</p>
         <p>A lot of optimization for mobile devices</p>
@@ -104,7 +104,6 @@
   <kudos>
     <kudo>ModernToolkit</kudo>
   </kudos>
-  <icon type="stock">org.altlinux.Foldy</icon>
   <categories>
     <category>Utility</category>
     <category>GNOME</category>
