@@ -20,31 +20,42 @@
 using Foldy.Folder;
 
 namespace Foldy {
+
+    Settings shell_settings;
+
+    public Settings get_shell_settings () {
+        if (shell_settings == null) {
+            shell_settings = new Settings ("org.gnome.shell");
+        }
+
+        return shell_settings;
+    }
+
     public AppInfo[] get_unfolder_apps () {
         var app_infos = AppInfo.get_all ();
 
-        var result_app_infos = new Gee.ArrayList<AppInfo> ();
-        var good_app_ids = new Gee.ArrayList<string> ();
+        var result = new Gee.HashMap<string, AppInfo> (
+            null, null,
+            (a, b) => {
+                return a.equal (b);
+            }
+        );
 
         foreach (var app_info in app_infos) {
-            good_app_ids.add (app_info.get_id ());
+            result[app_info.get_id ()] = app_info;
         }
 
         foreach (string folder_id in get_folders ()) {
             foreach (var app_id in get_folder_apps (folder_id)) {
-                if (app_id in good_app_ids) {
-                    good_app_ids.remove (app_id);
-                }
+                result.unset (app_id);
             }
         }
 
-        foreach (var app_info in app_infos) {
-            if (app_info.get_id () in good_app_ids && app_info.should_show ()) {
-                result_app_infos.add (app_info);
-            }
-        }
+        return result.values.to_array ();
+    }
 
-        return result_app_infos.to_array ();
+    public string[] get_favorite_apps_ids () {
+        return get_shell_settings ().get_strv ("favorite-apps");
     }
 
     public string[] get_installed_categories (string? exclude_folder_id) {

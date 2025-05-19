@@ -19,6 +19,23 @@ template $FoldyBasePage: Adw.NavigationPage {
           notify::active => $on_search_button_active();
         }
 
+        title-widget: Adw.WindowTitle {
+          title: bind template.title;
+          subtitle: bind template.subtitle;
+        };
+
+        [end]
+        ToggleButton show_more_button {
+          styles [
+            "flat",
+          ]
+
+          icon-name: "view-more-symbolic";
+          visible: bind template.can-show-more;
+          active: bind template.show-more bidirectional;
+          tooltip-text: _("Show all apps");
+        }
+
         [end]
         ToggleButton selection_button {
           styles [
