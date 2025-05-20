@@ -1,7 +1,7 @@
 [Desktop Entry]
 # Translators: app name should be translated
 Name=Folder Manager (Devel)
-Comment=Folder manager for mobile devices (Development version)
+Comment=Folder manager for GNOME and phosh (Development version)
 # Translators: keep number of ';'
 Keywords=folder;folders;
 Exec=foldy
