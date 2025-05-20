@@ -75,7 +75,6 @@ public sealed class Foldy.Application : Adw.Application {
         return -1;
     }
 
-
     public static new Foldy.Application get_default () {
         return (Foldy.Application) GLib.Application.get_default ();
     }
