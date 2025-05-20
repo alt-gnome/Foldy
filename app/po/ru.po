@@ -62,7 +62,7 @@ msgstr "Менеджер папок для GNOME и phosh"
 #: app/data/org.altlinux.Foldy.desktop.in:7
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:7
 msgid "folder;folders;"
-msgstr "folder;folders;"
+msgstr "папка;папки;"
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:4
@@ -142,7 +142,7 @@ msgstr "Некоторые визуальные исправления"
 
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:90
 msgid "Improved localization"
-msgstr "Улучшенная локализация"
+msgstr "Улучшена локализация"
 
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:95
 msgid "Added service"
