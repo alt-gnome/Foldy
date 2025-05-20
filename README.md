@@ -19,33 +19,34 @@
   />
 </div>
 
-
 ### Build from sources
-> [!NOTE]
-> You need clone recursively.
 
-#### Install dependencies:
-> [!NOTE]
-> This command works only with ALT Linux, but you can install dependencies manually.
+### Clone
+
 ```
-sudo apt-get install $(python3 build-tools/get_meson_deps.py)
+git clone https://altlinux.space/alt-gnome/Foldy
+cd Foldy
 ```
 
 #### Install:
+
 ```
 meson setup _build
 sudo meson install -C _build
 ```
 
 #### Install local:
+
 > [!TIP]
 > You need set `LD_LIBRARY_PATH=~/.local/lib64` so that there are no problems finding the library.
+
 ```
 meson setup _build --prefix=~/.local
 meson install -C _build
 ```
 
 #### Uninstall:
+
 ```
 sudo ninja uninstall -C _build
 ```

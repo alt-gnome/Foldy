@@ -1,6 +1,3 @@
 [submodule "vala-checkers"]
 	path = vala-checkers
 	url = https://gitlab.gnome.org/Rirusha/vala-checkers.git
-[submodule "build-tools"]
-	path = build-tools
-	url = https://altlinux.space/rirusha/build-tools.git

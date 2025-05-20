@@ -3,12 +3,12 @@
   <id>org.altlinux.Foldy</id>
   <icon type="stock">org.altlinux.Foldy</icon>
   <name>Folder Manager</name>
-  <summary>Folder manager for mobile devices</summary>
+  <summary>Folder manager for GNOME and phosh</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <description>
     <p>
-      Folder manager for mobile devices
+      Folder manager for GNOME and phosh
     </p>
   </description>
   <translation type="gettext">foldy</translation>
@@ -48,6 +48,12 @@
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
+    <release version="4.2" date="2025-05-19">
+      <description>
+        <p>Add filter option to add-apps dialog. All/Unfoldered</p>
+        <p>Some fixes</p>
+      </description>
+    </release>
     <release version="4.1" date="2025-05-08">
       <description>
         <p>Hotfix</p>

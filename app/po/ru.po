@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-03 13:03+0300\n"
-"PO-Revision-Date: 2025-04-29 23:33+0300\n"
+"POT-Creation-Date: 2025-05-20 22:07+0300\n"
+"PO-Revision-Date: 2025-05-20 22:11+0300\n"
 "Last-Translator: David Sultaniiazov <x1z53@alt-gnome.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -21,10 +21,18 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 48.0\n"
 
-#: app/add-apps-page.vala:43
+#: app/add-apps-page.vala:54
 #, c-format
 msgid "Add apps to folder '%s'"
 msgstr "Добавить приложения в папку '%s'"
+
+#: app/add-apps-page.vala:60
+msgid "All apps"
+msgstr "Все приложения"
+
+#: app/add-apps-page.vala:60
+msgid "Apps without folder"
+msgstr "Приложения без папки"
 
 #: app/application.vala:25
 msgid "Print version information and exit"
@@ -40,93 +48,115 @@ msgstr "Восстановить папки из файла"
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.desktop.in:4
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:3 app/window.vala:71
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:5
 msgid "Folder Manager"
 msgstr "Менеджер папок"
 
 #: app/data/org.altlinux.Foldy.desktop.in:5
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:5
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:9
-msgid "Folder manager for mobile devices"
-msgstr "Менеджер папок для мобильных устройств"
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:6
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:10
+msgid "Folder manager for GNOME and phosh"
+msgstr "Менеджер папок для GNOME и phosh"
 
 #. Translators: keep number of ';'
 #: app/data/org.altlinux.Foldy.desktop.in:7
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:7
-msgid "folder"
-msgstr "папка"
+msgid "folder;folders;"
+msgstr "папка;папки;"
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:4
 msgid "Folder Manager (Devel)"
-msgstr "Менеджер папок (Разраб.)"
+msgstr "Менеджер папок (Разработка)"
 
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:5
-msgid "Folder manager for mobile devices (Development version)"
-msgstr "Менеджер папок для мобильных устройств (Версия разработчика)"
+msgid "Folder manager for GNOME and phosh (Development version)"
+msgstr "Менеджер папок для GNOME и phosh (версия для разработки)"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:33
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:34
 msgid "Start page"
-msgstr "Стартовая страница"
+msgstr "Начальная страница"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:37
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:38
 msgid "Opened folder"
 msgstr "Открытая папка"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:41
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
 msgid "Mobile window"
 msgstr "Мобильное окно"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:45
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:46
 msgid "Edit folder dialog"
-msgstr "Изменить диалог папки"
+msgstr "Диалог изменения папки"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:52
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:53
+msgid "Add filter option to add-apps dialog. All/Unfoldered"
+msgstr ""
+"Добавлена опция фильтра в диалоговое диалог добавления приложений. Всё/"
+"Развернуто"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
+msgid "Some fixes"
+msgstr "Некоторые исправления"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
+msgid "Hotfix"
+msgstr "Исправление"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:60
+msgid "Some improvements in metainfo and desktop files"
+msgstr "Некоторые улучшения в metainfo и desktop-файлах"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:61
+msgid "Fixed bug with unselected row on folder creation"
+msgstr "Исправлена ошибка с невыбранной строкой при создании папки"
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:66
 msgid "Improved layout for desktop"
 msgstr "Улучшенный макет для настрольных компьютеров"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:53
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:67
 msgid "A lot of optimization for mobile devices"
 msgstr "Множество оптимизаций для мобильных устройств"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:54
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:68
 msgid "Bug fixes and more"
 msgstr "Исправление багов и другое"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:59
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:73
 msgid "Fixed excluded apps"
 msgstr "Исправление исключённых приложений"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:64
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:78
 msgid "Fix metadata"
 msgstr "Исправление метаданных"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:69
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:75
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:83
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:89
 msgid "Some bug fixed"
 msgstr "Исправление некоторых багов"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:70
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:84
 msgid "Some visual fixes"
 msgstr "Некоторые визуальные исправления"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:76
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:90
 msgid "Improved localization"
-msgstr "Улучше локализация"
+msgstr "Улучшена локализация"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:81
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:95
 msgid "Added service"
 msgstr "Добавлен сервис"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:86
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:100
 msgid "Added search in category list"
-msgstr "Добавле поиск по списку категорий"
+msgstr "Добавлен поиск по списку категорий"
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:94
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:108
 msgid "ALT Linux Team"
 msgstr "ALT Linux Team"
 
-#: app/data/ui/add-apps-page.blp:18
+#: app/data/ui/add-apps-page.blp:20
 msgid "Add selected applications"
 msgstr "Добавить выбранные приложения"
 
@@ -134,7 +164,11 @@ msgstr "Добавить выбранные приложения"
 msgid "Application information"
 msgstr "Информация о приложении"
 
-#: app/data/ui/base-page.blp:84
+#: app/data/ui/base-page.blp:36
+msgid "Show all apps"
+msgstr "Показать все приложения"
+
+#: app/data/ui/base-page.blp:101
 msgid "There is nothing to show"
 msgstr "Нечего показывать"
 
@@ -265,10 +299,13 @@ msgstr "Папочка"
 msgid "translator-credits"
 msgstr "David Sultaniiazov <x1z53@alt-gnome.ru>"
 
-#: app/window.vala:94
+#: app/window.vala:92
 msgid "Save folders file"
 msgstr "Сохранить файл папок"
 
-#: app/window.vala:126
+#: app/window.vala:124
 msgid "Open folders file"
 msgstr "Открыть файл папок"
+
+#~ msgid "folder"
+#~ msgstr "папка"

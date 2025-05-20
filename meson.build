@@ -1,7 +1,7 @@
 project(
   'foldy',
   ['c', 'vala'],
-  version: '4.1',
+  version: '4.2',
   meson_version: '>= 1.0.0',
   license: 'GPL-3.0-or-later',
   default_options: [
