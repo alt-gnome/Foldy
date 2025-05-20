@@ -15,36 +15,28 @@ jobs:
   lint-vala:
     name: Lint vala files
     runs-on: alt-sisyphus
+    container:
+      image: altlinux.space/alt-gnome/vala-linter-image:latest
 
     steps:
-      - name: Update apt cache
-        run: apt-get -y update
-
-      - name: Install vala-lint
-        run: apt-get install -y vala-lint
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Lint Vala
-        run: io.elementary.vala-lint -d . -c vala-lint.conf
+      - name: Lint files
+        uses: alt-gnome/linters-actions/vala@main
 
   lint-blp:
     name: Lint blueprint UI files
     runs-on: alt-sisyphus
+    container:
+      image: altlinux.space/alt-gnome/gtk-blueprint-compiler-image:latest
 
     steps:
-      - name: Update apt cache
-        run: apt-get -y update
-
-      - name: Install blueprint-compiler
-        run: apt-get install -y blueprint-compiler
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Lint Blueprint
-        run: blueprint-compiler format -s 2 app/data/ui/*.blp
+      - name: Lint files
+        uses: alt-gnome/linters-actions/blueprint@main
 
   checkers:
     name: Run checkers
@@ -89,7 +81,7 @@ jobs:
           submodules: true
 
       - name: Install dependencies
-        run: apt-get install -y $(python3 build-tools/get_meson_deps.py)
+        run: apt-get install -y $(curl -s https://altlinux.space/rirusha/riru-build-utils/raw/branch/main/add/get-build-requires.py | python3)
 
       - name: Setup
         run: meson setup _build --prefix=/usr -Dis_devel=true

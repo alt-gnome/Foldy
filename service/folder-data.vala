@@ -114,23 +114,39 @@ public sealed class Foldy.FolderData : Object {
         print ("\n");
         message ("Triggered apps refreshing");
 
-        var current_apps = new Gee.HashSet<string> ();
+        var current_apps = new Gee.ArrayList<string> ();
         current_apps.add_all_array (apps);
 
         var current_categories = new Gee.HashSet<string> ();
         current_categories.add_all_array (categories);
 
-        var new_current_apps = new Gee.HashSet<string> ();
+        var new_current_apps = new Gee.ArrayList<string> ();
         new_current_apps.add_all_array (Folder.get_folder_apps (folder_id));
 
         var new_current_categories = new Gee.HashSet<string> ();
         new_current_categories.add_all_array (Folder.get_folder_categories (folder_id));
 
-        var added_apps = new Gee.HashSet<string> ();
+        var added_apps_by_category = new Gee.HashSet<string> ();
+        foreach (var category in new_current_categories) {
+            added_apps_by_category.add_all_array (get_app_ids_by_category (category));
+        }
+        foreach (var category in current_categories) {
+            added_apps_by_category.remove_all_array (get_app_ids_by_category (category));
+        }
+
+        var removed_apps_by_category = new Gee.HashSet<string> ();
+        foreach (var category in current_categories) {
+            removed_apps_by_category.add_all_array (get_app_ids_by_category (category));
+        }
+        foreach (var category in new_current_categories) {
+            removed_apps_by_category.remove_all_array (get_app_ids_by_category (category));
+        }
+
+        var added_apps = new Gee.ArrayList<string> ();
         added_apps.add_all (new_current_apps);
         added_apps.remove_all (current_apps);
 
-        var removed_apps = new Gee.HashSet<string> ();
+        var removed_apps = new Gee.ArrayList<string> ();
         removed_apps.add_all (current_apps);
         removed_apps.remove_all (new_current_apps);
 
@@ -145,14 +161,10 @@ public sealed class Foldy.FolderData : Object {
 
         sync ();
 
-        var new_apps = new Gee.HashSet<string> ();
+        var new_apps = new Gee.ArrayList<string> ();
         new_apps.add_all (new_current_apps);
-        foreach (var category in current_categories) {
-            new_apps.remove_all_array (get_app_ids_by_category (category));
-        }
-        foreach (var category in new_current_categories) {
-            new_apps.add_all_array (get_app_ids_by_category (category));
-        }
+        new_apps.remove_all (removed_apps_by_category);
+        new_apps.add_all (added_apps_by_category);
         new_apps.remove_all (excluded_apps);
 
         Folder.set_folder_apps (folder_id, new_apps.to_array ());

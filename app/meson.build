@@ -61,7 +61,7 @@ if get_option('with_application')
   gee_dep = dependency('gee-0.8')
   libportal_dep = dependency('libportal')
   libportal_gtk_dep = dependency('libportal-gtk4')
-  libfoldy_dep = dependency(versioned_lib_name, required: false)
+  libfoldy_dep = dependency(versioned_lib_name, version: '>= 4.2', required: false)
   if not libfoldy_dep.found()
     libfoldy_dep = lib_dep
   endif

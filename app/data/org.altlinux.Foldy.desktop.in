@@ -1,7 +1,7 @@
 [Desktop Entry]
 # Translators: app name should be translated
 Name=Folder Manager
-Comment=Folder manager for mobile devices
+Comment=Folder manager for GNOME and phosh
 # Translators: keep number of ';'
 Keywords=folder;folders;
 Exec=foldy
@@ -12,3 +12,4 @@ Categories=Utility;GNOME;GTK;
 StartupNotify=true
 X-SingleMainWindow=true
 X-Purism-FormFactor=Workstation;Mobile;
+X-GNOME-Gettext-Domain=tuner

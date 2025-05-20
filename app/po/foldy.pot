@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foldy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-03 13:03+0300\n"
+"POT-Creation-Date: 2025-05-20 22:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: app/add-apps-page.vala:43
+#: app/add-apps-page.vala:54
 #, c-format
 msgid "Add apps to folder '%s'"
+msgstr ""
+
+#: app/add-apps-page.vala:60
+msgid "All apps"
+msgstr ""
+
+#: app/add-apps-page.vala:60
+msgid "Apps without folder"
 msgstr ""
 
 #: app/application.vala:25
@@ -36,20 +44,20 @@ msgstr ""
 
 #. Translators: app name should be translated
 #: app/data/org.altlinux.Foldy.desktop.in:4
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:3 app/window.vala:71
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:5
 msgid "Folder Manager"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.desktop.in:5
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:5
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:9
-msgid "Folder manager for mobile devices"
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:6
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:10
+msgid "Folder manager for GNOME and phosh"
 msgstr ""
 
 #. Translators: keep number of ';'
 #: app/data/org.altlinux.Foldy.desktop.in:7
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:7
-msgid "folder"
+msgid "folder;folders;"
 msgstr ""
 
 #. Translators: app name should be translated
@@ -58,71 +66,91 @@ msgid "Folder Manager (Devel)"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.Devel.desktop.in:5
-msgid "Folder manager for mobile devices (Development version)"
+msgid "Folder manager for GNOME and phosh (Development version)"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:33
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:34
 msgid "Start page"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:37
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:38
 msgid "Opened folder"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:41
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:42
 msgid "Mobile window"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:45
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:46
 msgid "Edit folder dialog"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:52
-msgid "Improved layout for desktop"
-msgstr ""
-
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:53
-msgid "A lot of optimization for mobile devices"
+msgid "Add filter option to add-apps dialog. All/Unfoldered"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:54
-msgid "Bug fixes and more"
+msgid "Some fixes"
 msgstr ""
 
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:59
+msgid "Hotfix"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:60
+msgid "Some improvements in metainfo and desktop files"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:61
+msgid "Fixed bug with unselected row on folder creation"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:66
+msgid "Improved layout for desktop"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:67
+msgid "A lot of optimization for mobile devices"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:68
+msgid "Bug fixes and more"
+msgstr ""
+
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:73
 msgid "Fixed excluded apps"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:64
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:78
 msgid "Fix metadata"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:69
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:75
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:83
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:89
 msgid "Some bug fixed"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:70
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:84
 msgid "Some visual fixes"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:76
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:90
 msgid "Improved localization"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:81
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:95
 msgid "Added service"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:86
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:100
 msgid "Added search in category list"
 msgstr ""
 
-#: app/data/org.altlinux.Foldy.metainfo.xml.in:94
+#: app/data/org.altlinux.Foldy.metainfo.xml.in:108
 msgid "ALT Linux Team"
 msgstr ""
 
-#: app/data/ui/add-apps-page.blp:18
+#: app/data/ui/add-apps-page.blp:20
 msgid "Add selected applications"
 msgstr ""
 
@@ -130,7 +158,11 @@ msgstr ""
 msgid "Application information"
 msgstr ""
 
-#: app/data/ui/base-page.blp:84
+#: app/data/ui/base-page.blp:36
+msgid "Show all apps"
+msgstr ""
+
+#: app/data/ui/base-page.blp:101
 msgid "There is nothing to show"
 msgstr ""
 
@@ -261,10 +293,10 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: app/window.vala:94
+#: app/window.vala:92
 msgid "Save folders file"
 msgstr ""
 
-#: app/window.vala:126
+#: app/window.vala:124
 msgid "Open folders file"
 msgstr ""

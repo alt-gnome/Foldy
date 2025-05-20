@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
+<component type="desktop-application">
   <id>org.altlinux.Foldy</id>
   <icon type="stock">org.altlinux.Foldy</icon>
   <name>Folder Manager</name>
-  <summary>Folder manager for mobile devices</summary>
+  <summary>Folder manager for GNOME and phosh</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <description>
     <p>
-      Folder manager for mobile devices
+      Folder manager for GNOME and phosh
     </p>
   </description>
   <translation type="gettext">foldy</translation>
@@ -30,32 +30,38 @@
   <content_rating type="oars-1.1"></content_rating>
   <screenshots>
     <screenshot type="default">
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/1-start-page.png</image>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.1/app/data/images/1-start-page.png</image>
       <caption>Start page</caption>
     </screenshot>
     <screenshot>
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/2-folder.png</image>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.1/app/data/images/2-folder.png</image>
       <caption>Opened folder</caption>
     </screenshot>
     <screenshot>
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/3-narrow-window.png</image>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.1/app/data/images/3-narrow-window.png</image>
       <caption>Mobile window</caption>
     </screenshot>
     <screenshot>
-      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.0/app/data/images/4-edit-folder.png</image>
+      <image>https://altlinux.space/alt-gnome/Foldy/raw/tag/v4.1/app/data/images/4-edit-folder.png</image>
       <caption>Edit folder dialog</caption>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
-    <release version="4.1" date="2025-09-08">
+    <release version="4.2" date="2025-05-19">
+      <description>
+        <p>Add filter option to add-apps dialog. All/Unfoldered</p>
+        <p>Some fixes</p>
+      </description>
+    </release>
+    <release version="4.1" date="2025-05-08">
       <description>
         <p>Hotfix</p>
         <p>Some improvements in metainfo and desktop files</p>
         <p>Fixed bug with unselected row on folder creation</p>
       </description>
     </release>
-    <release version="4.0" date="2025-09-07">
+    <release version="4.0" date="2025-05-07">
       <description>
         <p>Improved layout for desktop</p>
         <p>A lot of optimization for mobile devices</p>
@@ -104,7 +110,6 @@
   <kudos>
     <kudo>ModernToolkit</kudo>
   </kudos>
-  <icon type="stock">org.altlinux.Foldy</icon>
   <categories>
     <category>Utility</category>
     <category>GNOME</category>

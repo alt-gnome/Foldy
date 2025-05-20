@@ -25,6 +25,8 @@ public abstract class Foldy.BasePage : Adw.NavigationPage {
     [GtkChild]
     unowned Gtk.Stack list_stack;
 
+    public string subtitle { get; set; }
+
     public Gtk.NoSelection model { get; set; }
 
     public Gtk.Widget bottom_start_widget { get; set; }
@@ -32,6 +34,10 @@ public abstract class Foldy.BasePage : Adw.NavigationPage {
     public Gtk.Widget bottom_center_widget { get; set; }
 
     public Gtk.Widget bottom_end_widget { get; set; }
+
+    public bool can_show_more { get; set; default = false; }
+
+    public bool show_more { get; set; default = false; }
 
     public bool can_select { get; set; default = false; }
 
