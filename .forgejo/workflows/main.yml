@@ -81,7 +81,7 @@ jobs:
           submodules: true
 
       - name: Install dependencies
-        run: apt-get install -y $(python3 build-tools/get_meson_deps.py)
+        run: apt-get install -y $(curl -s https://altlinux.space/rirusha/riru-build-utils/raw/branch/main/add/get-build-requires.py | python3)
 
       - name: Setup
         run: meson setup _build --prefix=/usr -Dis_devel=true
