@@ -17,7 +17,7 @@ Url: https://altlinux.space/alt-gnome/Foldy
 Vcs: https://altlinux.space/alt-gnome/Foldy.git
 
 Source: %name-%version.tar
-Patch: %name-%version-alt.patch
+Patch: %name-%version-%release.patch
 
 Requires: lib%name-%api_version = %EVR
 Requires: %name-service = %EVR
