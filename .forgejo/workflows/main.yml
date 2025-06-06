@@ -75,8 +75,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Gear repo
+        run: rbu to-gear
+
       - name: Build RPM
-        run: rbu test
+        uses: alt-gnome/build-rpm-action@main
 
       - name: Upload RPM
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
