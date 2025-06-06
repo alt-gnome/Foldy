@@ -60,34 +60,27 @@ jobs:
       - name: Run empty lines checker
         run: python3 vala-checkers/empty_lines_checker.py .
 
-  test-build:
-    name: Test Build
+  build-altlinux:
+    name: Build RPM for altlinux
+
     runs-on: alt-sisyphus
+    container:
+      image: altlinux.space/rirusha/riru-build-image:latest
     needs:
       - lint-vala
       - lint-blp
       - checkers
 
     steps:
-      - name: Update apt cache
-        run: apt-get -y update
-
-      - name: Install git and python
-        run: apt-get install -y git python3
-
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Build RPM
+        run: rbu test
+
+      - name: Upload RPM
+        uses: https://code.forgejo.org/forgejo/upload-artifact@v4
         with:
-          submodules: true
-
-      - name: Install dependencies
-        run: apt-get install -y $(curl -s https://altlinux.space/rirusha/riru-build-utils/raw/branch/main/add/get-build-requires.py | python3)
-
-      - name: Setup
-        run: meson setup _build --prefix=/usr -Dis_devel=true
-
-      - name: Build
-        run: meson compile -C _build
-
-      - name: Test
-        run: meson test -C _build
+          name: rbu-altlinux-rpms.zip
+          path: |
+            ~/.cache/hasherc/riru-build-utils/out/RPMS/*/*.rpm
