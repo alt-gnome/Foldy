@@ -88,4 +88,4 @@ jobs:
         with:
           name: rbu-altlinux-rpms.zip
           path: |
-            ~/.cache/hasherc/riru-build-utils/out/RPMS/*/*.rpm
+            ~/.cache/hasherc/foldy/out/RPMS/*/*.rpm
