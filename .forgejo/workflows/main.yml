@@ -76,10 +76,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Gear repo
-        run: rbu to-gear
+        run: rbu install-deps
 
       - name: Build RPM
-        uses: alt-gnome/build-rpm-action@main
+        uses: rbu test
 
       - name: Upload RPM
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
