@@ -75,8 +75,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Gear repo
-        run: rbu install-deps
+      - name: Install deps (for meson project)
+        run: |
+          apt-get update
+          rbu install-deps
 
       - name: Build RPM
         run: rbu test
