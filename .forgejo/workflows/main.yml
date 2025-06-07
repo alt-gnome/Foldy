@@ -79,7 +79,7 @@ jobs:
         run: rbu install-deps
 
       - name: Build RPM
-        uses: rbu test
+        run: rbu test
 
       - name: Upload RPM
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
