@@ -1,5 +1,4 @@
-project(
-  'foldy',
+project('foldy',
   ['c', 'vala'],
   version: '4.2',
   meson_version: '>= 1.0.0',
