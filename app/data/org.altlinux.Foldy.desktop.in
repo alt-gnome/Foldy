@@ -12,4 +12,4 @@ Categories=Utility;GNOME;GTK;
 StartupNotify=true
 X-SingleMainWindow=true
 X-Purism-FormFactor=Workstation;Mobile;
-X-GNOME-Gettext-Domain=tuner
+X-GNOME-Gettext-Domain=foldy
