@@ -57,8 +57,6 @@ public sealed class Foldy.FolderData : Object {
         Object (folder_id: folder_id, should_fix_categories: true);
     }
 
-    AppInfoMonitor mon;
-
     construct {
         apps = Folder.get_folder_apps (folder_id);
         categories = Folder.get_folder_categories (folder_id);
@@ -68,13 +66,6 @@ public sealed class Foldy.FolderData : Object {
         settings.changed.connect (settings_changed);
         settings.changed.connect (settings_changed);
         settings.changed.connect (settings_changed);
-
-        mon = AppInfoMonitor.get ();
-
-        mon.changed.connect (() => {
-            AppInfo.get_all ();
-            refresh_folder ();
-        });
 
         if (should_fix_categories) {
             var new_apps = new Gee.ArrayList<string> ();
@@ -107,6 +98,54 @@ public sealed class Foldy.FolderData : Object {
 
         settings.changed.disconnect (settings_changed);
         refresh_folder ();
+        settings.changed.connect (settings_changed);
+    }
+
+    public void change_apps (string[] installed_apps, string[] removed_apps) {
+        settings.changed.disconnect (settings_changed);
+
+        var need_to_add = new Gee.ArrayList<string> ();
+        var need_to_remove = new Gee.ArrayList<string> ();
+
+        foreach (var app_id in installed_apps) {
+            if (app_id in excluded_apps) {
+                continue;
+            }
+
+            foreach (var category in get_categories_by_app_id (app_id)) {
+                if (category in categories) {
+                    need_to_add.add (app_id);
+                    break;
+                }
+            }
+        }
+
+        foreach (var app_id in removed_apps) {
+            if (!(app_id in apps)) {
+                continue;
+            }
+
+            foreach (var category in get_categories_by_app_id (app_id)) {
+                if (category in categories) {
+                    need_to_add.add (app_id);
+                    break;
+                }
+            }
+        }
+
+        var new_apps = new Gee.ArrayList<string> ();
+        new_apps.add_all_array (apps);
+
+        new_apps.add_all (need_to_add);
+        new_apps.remove_all (need_to_remove);
+
+        Folder.set_folder_apps (folder_id, new_apps.to_array ());
+        apps = new_apps.to_array ();
+
+        sync ();
+
+        refreshed (folder_id);
+
         settings.changed.connect (settings_changed);
     }
 

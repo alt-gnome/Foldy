@@ -64,7 +64,7 @@ namespace Foldy {
         var categiries = new Gee.HashSet<string> ();
 
         foreach (var app_info in app_infos) {
-            categiries.add_all (get_categories_by_app_id (app_info.get_id ()));
+            categiries.add_all_array (get_categories_by_app_id (app_info.get_id ()));
         }
 
         categiries.remove_all (get_using_categories ());
@@ -86,18 +86,18 @@ namespace Foldy {
         return result;
     }
 
-    Gee.ArrayList<string> get_categories_by_app_id (string app_id) {
+    public string[] get_categories_by_app_id (string app_id) {
         var categories = new Gee.ArrayList<string> ();
 
         var desktop = new DesktopAppInfo (app_id);
         string? categories_string = desktop.get_categories ();
 
         if (categories_string == null) {
-            return categories;
+            return {};
         }
 
         if (categories_string.length == 0) {
-            return categories;
+            return {};
         }
 
         var raw_categories = categories_string.split (";");
@@ -108,7 +108,7 @@ namespace Foldy {
             }
         }
 
-        return categories;
+        return categories.to_array ();
     }
 
     public string[] get_app_ids_by_category (string category) {

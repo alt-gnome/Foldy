@@ -28,6 +28,8 @@ public sealed class Foldy.FoldersWatcher : Object {
 
     public signal void folder_refreshed (string folder_id);
 
+    Gee.ArrayList<AppInfo> app_info_list;
+
     construct {
         folders_settings = get_folders_settings ();
         folder_datas = new Gee.ArrayList<FolderData> ((a, b) => {
@@ -43,6 +45,44 @@ public sealed class Foldy.FoldersWatcher : Object {
         }
 
         folders_settings.changed["folder-children"].connect (folders_changed);
+
+        AppInfoMonitor.get ().changed.connect (app_info_changed);
+        update_app_infos ();
+    }
+
+    void update_app_infos () {
+        app_info_list = new Gee.ArrayList<AppInfo> ();
+
+        foreach (var app_info in AppInfo.get_all ()) {
+            app_info_list.add (app_info);
+        }
+    }
+
+    void app_info_changed () {
+        var old_app_info_list = app_info_list;
+        update_app_infos ();
+
+        var removed_apps = new Gee.ArrayList<AppInfo> ();
+        removed_apps.add_all (old_app_info_list);
+        removed_apps.remove_all (app_info_list);
+
+        var installed_apps = new Gee.ArrayList<AppInfo> ();
+        installed_apps.remove_all (old_app_info_list);
+        installed_apps.add_all (app_info_list);
+
+        string[] installed_apps_ids = new string[installed_apps.size];
+        for (int i = 0; i < installed_apps.size; i++) {
+            installed_apps_ids[i] = installed_apps[i].get_id ();
+        }
+
+        string[] removed_apps_ids = new string[removed_apps.size];
+        for (int i = 0; i < removed_apps.size; i++) {
+            removed_apps_ids[i] = removed_apps[i].get_id ();
+        }
+
+        foreach (var folder_data in folder_datas) {
+            folder_data.change_apps (installed_apps_ids, removed_apps_ids);
+        }
     }
 
     void folders_changed () {
