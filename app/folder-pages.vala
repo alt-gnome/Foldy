@@ -93,6 +93,7 @@ public sealed class Foldy.FolderPages : Adw.Bin {
 
         } else {
             navigation_view.replace ({});
+            nothing_to_show ();
         }
     }
 

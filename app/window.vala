@@ -156,6 +156,10 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
     [GtkCallback]
     void on_nothing_to_show () {
         folders_list_page.unselect_all ();
+
+        if (navigation_split_view.collapsed) {
+            navigation_split_view.show_content = false;
+        }
     }
 
     [GtkCallback]
