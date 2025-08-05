@@ -1,13 +1,16 @@
+# If you want to suggest changes, please send PR on
+# https://altlinux.space/alt-gnome/Foldy to altlinux branch
+
 %define _unpackaged_files_terminate_build 1
 %define app_id org.altlinux.Foldy
 %define service_name org.altlinux.FoldyService
 %define gir_name Foldy
 %define glib_min_version 2.76
 %define api_version 4
-%define minor_version 2
+%define minor_version 3
 
 Name: foldy
-Version: 4.2
+Version: %api_version.%minor_version
 Release: alt1
 
 Summary: Folder manager aimed to mobile devices
@@ -149,6 +152,10 @@ export AS_VALIDATE_NONET="true"
 %_girdir/%gir_name-%api_version.gir
 
 %changelog
+* Tue Aug 05 2025 Vladimir Vaskov <rirusha@altlinux.org> 4.3-alt1
+- New version: 4.3
+- Fixed empty window on folder deletion (ALT #55479)
+
 * Tue May 20 2025 Vladimir Vaskov <rirusha@altlinux.org> 4.2-alt1
 - New version: 4.2
 
@@ -157,7 +164,7 @@ export AS_VALIDATE_NONET="true"
 
 * Thu Apr 10 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.12-alt1
 - New version: 3.12
-- Changed upstream remote URL and VCS
+- Changed upstream remote URL and VCS.
 
 * Mon Mar 24 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.8-alt1
 - New version: 3.8

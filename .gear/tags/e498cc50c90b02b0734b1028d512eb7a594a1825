@@ -1,0 +1,8 @@
+object 92573b3f4c04b7c84a3900886f0953afaf120be5
+type commit
+tag v4.3
+tagger Gitea <gitea@fake.local> 1754386927 +0300
+
+4.3
+
+Bug fixes
