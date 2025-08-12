@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - 'main'
+      - 'altlinux'
 
 permissions:
   contents: read
@@ -13,30 +14,30 @@ permissions:
 
 jobs:
   lint-vala:
-    name: Lint vala files
+    name: Check vala files
     runs-on: alt-sisyphus
     container:
-      image: altlinux.space/alt-gnome/vala-linter-image:latest
+      image: altlinux.space/alt-gnome/coding-style-image:latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Lint files
-        uses: alt-gnome/linters-actions/vala@main
+      - name: Check files
+        uses: alt-gnome/coding-style-actions/vala@main
 
-  lint-blp:
-    name: Lint blueprint UI files
+  lint-blueprint:
+    name: Check blueprint files
     runs-on: alt-sisyphus
     container:
-      image: altlinux.space/alt-gnome/gtk-blueprint-compiler-image:latest
+      image: altlinux.space/alt-gnome/coding-style-image:latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Lint files
-        uses: alt-gnome/linters-actions/blueprint@main
+      - name: Check files
+        uses: alt-gnome/coding-style-actions/blueprint@main
 
   checkers:
     name: Run checkers
@@ -60,6 +61,32 @@ jobs:
       - name: Run empty lines checker
         run: python3 vala-checkers/empty_lines_checker.py .
 
+  test-build:
+    name: Test Build
+    runs-on: alt-sisyphus
+    needs:
+      - lint-vala
+      - lint-blueprint
+      - checkers
+
+    steps:
+      - name: Install libs on container
+        run: |
+          apt-get update
+          apt-get install -y meson vala "pkgconfig(libadwaita-1)" "pkgconfig(gio-unix-2.0)" "pkgconfig(gee-0.8)" "pkgconfig(libportal)" "pkgconfig(libportal-gtk4)" blueprint-compiler "vapi(gee-0.8)" "gir(Gee)=0.8" gobject-introspection-devel gettext-devel appstream desktop-file-utils
+ 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup
+        run: meson setup _build
+
+      - name: Setup
+        run: meson test _build
+
+      - name: Build
+        run: meson compile -C _build
+
   build-altlinux:
     name: Build RPM for altlinux
 
@@ -67,20 +94,23 @@ jobs:
     container:
       image: altlinux.space/rirusha/riru-build-image:latest
     needs:
-      - lint-vala
-      - lint-blp
-      - checkers
+      - test-build
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Build RPM
-        run: rbu test
-
-      - name: Upload RPM
-        uses: https://code.forgejo.org/forgejo/upload-artifact@v4
         with:
-          name: foldy-altlinux-rpms.zip
-          path: |
-            ~/.cache/hasherc/foldy/out/RPMS/*/*.rpm
+          ref: 'altlinux'
+          fetch-tags: true
+          fetch-depth: 0
+
+      - uses: alt-gnome/build-rpm-action@main
+        name: Build RPMs
+
+      - uses: alt-gnome/upload-rpm-action@main
+        name: Upload RPMs
+        if: github.event_name != 'pull_request'
+        with:
+          directory: ~/.cache/hasherc/foldy/out/RPMS
+          token: ${{ secrets.TOKEN }}
+          group: foldy
