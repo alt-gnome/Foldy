@@ -150,29 +150,29 @@ export AS_VALIDATE_NONET="true"
 
 %changelog
 * Tue May 20 2025 Vladimir Vaskov <rirusha@altlinux.org> 4.2-alt1
-- New version: 4.2
+- New version: 4.2.
 
 * Thu May 08 2025 Vladimir Vaskov <rirusha@altlinux.org> 4.1-alt1
-- New version: 4.1
+- New version: 4.1.
 
 * Thu Apr 10 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.12-alt1
-- New version: 3.12
-- Changed upstream remote URL and VCS
+- New version: 3.12.
+- Changed upstream remote URL and VCS.
 
 * Mon Mar 24 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.8-alt1
-- New version: 3.8
+- New version: 3.8.
 
 * Tue Mar 04 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.6-alt1
-- New version: 3.6
+- New version: 3.6.
 
 * Fri Feb 21 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.5-alt1
-- New version: 3.5
+- New version: 3.5.
 
 * Wed Feb 12 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.4-alt1
-- New version: 3.4
+- New version: 3.4.
 
 * Tue Feb 11 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.3-alt1
-- New version: 3.3
+- New version: 3.3.
 
 * Tue Feb 11 2025 Vladimir Vaskov <rirusha@altlinux.org> 3.2-alt1
 - Initial build.
