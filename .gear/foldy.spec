@@ -69,14 +69,14 @@ Requires: lib%name = %EVR
 %description -n lib%name-devel
 %summary.
 
-%package -n lib%name-devel-vala
+%package -n lib%name-vala-devel
 Summary: Foldy devel files for vala
 Group: Development/Other
 
 BuildArch: noarch
 Requires: lib%name-devel = %EVR
 
-%description -n lib%name-devel-vala
+%description -n lib%name-vala-devel
 %summary.
 
 %package -n lib%name-gir
@@ -141,7 +141,7 @@ export AS_VALIDATE_NONET="true"
 %_pkgconfigdir/lib%name-%api_version.pc
 %_includedir/lib%name-%api_version.h
 
-%files -n lib%name-devel-vala
+%files -n lib%name-vala-devel
 %_vapidir/lib%name-%api_version.deps
 %_vapidir/lib%name-%api_version.vapi
 
