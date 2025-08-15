@@ -48,6 +48,11 @@
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
+    <release version="5.0" date="2025-08-15">
+      <description>
+        <p>Some fixes</p>
+      </description>
+    </release>
     <release version="4.2" date="2025-05-19">
       <description>
         <p>Add filter option to add-apps dialog. All/Unfoldered</p>
