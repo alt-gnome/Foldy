@@ -39,12 +39,14 @@ if get_option('with_library')
     'gee-0.8',
   ]
 
-  gio_dep = dependency('gio-unix-2.0')
   gee_dep = dependency('gee-0.8')
+  gio_dep = dependency('gio-unix-2.0')
+  libportal_dep = dependency('libportal')
 
   library_dependencies = [
-    gio_dep,
     gee_dep,
+    gio_dep,
+    libportal_dep,
   ]
 
   lib = shared_library(

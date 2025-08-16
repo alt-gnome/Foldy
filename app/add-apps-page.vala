@@ -39,7 +39,9 @@ public sealed class Foldy.AddAppsPage : BasePage {
     }
 
     construct {
-        shell_settings = get_shell_settings ();
+        if (!Xdp.Portal.running_under_flatpak ()) {
+            shell_settings = get_shell_settings ();
+        }
 
         model = new Gtk.NoSelection (
             new Gtk.FilterListModel (
@@ -69,9 +71,11 @@ public sealed class Foldy.AddAppsPage : BasePage {
         });
 
         favorite_filter = new Gtk.CustomFilter (update_favorite_filter);
-        shell_settings.changed["favorite-apps"].connect (() => {
-            favorite_filter.changed (Gtk.FilterChange.DIFFERENT);
-        });
+        if (!Xdp.Portal.running_under_flatpak ()) {
+            shell_settings.changed["favorite-apps"].connect (() => {
+                favorite_filter.changed (Gtk.FilterChange.DIFFERENT);
+            });
+        }
 
         filter.changed.connect (() => {
             filter_changed = true;

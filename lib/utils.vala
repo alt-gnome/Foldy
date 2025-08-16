@@ -55,7 +55,11 @@ namespace Foldy {
     }
 
     public string[] get_favorite_apps_ids () {
-        return get_shell_settings ().get_strv ("favorite-apps");
+        if (Xdp.Portal.running_under_flatpak ()) {
+            return {};
+        } else {
+            return get_shell_settings ().get_strv ("favorite-apps");
+        }
     }
 
     public string[] get_installed_categories (string? exclude_folder_id) {
