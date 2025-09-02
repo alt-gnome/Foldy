@@ -125,7 +125,8 @@ export AS_VALIDATE_NONET="true"
 %_iconsdir/hicolor/*/apps/org.altlinux.FoldyService-symbolic.svg
 
 %files -n lib%name-%api_version
-%_libdir/lib%name-%api_version.so.*
+%_libdir/lib%name-%api_version.so.%api_version
+%_libdir/lib%name-%api_version.so.%api_version.*
 
 %files -n lib%name-%api_version-devel
 %_libdir/lib%name-%api_version.so
