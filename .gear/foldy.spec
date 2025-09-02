@@ -69,16 +69,6 @@ Requires: lib%name-%api_version = %EVR
 %description -n lib%name-%api_version-devel
 %summary.
 
-%package -n lib%name-%api_version-devel-vala
-Summary: Foldy devel files for vala
-Group: Development/Other
-
-BuildArch: noarch
-Requires: lib%name-%api_version-devel = %EVR
-
-%description -n lib%name-%api_version-devel-vala
-%summary.
-
 %package -n lib%name-%api_version-gir
 Summary: Foldy typelib files
 Group: System/Libraries
@@ -140,8 +130,6 @@ export AS_VALIDATE_NONET="true"
 %_libdir/lib%name-%api_version.so
 %_pkgconfigdir/lib%name-%api_version.pc
 %_includedir/lib%name-%api_version.h
-
-%files -n lib%name-%api_version-devel-vala
 %_vapidir/lib%name-%api_version.deps
 %_vapidir/lib%name-%api_version.vapi
 
