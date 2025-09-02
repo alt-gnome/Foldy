@@ -64,6 +64,7 @@ Group: System/Libraries
 Summary: Foldy devel files
 Group: Development/C
 
+Provides: lib%name-devel
 Requires: lib%name-%api_version = %EVR
 
 %description -n lib%name-%api_version-devel
