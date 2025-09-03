@@ -22,7 +22,7 @@ Vcs: https://altlinux.space/alt-gnome/Foldy.git
 Source: %name-%version.tar
 Patch: %name-%version-%release.patch
 
-Requires: lib%name-%api_version = %EVR
+Requires: lib%name%api_version = %EVR
 Requires: %name-service = %EVR
 
 BuildRequires(pre): rpm-macros-meson
@@ -48,45 +48,45 @@ BuildRequires: gettext-devel
 Summary: Service for categories fix in GNOME and phosh
 Group: Other
 
-Requires: lib%name-%api_version = %EVR
+Requires: lib%name%api_version = %EVR
 
 %description service
 %summary.
 
-%package -n lib%name-%api_version
+%package -n lib%name%api_version
 Summary: Foldy library
 Group: System/Libraries
 
-%description -n lib%name-%api_version
+%description -n lib%name%api_version
 %summary.
 
-%package -n lib%name-%api_version-devel
+%package -n lib%name%api_version-devel
 Summary: Foldy devel files
 Group: Development/C
 
 Provides: lib%name-devel
-Requires: lib%name-%api_version = %EVR
+Requires: lib%name%api_version = %EVR
 
-%description -n lib%name-%api_version-devel
+%description -n lib%name%api_version-devel
 %summary.
 
-%package -n lib%name-%api_version-gir
+%package -n lib%name%api_version-gir
 Summary: Foldy typelib files
 Group: System/Libraries
 
-Requires: lib%name-%api_version = %EVR
+Requires: lib%name%api_version = %EVR
 
-%description -n lib%name-%api_version-gir
+%description -n lib%name%api_version-gir
 %summary.
 
-%package -n lib%name-%api_version-gir-devel
+%package -n lib%name%api_version-gir-devel
 Summary: Foldy devel gir files
 Group: Development/Other
 
 BuildArch: noarch
-Requires: lib%name-%api_version-gir = %EVR
+Requires: lib%name%api_version-gir = %EVR
 
-%description -n lib%name-%api_version-gir-devel
+%description -n lib%name%api_version-gir-devel
 %summary.
 
 %prep
@@ -124,21 +124,21 @@ export AS_VALIDATE_NONET="true"
 %_iconsdir/hicolor/*/apps/org.altlinux.FoldyService.svg
 %_iconsdir/hicolor/*/apps/org.altlinux.FoldyService-symbolic.svg
 
-%files -n lib%name-%api_version
+%files -n lib%name%api_version
 %_libdir/lib%name-%api_version.so.%api_version
 %_libdir/lib%name-%api_version.so.%api_version.*
 
-%files -n lib%name-%api_version-devel
+%files -n lib%name%api_version-devel
 %_libdir/lib%name-%api_version.so
 %_pkgconfigdir/lib%name-%api_version.pc
 %_includedir/lib%name-%api_version.h
 %_vapidir/lib%name-%api_version.deps
 %_vapidir/lib%name-%api_version.vapi
 
-%files -n lib%name-%api_version-gir
+%files -n lib%name%api_version-gir
 %_typelibdir/%gir_name-%api_version.typelib
 
-%files -n lib%name-%api_version-gir-devel
+%files -n lib%name%api_version-gir-devel
 %_girdir/%gir_name-%api_version.gir
 
 %changelog
