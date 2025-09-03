@@ -60,14 +60,14 @@ Group: System/Libraries
 %description -n lib%name%api_version
 %summary.
 
-%package -n lib%name%api_version-devel
+%package -n lib%name-devel
 Summary: Foldy devel files
 Group: Development/C
 
 Provides: lib%name-devel
 Requires: lib%name%api_version = %EVR
 
-%description -n lib%name%api_version-devel
+%description -n lib%name-devel
 %summary.
 
 %package -n lib%name%api_version-gir
@@ -79,14 +79,14 @@ Requires: lib%name%api_version = %EVR
 %description -n lib%name%api_version-gir
 %summary.
 
-%package -n lib%name%api_version-gir-devel
+%package -n lib%name-gir-devel
 Summary: Foldy devel gir files
 Group: Development/Other
 
 BuildArch: noarch
 Requires: lib%name%api_version-gir = %EVR
 
-%description -n lib%name%api_version-gir-devel
+%description -n lib%name-gir-devel
 %summary.
 
 %prep
@@ -128,7 +128,7 @@ export AS_VALIDATE_NONET="true"
 %_libdir/lib%name-%api_version.so.%api_version
 %_libdir/lib%name-%api_version.so.%api_version.*
 
-%files -n lib%name%api_version-devel
+%files -n lib%name-devel
 %_libdir/lib%name-%api_version.so
 %_pkgconfigdir/lib%name-%api_version.pc
 %_includedir/lib%name-%api_version.h
@@ -138,7 +138,7 @@ export AS_VALIDATE_NONET="true"
 %files -n lib%name%api_version-gir
 %_typelibdir/%gir_name-%api_version.typelib
 
-%files -n lib%name%api_version-gir-devel
+%files -n lib%name-gir-devel
 %_girdir/%gir_name-%api_version.gir
 
 %changelog
