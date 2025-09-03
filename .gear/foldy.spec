@@ -99,8 +99,8 @@ Requires: lib%name%api_version-gir = %EVR
 
 %install
 %meson_install
-%find_lang %name --with-gnome
-%find_lang %service_name --with-gnome
+%find_lang %name
+%find_lang %service_name
 
 %check
 export AS_VALIDATE_NONET="true"
