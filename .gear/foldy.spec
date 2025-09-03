@@ -10,7 +10,7 @@
 %define minor_version 2
 
 Name: foldy
-Version: 4.2
+Version: %api_version.%minor_version
 Release: alt1
 
 Summary: Folder manager aimed to mobile devices
