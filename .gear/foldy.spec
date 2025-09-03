@@ -6,8 +6,8 @@
 %define service_name org.altlinux.FoldyService
 %define gir_name Foldy
 %define glib_min_version 2.76
-%define api_version 4
-%define minor_version 2
+%define api_version 5
+%define minor_version 0
 
 Name: foldy
 Version: %api_version.%minor_version
@@ -142,6 +142,10 @@ export AS_VALIDATE_NONET="true"
 %_girdir/%gir_name-%api_version.gir
 
 %changelog
+* Wed Sep 03 2025 Vladimir Vaskov <rirusha@altlinux.org> 5.0-alt1
+- New version: 5.0.
+- Fixed empty window on folder deletion (closes: 55479).
+
 * Tue May 20 2025 Vladimir Vaskov <rirusha@altlinux.org> 4.2-alt1
 - New version: 4.2.
 

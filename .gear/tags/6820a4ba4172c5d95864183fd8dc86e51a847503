@@ -1,0 +1,11 @@
+object ee0a2fc3ee0b7bf4c88dbaffdda275aa927d7636
+type commit
+tag v5.0
+tagger Gitea <gitea@fake.local> 1755235924 +0300
+
+5.0
+
+- Bug fixes
+
+P.S.
+New major because i failed with altlinux package naming :/
