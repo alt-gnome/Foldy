@@ -121,8 +121,8 @@ export AS_VALIDATE_NONET="true"
 %_datadir/dbus-1/services/%service_name.service
 %_desktopdir/%service_name.desktop
 %_xdgconfigdir/autostart/%service_name.desktop
-%_iconsdir/hicolor/*/apps/org.altlinux.FoldyService.svg
-%_iconsdir/hicolor/*/apps/org.altlinux.FoldyService-symbolic.svg
+%_iconsdir/hicolor/*/apps/%service_name.svg
+%_iconsdir/hicolor/*/apps/%service_name-symbolic.svg
 
 %files -n lib%name%api_version
 %_libdir/lib%name-%api_version.so.%api_version
