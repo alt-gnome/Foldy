@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Vladimir Vaskov <rirusha@altlinux.org>
+ * Copyright (C) 2025 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Rirusha
+ * Copyright (C) 2024-2025 Vladimir Romanov
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, version 3

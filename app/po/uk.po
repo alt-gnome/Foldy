@@ -76,7 +76,7 @@ msgid "Added search in category list"
 msgstr "Додано пошук у списку категорій"
 
 #: app/data/org.altlinux.Foldy.Devel.metainfo.xml.in:55
-msgid "Vladimir Vaskov"
+msgid "Vladimir Romanov"
 msgstr "Володимир Васьков"
 
 #: app/data/org.altlinux.Foldy.metainfo.xml.in:37

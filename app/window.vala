@@ -1,4 +1,4 @@
-/* Copyright 2024 Rirusha
+/* Copyright (C) 2024-2025 Vladimir Romanov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -76,7 +76,7 @@ public sealed class Foldy.Window : Adw.ApplicationWindow {
                 "Arseniy Nechkin <krisgeniusnos@gmail.com>",
             },
             developers = {
-                "Vladimir Vaskov <rirusha@altlinux.org>"
+                "Vladimir Romanov <rirusha@altlinux.org>"
             },
             // Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
             translator_credits = _("translator-credits"),
