@@ -48,6 +48,11 @@
   </screenshots>
   <launchable type="desktop-id">org.altlinux.Foldy.desktop</launchable>
   <releases>
+    <release version="5.1" date="2025-10-25">
+      <description>
+        <p>Hotfix with new blueprint-compiler fix</p>
+      </description>
+    </release>
     <release version="5.0" date="2025-08-15">
       <description>
         <p>Some fixes</p>
