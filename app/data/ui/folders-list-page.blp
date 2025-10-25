@@ -41,7 +41,6 @@ template $FoldyFoldersListPage: Adw.NavigationPage {
             ]
 
             selection-mode: single;
-            valign: bind $calculate_valign(template.wintype) as <Align>;
             row-activated => $on_row_activated();
           }
         };
