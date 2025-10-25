@@ -1,0 +1,8 @@
+object 2a4d8972eafbc4f5732c7a691ef2bb4dd3a56790
+type commit
+tag v5.1
+tagger Gitea <gitea@fake.local> 1761422620 +0300
+
+5.1
+
+- Build hotfix
