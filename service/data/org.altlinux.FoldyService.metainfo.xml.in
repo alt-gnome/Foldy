@@ -18,6 +18,8 @@
   <content_rating type="oars-1.1"></content_rating>
   <launchable type="service">org.altlinux.FoldyService.service</launchable>
   <releases>
+    <release version="5.1" date="2025-10-25">
+    </release>
     <release version="3.11" date="2025-04-10">
       <description>
         <p>Fixed excluded apps</p>

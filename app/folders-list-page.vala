@@ -1,4 +1,4 @@
-/* Copyright 2024 Rirusha
+/* Copyright (C) 2024-2025 Vladimir Romanov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,8 +54,10 @@ public sealed class Foldy.FoldersListPage : Adw.NavigationPage {
     [GtkCallback]
     void on_wintype_changed () {
         if (wintype == WindowType.WIDE) {
+            list_box_menu.valign = FILL;
             create_new_button.remove_css_class ("suggested-action");
         } else {
+            list_box_menu.valign = END;
             create_new_button.add_css_class ("suggested-action");
         }
 
@@ -97,11 +99,6 @@ public sealed class Foldy.FoldersListPage : Adw.NavigationPage {
             folder_choosed (folder_id);
         });
         dialog.present (this);
-    }
-
-    [GtkCallback]
-    Gtk.Align calculate_valign (WindowType wintype) {
-        return wintype == WindowType.WIDE ? Gtk.Align.FILL : Gtk.Align.END;
     }
 
     [GtkCallback]
